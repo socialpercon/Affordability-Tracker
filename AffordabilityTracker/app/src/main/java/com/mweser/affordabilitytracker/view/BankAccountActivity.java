@@ -1,7 +1,7 @@
 package com.mweser.affordabilitytracker.view;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.controller.Utils;
+import com.mweser.affordabilitytracker.controller.ActivityUtils;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -95,7 +95,7 @@ public class BankAccountActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item)
     {
-        Utils.navBarSwitch(getApplicationContext(), getBaseContext(), this, item);
+        ActivityUtils.navBarSwitch(getApplicationContext(), getBaseContext(), this, item);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

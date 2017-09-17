@@ -1,11 +1,11 @@
-package com.mweser.affordabilitytracker.model.database;
+package com.mweser.affordabilitytracker.model.data;
 
-import com.mweser.affordabilitytracker.model.database.Schema.BankAccountColumns;
-import com.mweser.affordabilitytracker.model.database.Schema.CreditPointsProjectionColumns;
-import com.mweser.affordabilitytracker.model.database.Schema.ExpenseEventColumns;
-import com.mweser.affordabilitytracker.model.database.Schema.ProjectionColumns;
-import com.mweser.affordabilitytracker.model.database.Schema.ThresholdColumns;
-import com.mweser.affordabilitytracker.model.database.Schema.WishlistColumns;
+import com.mweser.affordabilitytracker.model.data.Schema.BankAccountColumns;
+import com.mweser.affordabilitytracker.model.data.Schema.CreditPointsProjectionColumns;
+import com.mweser.affordabilitytracker.model.data.Schema.ExpenseEventColumns;
+import com.mweser.affordabilitytracker.model.data.Schema.ProjectionColumns;
+import com.mweser.affordabilitytracker.model.data.Schema.ThresholdColumns;
+import com.mweser.affordabilitytracker.model.data.Schema.WishlistColumns;
 
 public class CreationCommands
 {

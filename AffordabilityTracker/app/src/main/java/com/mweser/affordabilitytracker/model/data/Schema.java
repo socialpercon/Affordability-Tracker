@@ -1,4 +1,4 @@
-package com.mweser.affordabilitytracker.model.database;
+package com.mweser.affordabilitytracker.model.data;
 
 public class Schema
 {

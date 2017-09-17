@@ -1,6 +1,6 @@
-package com.mweser.affordabilitytracker.model.database;
+package com.mweser.affordabilitytracker.model.data;
 
-import com.mweser.affordabilitytracker.model.database.CreationCommands.CreateTable;
+import com.mweser.affordabilitytracker.model.data.CreationCommands.CreateTable;
 
 import android.content.Context;
 import android.database.Cursor;
