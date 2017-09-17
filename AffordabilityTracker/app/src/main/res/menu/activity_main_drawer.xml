@@ -28,7 +28,7 @@
                     android:title="Future Projections"/>
 
             <item
-                    android:id="@+id/nav_projection_table"
+                    android:id="@+id/nav_future_events_list"
                     android:icon="@drawable/ic_crystal_ball_black_48dp"
                     android:title="Future Event List"/>
 
@@ -47,7 +47,7 @@
 
 
     <item
-            android:id="@+id/nav_settings"
+            android:id="@+id/nav_prefs"
             android:icon="@drawable/ic_settings_black_48dp"
             android:title="Preferences"/>
 
