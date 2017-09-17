@@ -1,15 +1,15 @@
-package com.mweser.affordabilitytracker.utils;
+package com.mweser.affordabilitytracker.controller;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activities.BankAccountActivity;
-import com.mweser.affordabilitytracker.activities.CreditPointsActivity;
-import com.mweser.affordabilitytracker.activities.ExpensesActivity;
-import com.mweser.affordabilitytracker.activities.ProjectionActivity;
-import com.mweser.affordabilitytracker.activities.ProjectionListActivity;
-import com.mweser.affordabilitytracker.activities.SettingsActivity;
-import com.mweser.affordabilitytracker.activities.ThresholdsActivity;
-import com.mweser.affordabilitytracker.activities.WishlistActivity;
-import com.mweser.affordabilitytracker.activities.WishlistScheduleActivity;
+import com.mweser.affordabilitytracker.view.BankAccountActivity;
+import com.mweser.affordabilitytracker.view.CreditPointsActivity;
+import com.mweser.affordabilitytracker.view.ExpensesActivity;
+import com.mweser.affordabilitytracker.view.ProjectionActivity;
+import com.mweser.affordabilitytracker.view.ProjectionListActivity;
+import com.mweser.affordabilitytracker.view.SettingsActivity;
+import com.mweser.affordabilitytracker.view.ThresholdsActivity;
+import com.mweser.affordabilitytracker.view.WishlistActivity;
+import com.mweser.affordabilitytracker.view.WishlistScheduleActivity;
 
 import android.app.Activity;
 import android.content.Context;

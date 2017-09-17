@@ -1,7 +1,7 @@
-package com.mweser.affordabilitytracker.activities;
+package com.mweser.affordabilitytracker.view;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.utils.Utils;
+import com.mweser.affordabilitytracker.controller.Utils;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class ThresholdsActivity extends AppCompatActivity
+public class BankAccountActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
 
@@ -24,7 +24,7 @@ public class ThresholdsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thresholds);
+        setContentView(R.layout.activity_bank_account);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -70,7 +70,7 @@ public class ThresholdsActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.thresholds, menu);
+        getMenuInflater().inflate(R.menu.bank_account_management, menu);
         return true;
     }
 
@@ -95,9 +95,7 @@ public class ThresholdsActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item)
     {
-        // Handle navigation view item clicks here.
         Utils.navBarSwitch(getApplicationContext(), getBaseContext(), this, item);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

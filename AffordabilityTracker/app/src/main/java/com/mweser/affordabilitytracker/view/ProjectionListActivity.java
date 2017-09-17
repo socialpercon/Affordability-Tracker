@@ -1,7 +1,7 @@
-package com.mweser.affordabilitytracker.activities;
+package com.mweser.affordabilitytracker.view;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.utils.Utils;
+import com.mweser.affordabilitytracker.controller.Utils;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class ExpensesActivity extends AppCompatActivity
+public class ProjectionListActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
 
@@ -24,7 +24,7 @@ public class ExpensesActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expenses);
+        setContentView(R.layout.activity_projection_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -70,7 +70,7 @@ public class ExpensesActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.expenses, menu);
+        getMenuInflater().inflate(R.menu.projection_list, menu);
         return true;
     }
 

@@ -1,7 +1,7 @@
-package com.mweser.affordabilitytracker.activities;
+package com.mweser.affordabilitytracker.view;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.utils.Utils;
+import com.mweser.affordabilitytracker.controller.Utils;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class WishlistScheduleActivity extends AppCompatActivity
+public class ExpensesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
 
@@ -24,7 +24,7 @@ public class WishlistScheduleActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wishlist_schedule);
+        setContentView(R.layout.activity_expenses);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -70,7 +70,7 @@ public class WishlistScheduleActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.wishlist_schedule, menu);
+        getMenuInflater().inflate(R.menu.expenses, menu);
         return true;
     }
 
