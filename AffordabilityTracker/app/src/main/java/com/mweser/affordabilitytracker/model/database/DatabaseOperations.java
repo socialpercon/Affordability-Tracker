@@ -1,5 +1,8 @@
 package com.mweser.affordabilitytracker.model.database;
 
-public class BankAccountSchema
+public class DatabaseOperations
 {
+    
+
+
 }
