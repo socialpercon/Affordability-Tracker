@@ -6,4 +6,12 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_bank_account_management">BankAccountManagementActivity</string>
+    <string name="title_activity_expenses">ExpensesActivity</string>
+    <string name="title_activity_thresholds">ThresholdsActivity</string>
+    <string name="title_activity_wishlist">WishlistActivity</string>
+    <string name="title_activity_projection">ProjectionActivity</string>
+    <string name="title_activity_projection_list">ProjectionListActivity</string>
+    <string name="title_activity_wishlist_schedule">WishlistScheduleActivity</string>
+    <string name="title_activity_credit_points">CreditPointsActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 </resources>

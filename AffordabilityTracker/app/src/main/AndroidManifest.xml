@@ -24,6 +24,46 @@
                 android:label="@string/title_activity_bank_account_management"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+                android:name=".activities.ExpensesActivity"
+                android:label="@string/title_activity_expenses"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".activities.ThresholdsActivity"
+                android:label="@string/title_activity_thresholds"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".activities.WishlistActivity"
+                android:label="@string/title_activity_wishlist"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".activities.ProjectionActivity"
+                android:label="@string/title_activity_projection"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".activities.ProjectionListActivity"
+                android:label="@string/title_activity_projection_list"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".activities.WishlistScheduleActivity"
+                android:label="@string/title_activity_wishlist_schedule"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".activities.CreditPointsActivity"
+                android:label="@string/title_activity_credit_points"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".activities.SettingsActivity"
+                android:label="@string/title_activity_settings"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
