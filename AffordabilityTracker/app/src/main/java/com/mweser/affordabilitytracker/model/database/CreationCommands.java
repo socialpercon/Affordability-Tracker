@@ -7,17 +7,8 @@ import com.mweser.affordabilitytracker.model.database.Schema.ProjectionColumns;
 import com.mweser.affordabilitytracker.model.database.Schema.ThresholdColumns;
 import com.mweser.affordabilitytracker.model.database.Schema.WishlistColumns;
 
-import android.database.Cursor;
-
 public class CreationCommands
 {
-    private static final String TAG = CreationCommands.class.getSimpleName();
-    private static final String DATABASE_NAME = "databases.db";
-    private static final int DATABASE_VERSION = 0;
-    private static Cursor cursor;
-
-    //    private static String insertDefaultSettings = "INSERT INTO settings VALUES (340, 196, 60);";
-
     public interface CreateTable
     {
         // @formatter:off
