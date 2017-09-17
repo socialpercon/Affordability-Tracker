@@ -17,7 +17,7 @@
             android:layout_width="55dp"
             android:layout_height="60dp"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:src="@drawable/ic_android_debug_bridge_white_48dp"
+            android:src="@drawable/ic_account_circle_white_48dp"
             android:id="@+id/imageView"/>
 
     <TextView
@@ -26,11 +26,5 @@
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             android:text="Affordability Tracker"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="user@gmail.com"
-            android:id="@+id/textView"/>
 
 </LinearLayout>

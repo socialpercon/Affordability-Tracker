@@ -1,35 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group>
         <item
-                android:id="@+id/nav_camera"
-                android:icon="@drawable/ic_menu_camera"
-                android:title="Import"/>
+                android:id="@+id/nav_accounts"
+                android:icon="@drawable/ic_credit_card_multiple_black_48dp"
+                android:title="Accounts"/>
         <item
-                android:id="@+id/nav_gallery"
-                android:icon="@drawable/ic_menu_gallery"
-                android:title="Gallery"/>
+                android:id="@+id/nav_expenses"
+                android:icon="@drawable/ic_coin_black_48dp"
+                android:title="Expenses"/>
         <item
-                android:id="@+id/nav_slideshow"
-                android:icon="@drawable/ic_menu_slideshow"
-                android:title="Slideshow"/>
+                android:id="@+id/nav_thresholds"
+                android:icon="@drawable/ic_alarm_light_black_48dp"
+                android:title="Thresholds"/>
         <item
-                android:id="@+id/nav_manage"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Tools"/>
+                android:id="@+id/nav_wishlist"
+                android:icon="@drawable/ic_beach_black_48dp"
+                android:title="Wishlist"/>
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Analysis">
         <menu>
             <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_menu_share"
-                    android:title="Share"/>
+                    android:id="@+id/nav_projection"
+                    android:icon="@drawable/ic_chart_line_black_48dp"
+                    android:title="Future Projections"/>
+
             <item
-                    android:id="@+id/nav_send"
-                    android:icon="@drawable/ic_menu_send"
-                    android:title="Send"/>
+                    android:id="@+id/nav_projection_table"
+                    android:icon="@drawable/ic_table_column_black_48dp"
+                    android:title="Future Event List"/>
+
+            <item
+                    android:id="@+id/nav_wishlist_schedule"
+                    android:icon="@drawable/ic_calendar_multiple_check_black_48dp"
+                    android:title="Wishlist Schedule"/>
+
+            <item
+                    android:id="@+id/nav_credit_points"
+                    android:icon="@drawable/ic_airplane_black_48dp"
+                    android:title="Credit Card Points (BETA)"/>
+
+
+            <item
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/ic_settings_black_48dp"
+                    android:title="Settings"/>
         </menu>
     </item>
 
