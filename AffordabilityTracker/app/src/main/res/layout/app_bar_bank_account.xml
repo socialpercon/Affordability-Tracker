@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_bank_account_management"/>
+    <include layout="@layout/content_bank_account"/>
 
     <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"

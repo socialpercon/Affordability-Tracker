@@ -72,7 +72,6 @@ public class Utils
 
     public static void startActivity(Context baseContext, Activity currentActivity, Class<?> nextActivityClass)
     {
-//        currentActivity.finish();
         currentActivity.startActivity(new Intent(baseContext, nextActivityClass));
     }
 
