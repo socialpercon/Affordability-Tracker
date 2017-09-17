@@ -5,15 +5,15 @@
         <item
                 android:id="@+id/nav_accounts"
                 android:icon="@drawable/ic_credit_card_multiple_black_48dp"
-                android:title="Accounts"/>
+                android:title="Bank Accounts"/>
         <item
                 android:id="@+id/nav_expenses"
                 android:icon="@drawable/ic_coin_black_48dp"
-                android:title="Expenses"/>
+                android:title="Expenses and Income"/>
         <item
                 android:id="@+id/nav_thresholds"
                 android:icon="@drawable/ic_alarm_light_black_48dp"
-                android:title="Thresholds"/>
+                android:title="Safety Thresholds"/>
         <item
                 android:id="@+id/nav_wishlist"
                 android:icon="@drawable/ic_beach_black_48dp"
@@ -29,25 +29,27 @@
 
             <item
                     android:id="@+id/nav_projection_table"
-                    android:icon="@drawable/ic_table_column_black_48dp"
+                    android:icon="@drawable/ic_crystal_ball_black_48dp"
                     android:title="Future Event List"/>
 
             <item
                     android:id="@+id/nav_wishlist_schedule"
-                    android:icon="@drawable/ic_calendar_multiple_check_black_48dp"
+                    android:icon="@drawable/ic_calendar_clock_black_48dp"
                     android:title="Wishlist Schedule"/>
 
             <item
                     android:id="@+id/nav_credit_points"
                     android:icon="@drawable/ic_airplane_black_48dp"
-                    android:title="Credit Card Points (BETA)"/>
+                    android:title="Credit Points Projection"/>
 
-
-            <item
-                    android:id="@+id/nav_settings"
-                    android:icon="@drawable/ic_settings_black_48dp"
-                    android:title="Settings"/>
         </menu>
     </item>
+
+
+    <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_black_48dp"
+            android:title="Preferences"/>
+
 
 </menu>
