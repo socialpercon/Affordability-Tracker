@@ -1,20 +1,27 @@
 package com.mweser.affordabilitytracker.view;
 
+import com.mweser.affordabilitytracker.R;
+import com.mweser.affordabilitytracker.controller.ActivityUtils;
+
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.mweser.affordabilitytracker.R;
-
 public class CreateBankAccountActivity extends AppCompatActivity
 {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        onCreateSetup();
+    }
+
+    private void onCreateSetup()
+    {
         setContentView(R.layout.activity_create_bank_account);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -25,9 +32,9 @@ public class CreateBankAccountActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .show();
+                CreateBankAccountActivity.this.finish();
+                ActivityUtils.startActivity(getBaseContext(), CreateBankAccountActivity.this, BankAccountActivity.class);
+
             }
         });
     }
