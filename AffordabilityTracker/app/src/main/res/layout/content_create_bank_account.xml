@@ -45,14 +45,13 @@
 
             <EditText android:layout_width="@dimen/create_account_item_width"
                       android:layout_height="@dimen/create_account_item_height"
+                      android:layout_weight="1"
                       android:textSize="@dimen/create_account_text_size"
-                      android:hint="Account code"
-                      android:textColor="@color/colorHint"
-                      android:layout_weight=".75"
+                      android:hint="Total balance"
                       android:gravity="bottom"
                       android:textAlignment="center"
-                      android:id="@+id/txtAccountCode"
-
+                      android:textColor="@color/colorHint"
+                      android:id="@+id/txtTotalAmount"
             />
 
             <LinearLayout android:layout_width="match_parent"
@@ -89,6 +88,17 @@
 
             <EditText android:layout_width="@dimen/create_account_item_width"
                       android:layout_height="@dimen/create_account_item_height"
+                      android:layout_weight="1"
+                      android:textSize="@dimen/create_account_text_size"
+                      android:hint="Statement date"
+                      android:gravity="bottom"
+                      android:textAlignment="center"
+                      android:textColor="@color/colorHint"
+                      android:id="@+id/txtStatementDate"
+            />
+
+            <EditText android:layout_width="@dimen/create_account_item_width"
+                      android:layout_height="@dimen/create_account_item_height"
                       android:layout_weight=".75"
                       android:textSize="@dimen/create_account_text_size"
                       android:hint="Payment date"
@@ -102,28 +112,6 @@
                       android:layout_height="@dimen/create_account_item_height"
                       android:layout_weight="1"
                       android:textSize="@dimen/create_account_text_size"
-                      android:hint="Statement date"
-                      android:gravity="bottom"
-                      android:textAlignment="center"
-                      android:textColor="@color/colorHint"
-                      android:id="@+id/txtStatementDate"
-            />
-
-            <EditText android:layout_width="@dimen/create_account_item_width"
-                      android:layout_height="@dimen/create_account_item_height"
-                      android:layout_weight="1"
-                      android:textSize="@dimen/create_account_text_size"
-                      android:hint="Last 4 Digits"
-                      android:gravity="bottom"
-                      android:textAlignment="center"
-                      android:textColor="@color/colorHint"
-                      android:id="@+id/txtLast4"
-            />
-
-            <EditText android:layout_width="@dimen/create_account_item_width"
-                      android:layout_height="@dimen/create_account_item_height"
-                      android:layout_weight="1"
-                      android:textSize="@dimen/create_account_text_size"
                       android:hint="Amount due next statement"
                       android:gravity="bottom"
                       android:textAlignment="center"
@@ -131,16 +119,7 @@
                       android:id="@+id/txtDueNextStatement"
             />
 
-            <EditText android:layout_width="@dimen/create_account_item_width"
-                      android:layout_height="@dimen/create_account_item_height"
-                      android:layout_weight="1"
-                      android:textSize="@dimen/create_account_text_size"
-                      android:hint="Total balance"
-                      android:gravity="bottom"
-                      android:textAlignment="center"
-                      android:textColor="@color/colorHint"
-                      android:id="@+id/txtTotalAmount"
-            />
+
 
             <EditText android:layout_width="@dimen/create_account_item_width"
                       android:layout_height="@dimen/create_account_item_height"

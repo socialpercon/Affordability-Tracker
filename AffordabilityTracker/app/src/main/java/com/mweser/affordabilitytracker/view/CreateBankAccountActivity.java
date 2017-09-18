@@ -1,5 +1,6 @@
 package com.mweser.affordabilitytracker.view;
 
+import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.TYPE;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TextFields.AMOUNT_NEXT_STATEMENT;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TextFields.POINTS;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TextFields.STATEMENT_DATE;
@@ -11,11 +12,14 @@ import java.util.List;
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.controller.ActivityUtils;
+import com.mweser.affordabilitytracker.controller.CreateBankAccountManager;
+import com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TextFields;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ToggleButton;
@@ -31,19 +35,34 @@ public class CreateBankAccountActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         onCreateSetup();
+
         instantiateClassFields();
-
         defineUiElements();
-        convertFieldsToStringArrayList();
-        sendStringsToManagerForDatabase();
     }
 
-    private void sendStringsToManagerForDatabase()
+    private void saveFieldsToDatabase()
     {
+        populateAccountFieldsList();
+        CreateBankAccountManager.addAccountInfoToDatabase(accountFields);
     }
 
-    private void convertFieldsToStringArrayList()
+    private void populateAccountFieldsList()
     {
+        for (EditText text : textInputs)
+        {
+            accountFields.add(text.getText().toString());
+        }
+
+        if (toggleButtons.get(CREDIT.ordinal()).isChecked())
+        {
+            accountFields.add(TYPE.ordinal(), "CREDIT");
+        }
+        else
+        {
+            accountFields.add(TYPE.ordinal(), "DEBIT");
+        }
+
+        Log.d("CreateBankAccount", accountFields.toString());
     }
 
     private void defineUiElements()
@@ -58,80 +77,88 @@ public class CreateBankAccountActivity extends AppCompatActivity
         toggleButtons.add((ToggleButton) findViewById(R.id.toggleCreditCard));
         toggleButtons.add((ToggleButton) findViewById(R.id.toggleDebitCard));
 
-        toggleButtons.get(CREDIT.ordinal()).setChecked(true);
-        toggleButtons.get(DEBIT.ordinal()).setChecked(false);
+        toggleButtons.get(CREDIT.ordinal())
+                .setChecked(true);
+        toggleButtons.get(DEBIT.ordinal())
+                .setChecked(false);
 
-        toggleButtons.get(CREDIT.ordinal()).setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                toggleButtons.get(CREDIT.ordinal()).setChecked(true);
-                toggleButtons.get(DEBIT.ordinal()).setChecked(false);
-                showCreditFields();
-            }
+        toggleButtons.get(CREDIT.ordinal())
+                .setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        toggleButtons.get(CREDIT.ordinal())
+                                .setChecked(true);
+                        toggleButtons.get(DEBIT.ordinal())
+                                .setChecked(false);
+                        showCreditFields();
+                    }
 
-            private void showCreditFields()
-            {
-                List<EditText> textInputs = new ArrayList<>();
+                    private void showCreditFields()
+                    {
+                        List<EditText> textInputs = new ArrayList<>();
 
-                textInputs.add((EditText) findViewById(R.id.txtAccountName));
-                textInputs.add((EditText) findViewById(R.id.txtAccountCode));
-                textInputs.add((EditText) findViewById(R.id.txtPaymentDate));
-                textInputs.add((EditText) findViewById(R.id.txtStatementDate));
-                textInputs.add((EditText) findViewById(R.id.txtLast4));
-                textInputs.add((EditText) findViewById(R.id.txtDueNextStatement));
-                textInputs.add((EditText) findViewById(R.id.txtTotalAmount));
-                textInputs.add((EditText) findViewById(R.id.txtPoints));
+                        textInputs.add((EditText) findViewById(R.id.txtAccountName));
+                        textInputs.add((EditText) findViewById(R.id.txtPaymentDate));
+                        textInputs.add((EditText) findViewById(R.id.txtStatementDate));
+                        textInputs.add((EditText) findViewById(R.id.txtDueNextStatement));
+                        textInputs.add((EditText) findViewById(R.id.txtTotalAmount));
+                        textInputs.add((EditText) findViewById(R.id.txtPoints));
 
-                textInputs.get(STATEMENT_DATE.ordinal()).setVisibility(View.VISIBLE);
-                textInputs.get(AMOUNT_NEXT_STATEMENT.ordinal()).setVisibility(View.VISIBLE);
-                textInputs.get(POINTS.ordinal()).setVisibility(View.VISIBLE);
+                        textInputs.get(STATEMENT_DATE.ordinal())
+                                .setVisibility(View.VISIBLE);
+                        textInputs.get(TextFields.PAYMENT_DATE.ordinal())
+                                .setVisibility(View.VISIBLE);
+                        textInputs.get(AMOUNT_NEXT_STATEMENT.ordinal())
+                                .setVisibility(View.VISIBLE);
+                        textInputs.get(POINTS.ordinal())
+                                .setVisibility(View.VISIBLE);
+                    }
+                });
 
-            }
-        });
+        toggleButtons.get(DEBIT.ordinal())
+                .setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        toggleButtons.get(DEBIT.ordinal())
+                                .setChecked(true);
+                        toggleButtons.get(CREDIT.ordinal())
+                                .setChecked(false);
 
-        toggleButtons.get(DEBIT.ordinal()).setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                toggleButtons.get(DEBIT.ordinal()).setChecked(true);
-                toggleButtons.get(CREDIT.ordinal()).setChecked(false);
+                        hideCreditFields();
+                    }
 
-                hideCreditFields();
-            }
+                    private void hideCreditFields()
+                    {
+                        List<EditText> textInputs = new ArrayList<>();
 
-            private void hideCreditFields()
-            {
-                List<EditText> textInputs = new ArrayList<>();
+                        textInputs.add((EditText) findViewById(R.id.txtAccountName));
+                        textInputs.add((EditText) findViewById(R.id.txtPaymentDate));
+                        textInputs.add((EditText) findViewById(R.id.txtStatementDate));
+                        textInputs.add((EditText) findViewById(R.id.txtDueNextStatement));
+                        textInputs.add((EditText) findViewById(R.id.txtTotalAmount));
+                        textInputs.add((EditText) findViewById(R.id.txtPoints));
 
-                textInputs.add((EditText) findViewById(R.id.txtAccountName));
-                textInputs.add((EditText) findViewById(R.id.txtAccountCode));
-                textInputs.add((EditText) findViewById(R.id.txtPaymentDate));
-                textInputs.add((EditText) findViewById(R.id.txtStatementDate));
-                textInputs.add((EditText) findViewById(R.id.txtLast4));
-                textInputs.add((EditText) findViewById(R.id.txtDueNextStatement));
-                textInputs.add((EditText) findViewById(R.id.txtTotalAmount));
-                textInputs.add((EditText) findViewById(R.id.txtPoints));
-
-                textInputs.get(STATEMENT_DATE.ordinal()).setVisibility(View.INVISIBLE);
-                textInputs.get(AMOUNT_NEXT_STATEMENT.ordinal()).setVisibility(View.INVISIBLE);
-                textInputs.get(POINTS.ordinal()).setVisibility(View.INVISIBLE);
-
-            }
-        });
+                        textInputs.get(STATEMENT_DATE.ordinal())
+                                .setVisibility(View.INVISIBLE);
+                        textInputs.get(TextFields.PAYMENT_DATE.ordinal())
+                                .setVisibility(View.INVISIBLE);
+                        textInputs.get(AMOUNT_NEXT_STATEMENT.ordinal())
+                                .setVisibility(View.INVISIBLE);
+                        textInputs.get(POINTS.ordinal())
+                                .setVisibility(View.INVISIBLE);
+                    }
+                });
     }
-
-
 
     private void populateEditTextList()
     {
         textInputs.add((EditText) findViewById(R.id.txtAccountName));
-        textInputs.add((EditText) findViewById(R.id.txtAccountCode));
         textInputs.add((EditText) findViewById(R.id.txtPaymentDate));
         textInputs.add((EditText) findViewById(R.id.txtStatementDate));
-        textInputs.add((EditText) findViewById(R.id.txtLast4));
         textInputs.add((EditText) findViewById(R.id.txtDueNextStatement));
         textInputs.add((EditText) findViewById(R.id.txtTotalAmount));
         textInputs.add((EditText) findViewById(R.id.txtPoints));
@@ -156,6 +183,8 @@ public class CreateBankAccountActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                saveFieldsToDatabase();
+
                 CreateBankAccountActivity.this.finish();
                 ActivityUtils.startActivity(getBaseContext(),
                         CreateBankAccountActivity.this,

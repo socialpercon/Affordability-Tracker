@@ -18,11 +18,9 @@ public class Schema
     public interface BankAccountColumns
     {
         String NAME = "account_name";
-        String CODE = "account_code";
         String TYPE = "account_type";
         String PAYMENT_DATE = "payment_date";
         String STATEMENT_DATE = "statement_date";
-        String LAST_4 = "last_4";
         String AMOUNT_NEXT_STATEMENT = "amount_next_statement";
         String TOTAL_AMOUNT = "total_amount";
         String POINTS_BALANCE = "points_balance";
@@ -32,7 +30,6 @@ public class Schema
     {
         String NAME = "event_name";
         String AMOUNT = "amount";
-        String ACCOUNT_CODE = "account_code";
         String FIRST_DATE = "first_date";
         String LAST_DATE = "last_date";
         String IRRELEVANCY_DATE = "irrelevancy_date";
@@ -56,7 +53,6 @@ public class Schema
         String NAME = "event_name";
         String AMOUNT = "amount";
         String PRIORITY = "priority";
-        String ACCOUNT_CODE = "account_code";
         String DESIRED_DATE = "desired_date";
         String CALCULATED_DATE = "calculated_date";
         String IRRELEVANCY_DATE = "last_date";

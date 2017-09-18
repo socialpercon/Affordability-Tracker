@@ -8,11 +8,9 @@ public class CreationCommands
         String BANK_ACCOUNTS = "CREATE TABLE IF NOT EXISTS " +
                 Schema.Tables.BANK_ACCOUNTS                  + " (" +
                 Schema.BankAccountColumns.NAME                      + " TEXT, "+
-                Schema.BankAccountColumns.CODE                      + " TEXT, "+
                 Schema.BankAccountColumns.TYPE                      + " TEXT, "+
                 Schema.BankAccountColumns.PAYMENT_DATE              + " TEXT, "+
                 Schema.BankAccountColumns.STATEMENT_DATE            + " TEXT, "+
-                Schema.BankAccountColumns.LAST_4                    + " TEXT, "+
                 Schema.BankAccountColumns.AMOUNT_NEXT_STATEMENT     + " TEXT, "+
                 Schema.BankAccountColumns.TOTAL_AMOUNT              + " TEXT, "+
                 Schema.BankAccountColumns.POINTS_BALANCE            + " TEXT);";
@@ -21,7 +19,6 @@ public class CreationCommands
                 Schema.Tables.EXPENSE_EVENTS                  + " (" +
                 Schema.ExpenseEventColumns.NAME                      + " TEXT, "+
                 Schema.ExpenseEventColumns.AMOUNT                    + " TEXT, "+
-                Schema.ExpenseEventColumns.ACCOUNT_CODE              + " TEXT, "+
                 Schema.ExpenseEventColumns.FIRST_DATE                + " TEXT, "+
                 Schema.ExpenseEventColumns.LAST_DATE                 + " TEXT, "+
                 Schema.ExpenseEventColumns.IRRELEVANCY_DATE          + " TEXT, "+
@@ -44,7 +41,6 @@ public class CreationCommands
                 Schema.WishlistColumns.NAME                    + " TEXT, "+
                 Schema.WishlistColumns.AMOUNT                  + " TEXT, "+
                 Schema.WishlistColumns.PRIORITY                + " TEXT, "+
-                Schema.WishlistColumns.ACCOUNT_CODE            + " TEXT, "+
                 Schema.WishlistColumns.DESIRED_DATE            + " TEXT, "+
                 Schema.WishlistColumns.CALCULATED_DATE         + " TEXT, "+
                 Schema.WishlistColumns.IRRELEVANCY_DATE        + " TEXT, "+
