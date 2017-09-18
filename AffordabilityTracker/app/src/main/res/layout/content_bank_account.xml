@@ -9,4 +9,24 @@
         tools:showIn="@layout/app_bar_bank_account"
         tools:context="com.mweser.affordabilitytracker.view.BankAccountActivity">
 
+    <LinearLayout android:layout_width="344dp"
+                  android:layout_height="wrap_content"
+                  android:layout_centerHorizontal="true"
+                  android:layout_centerVertical="true"
+                  android:orientation="vertical"
+                  android:gravity="center"
+                  tools:layout_editor_absoluteY="8dp"
+                  tools:layout_editor_absoluteX="8dp">
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/txtListOfBanks"
+                  android:text="Bank list:"
+
+        />
+
+
+    </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>
