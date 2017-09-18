@@ -2,6 +2,7 @@ package com.mweser.affordabilitytracker.view;
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.controller.ActivityUtils;
+import com.mweser.affordabilitytracker.controller.BankAccountManager;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -27,11 +28,16 @@ public class BankAccountActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         onCreateSetup();
 
-        
+        accountListText.setText(BankAccountManager.getBankAccountListing());
 
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
 
+        accountListText.setText(BankAccountManager.getBankAccountListing());
+    }
 
     @Override
     public void onBackPressed()

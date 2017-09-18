@@ -46,7 +46,6 @@ public class Database extends SQLiteOpenHelper
         {
             // add some extra fields to the database without deleting existing data
             version = 2;
-
         }
 
         if (version != version)
