@@ -203,10 +203,10 @@ public class ProjectionCurator
 
 //        bankAccountData.remove(0);
 
-        for (DataRow row : bankAccountData)
-        {
-            bankAccountList.add(new BankAccount(row, globalStartDate, globalEndDate));
-        }
+//        for (DataRow row : bankAccountData)
+//        {
+//            bankAccountList.add(new BankAccount(row, globalStartDate, globalEndDate));
+//        }
     }
 
     private void importExpenseEventData(String filename)
@@ -218,14 +218,14 @@ public class ProjectionCurator
 
 //        expenseEventData.remove(0);
 
-        for (DataRow row : expenseEventData)
-        {
-            expenseEventList.add(new ExpenseEvent(row,
-                    globalStartDate,
-                    globalEndDate,
-                    CREDIT_ALIGNED,
-                    bankAccountList));
-        }
+//        for (DataRow row : expenseEventData)
+//        {
+//            expenseEventList.add(new ExpenseEvent(row,
+//                    globalStartDate,
+//                    globalEndDate,
+//                    CREDIT_ALIGNED,
+//                    bankAccountList));
+//        }
     }
 
     private void addDataToTableAndSortByDate(ArrayList<? extends RecurEvent>... listArray)

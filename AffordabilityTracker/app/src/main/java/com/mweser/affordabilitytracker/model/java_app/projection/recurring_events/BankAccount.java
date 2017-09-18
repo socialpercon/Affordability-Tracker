@@ -1,6 +1,5 @@
 package com.mweser.affordabilitytracker.model.java_app.projection.recurring_events;
 
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.AccountField.CODE;
 import static com.mweser.affordabilitytracker.model.java_app.projection.RecurEventSchema.AccountDataColumn.AMOUNT_NEXT_STATEMENT;
 import static com.mweser.affordabilitytracker.model.java_app.projection.RecurEventSchema.AccountDataColumn.LAST_4;
 import static com.mweser.affordabilitytracker.model.java_app.projection.RecurEventSchema.AccountDataColumn.NAME;
@@ -127,7 +126,6 @@ public class BankAccount extends RecurEvent
         int[] dateArray = DateOperations.getCurrentDate();
 
         name = row.get(NAME);
-        accountCode = row.get(CODE);
         accountType = RecurEventSchema.AccountType.valueOf(row.get(TYPE));
         firstEventDate = DateTypeUtils.stringToDate(dateArray[1] + "/" + row.get(PAYMENT_DATE) + "/" + dateArray[0]);     // TODO: 9/13/17 Correct issue with parsing string
         statementDate = DateTypeUtils.stringToDate(dateArray[1] + "/" + row.get(STATEMENT_DATE) + "/" + dateArray[0]);
