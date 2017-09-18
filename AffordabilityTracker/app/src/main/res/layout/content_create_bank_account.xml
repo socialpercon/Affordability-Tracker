@@ -9,4 +9,70 @@
         tools:showIn="@layout/activity_create_bank_account"
         tools:context="com.mweser.affordabilitytracker.view.CreateBankAccountActivity">
 
+
+
+    <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:layout_editor_absoluteY="0dp"
+                    tools:layout_editor_absoluteX="8dp">
+
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Account Name:"
+                  android:id="@+id/tvAccountName"
+        />
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Account Code:"
+                  android:id="@+id/tvAccountCode"
+                  android:layout_below="@id/tvAccountName"
+        />
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Credit or Debit?"
+                  android:id="@+id/tvAccountType"
+                  android:layout_below="@id/tvAccountCode"
+        />
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Statement Date:"
+                  android:id="@+id/tvStatementDate"
+                  android:layout_below="@id/tvAccountType"
+        />
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Payment Date:"
+                  android:id="@+id/tvPaymentDate"
+                  android:layout_below="@id/tvStatementDate"
+        />
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Last 4 Digits:"
+                  android:id="@+id/tvLast4"
+                  android:layout_below="@id/tvPaymentDate"
+        />
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Due next statement:"
+                  android:id="@+id/tvAmountNextStatement"
+                  android:layout_below="@id/tvLast4"
+        />
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Total balance:"
+                  android:id="@+id/tvTotalAmount"
+                  android:layout_below="@id/tvAmountNextStatement"
+        />
+
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

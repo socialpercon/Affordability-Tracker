@@ -4,7 +4,7 @@
     <group>
         <item
                 android:id="@+id/nav_accounts"
-                android:icon="@drawable/ic_credit_card_multiple_black_48dp"
+                android:icon="@drawable/ic_bank_black_48dp"
                 android:title="Bank Accounts"/>
         <item
                 android:id="@+id/nav_expenses"
@@ -39,7 +39,7 @@
 
             <item
                     android:id="@+id/nav_credit_points"
-                    android:icon="@drawable/ic_airplane_black_48dp"
+                    android:icon="@drawable/ic_credit_card_multiple_black_48dp"
                     android:title="Credit Points Projection"/>
 
         </menu>
