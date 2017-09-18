@@ -6,24 +6,29 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class Database extends SQLiteOpenHelper
 {
-    private static final String TAG = CreationCommands.class.getSimpleName();
-    private static final String DATABASE_NAME = "databases.db";
-    private static final int DATABASE_VERSION = 0;
-    private static Cursor cursor;
+    private static final String TAG = Database.class.getSimpleName();;
 
-    //    private static String insertDefaultSettings = "INSERT INTO settings VALUES (340, 196, 60);";
+    private static int version;
+    private static String name;
+    private static Cursor cursor;
 
     public Database(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
     {
         super(context, name, factory, version);
+        Log.d(TAG, "Database object instantiated");
+
+        Database.version = version;
+        Database.name = name;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db)
     {
+        Log.d(TAG, "On create called");
         db.execSQL(CreateTable.BANK_ACCOUNTS);
         db.execSQL(CreateTable.EXPENSE_EVENTS);
         db.execSQL(CreateTable.THRESHOLDS);
@@ -45,7 +50,7 @@ public class Database extends SQLiteOpenHelper
 
         }
 
-        if (version != DATABASE_VERSION)
+        if (version != version)
         {
             db.execSQL("DROP TABLE IF EXISTS " + Schema.Tables.BANK_ACCOUNTS);
             db.execSQL("DROP TABLE IF EXISTS " + Schema.Tables.EXPENSE_EVENTS);
