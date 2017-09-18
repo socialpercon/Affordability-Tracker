@@ -64,6 +64,11 @@
                 android:label="@string/title_activity_settings"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+                android:name=".view.CreateBankAccountActivity"
+                android:label="@string/title_activity_create_bank_account"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
