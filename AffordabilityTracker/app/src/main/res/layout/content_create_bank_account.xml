@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,7 +8,13 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_create_bank_account"
         tools:context="com.mweser.affordabilitytracker.view.CreateBankAccountActivity">
-
+<data>
+    <variable name="user"
+              type=""
+    
+</data>
+    
+    
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:paddingTop="12dp"
@@ -40,6 +46,7 @@
                       android:layout_weight="1"
                       android:gravity="bottom"
                       android:textAlignment="center"
+                      android:id="@+id/txtAccountName"
             />
 
             <EditText android:layout_width="@dimen/create_account_item_width"
@@ -50,6 +57,7 @@
                       android:layout_weight=".75"
                       android:gravity="bottom"
                       android:textAlignment="center"
+                      android:id="@+id/txtAccountCode"
 
             />
 
@@ -93,6 +101,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
+                      android:id="@+id/txtPaymentDate"
             />
 
             <EditText android:layout_width="@dimen/create_account_item_width"
@@ -103,6 +112,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
+                      android:id="@+id/txtStatementDate"
             />
 
             <EditText android:layout_width="@dimen/create_account_item_width"
@@ -113,7 +123,8 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
-                      android:id="@+id/editText"/>
+                      android:id="@+id/txtLast4"
+            />
 
             <EditText android:layout_width="@dimen/create_account_item_width"
                       android:layout_height="@dimen/create_account_item_height"
@@ -123,6 +134,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
+                      android:id="@+id/txtDueNextStatement"
             />
 
             <EditText android:layout_width="@dimen/create_account_item_width"
@@ -133,6 +145,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
+                      android:id="@+id/txtTotalAmount"
             />
 
             <EditText android:layout_width="@dimen/create_account_item_width"
@@ -143,6 +156,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
+                      android:id="@+id/txtPoints"
             />
 
 
@@ -150,4 +164,4 @@
 
     </RelativeLayout>
 
-</android.support.constraint.ConstraintLayout>
+</layout>

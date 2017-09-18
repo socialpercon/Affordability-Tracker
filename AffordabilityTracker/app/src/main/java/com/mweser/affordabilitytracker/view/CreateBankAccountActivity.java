@@ -1,5 +1,7 @@
 package com.mweser.affordabilitytracker.view;
 
+import java.util.List;
+
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.controller.ActivityUtils;
 
@@ -8,16 +10,38 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ToggleButton;
 
 public class CreateBankAccountActivity extends AppCompatActivity
 {
-
+    List<String> accountFields;
+    List<EditText> textInputs;
+    List<ToggleButton> toggleButtons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         onCreateSetup();
+
+        defineUiElements();
+        convertFieldsToStringArrayList();
+        sendStringsToManagerForDatabase();
+    }
+
+    private void sendStringsToManagerForDatabase()
+    {
+    }
+
+    private void convertFieldsToStringArrayList()
+    {
+    }
+
+    private void defineUiElements()
+    {
+
+
     }
 
     private void onCreateSetup()
