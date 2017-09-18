@@ -1,6 +1,9 @@
 package com.mweser.affordabilitytracker.model.data;
 
+import java.util.List;
+
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 public class DatabaseOperations
@@ -10,6 +13,12 @@ public class DatabaseOperations
     private static final String TAG = DatabaseOperations.class.getSimpleName();
     ;
     private static Database database;
+
+    public static void executeSQL(String command)
+    {
+        SQLiteDatabase db = database.getWritableDatabase();
+        db.execSQL(command);
+    }
 
     public static Database getDatabase(Context appContext)
     {
@@ -21,5 +30,36 @@ public class DatabaseOperations
         }
 
         return database;
+    }
+
+    public static String newInsertCommand(String table)
+    {
+        return "INSERT INTO " + table + " VALUES (";
+    }
+
+    public static String addLastElement(List<String> list, Enum<?> value)
+    {
+        return getFieldValue(list, value) + ");";
+    }
+
+    public static String addListElement(List<String> list, Enum<?> value)
+    {
+        return getFieldValue(list, value) + ",";
+    }
+
+    private static String getFieldValue(List<String> list, Enum<?> value)
+    {
+        String fieldValue = list.get(value.ordinal());
+
+        if (fieldValue == "")
+        {
+            fieldValue = "'NULL'";
+        }
+        else
+        {
+            fieldValue = "'" + fieldValue + "'";
+        }
+
+        return fieldValue;
     }
 }
