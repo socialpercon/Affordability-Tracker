@@ -7,9 +7,8 @@ public class DatabaseOperations
 {
     private static final String DATABASE_NAME = "databases.db";
     private static final int DATABASE_VERSION = 1;
-
-    private static final String TAG = DatabaseOperations.class.getSimpleName();;
-
+    private static final String TAG = DatabaseOperations.class.getSimpleName();
+    ;
     private static Database database;
 
     public static Database getDatabase(Context appContext)

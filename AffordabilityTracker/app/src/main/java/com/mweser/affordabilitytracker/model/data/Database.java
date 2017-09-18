@@ -1,6 +1,7 @@
 package com.mweser.affordabilitytracker.model.data;
 
-import com.mweser.affordabilitytracker.model.data.CreationCommands.CreateTable;
+import com.mweser.affordabilitytracker.model.data.schema.CreationCommands.CreateTable;
+import com.mweser.affordabilitytracker.model.data.schema.Schema;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -19,8 +20,6 @@ public class Database extends SQLiteOpenHelper
     public Database(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
     {
         super(context, name, factory, version);
-        Log.d(TAG, "Database object instantiated");
-
         Database.version = version;
         Database.name = name;
     }
