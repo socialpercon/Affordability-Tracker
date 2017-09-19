@@ -14,7 +14,7 @@ public class Database extends SQLiteOpenHelper
     private static final String TAG = Database.class.getSimpleName();
     private static final String DATABASE_NAME = "databases.db";
     private static final int DATABASE_VERSION = 1;
-    
+
     public static synchronized Database getInstance(Context context)
     {
         if (database == null)

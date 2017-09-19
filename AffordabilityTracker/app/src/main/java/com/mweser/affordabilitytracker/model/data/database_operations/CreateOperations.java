@@ -21,13 +21,7 @@ public class CreateOperations
     {
         for (String command : commands)
         {
-            createTable(db, command);
+            db.execSQL(command);
         }
     }
-
-    private static void createTable(SQLiteDatabase db, String command)
-    {
-        db.execSQL(command);
-    }
-
 }

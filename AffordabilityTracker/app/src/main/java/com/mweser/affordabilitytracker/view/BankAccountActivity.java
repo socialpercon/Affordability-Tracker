@@ -28,17 +28,13 @@ public class BankAccountActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         onCreateSetup();
 
-        accountListText = new TextView(getApplicationContext());
-        accountListText = (TextView) findViewById(R.id.txtListOfBanks);
-        accountListText.setText(BankAccountManager.getBankAccountListing(getApplicationContext()));
-
+        accountListText = BankAccountManager.updateAccountListText(getApplicationContext(), (TextView) findViewById(R.id.txtListOfBanks));
     }
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
-
-        accountListText.setText(BankAccountManager.getBankAccountListing(getApplicationContext()));
+        accountListText = BankAccountManager.updateAccountListText(getApplicationContext(), (TextView) findViewById(R.id.txtListOfBanks));
     }
 
     @Override

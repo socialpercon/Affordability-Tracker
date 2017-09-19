@@ -6,6 +6,7 @@ import com.mweser.affordabilitytracker.model.data.schema.Schema.BankAccountColum
 
 import android.content.Context;
 import android.database.Cursor;
+import android.widget.TextView;
 
 public class BankAccountManager
 {
@@ -26,4 +27,9 @@ public class BankAccountManager
         return bankAccountListing;
     }
 
+    public static TextView updateAccountListText(Context appContext, TextView accountListText)
+    {
+        accountListText.setText(BankAccountManager.getBankAccountListing(appContext));
+        return accountListText;
+    }
 }

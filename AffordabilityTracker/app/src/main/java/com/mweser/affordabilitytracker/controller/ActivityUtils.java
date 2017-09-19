@@ -1,5 +1,8 @@
 package com.mweser.affordabilitytracker.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.view.BankAccountActivity;
 import com.mweser.affordabilitytracker.view.CreditPointsActivity;
@@ -15,53 +18,75 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class ActivityUtils
 {
-    public static void navBarSwitch(Context appContext, Context baseContext, Activity activity, MenuItem item)
+    public static <T extends View> List<T> generateListOfUiElements(Activity activity, int... ids)
+    {
+        List<T> list = new ArrayList<>();
+
+        for (int index = 0; index < ids.length; index++)
+        {
+            list.add((T) activity.findViewById(ids[index]));
+        }
+
+        return list;
+    }
+
+    public static void navBarSwitch(Context appContext, Context baseContext, Activity activity,
+            MenuItem item)
     {
         int id = item.getItemId();
 
-        if (id == R.id.nav_accounts) {
+        if (id == R.id.nav_accounts)
+        {
             ActivityUtils.startActivity(baseContext, activity, BankAccountActivity.class);
-
-        } else if (id == R.id.nav_expenses) {
-            ActivityUtils.startActivity(baseContext, activity, ExpensesActivity.class);
-
-        } else if (id == R.id.nav_thresholds) {
-            ActivityUtils.startActivity(baseContext, activity, ThresholdsActivity.class);
-
-        } else if (id == R.id.nav_wishlist) {
-            ActivityUtils.startActivity(baseContext, activity, WishlistActivity.class);
-
-        } else if (id == R.id.nav_projection) {
-            ActivityUtils.startActivity(baseContext, activity, ProjectionActivity.class);
-
-        } else if (id == R.id.nav_future_events_list) {
-            ActivityUtils.startActivity(baseContext, activity, ProjectionListActivity.class);
-
-        } else if (id == R.id.nav_wishlist_schedule) {
-            ActivityUtils.startActivity(baseContext, activity, WishlistScheduleActivity.class);
-
-        } else if (id == R.id.nav_credit_points) {
-            ActivityUtils.startActivity(baseContext, activity, CreditPointsActivity.class);
-
-        } else if (id == R.id.nav_prefs) {
-            ActivityUtils.startActivity(baseContext, activity, SettingsActivity.class);
-
         }
-
+        else if (id == R.id.nav_expenses)
+        {
+            ActivityUtils.startActivity(baseContext, activity, ExpensesActivity.class);
+        }
+        else if (id == R.id.nav_thresholds)
+        {
+            ActivityUtils.startActivity(baseContext, activity, ThresholdsActivity.class);
+        }
+        else if (id == R.id.nav_wishlist)
+        {
+            ActivityUtils.startActivity(baseContext, activity, WishlistActivity.class);
+        }
+        else if (id == R.id.nav_projection)
+        {
+            ActivityUtils.startActivity(baseContext, activity, ProjectionActivity.class);
+        }
+        else if (id == R.id.nav_future_events_list)
+        {
+            ActivityUtils.startActivity(baseContext, activity, ProjectionListActivity.class);
+        }
+        else if (id == R.id.nav_wishlist_schedule)
+        {
+            ActivityUtils.startActivity(baseContext, activity, WishlistScheduleActivity.class);
+        }
+        else if (id == R.id.nav_credit_points)
+        {
+            ActivityUtils.startActivity(baseContext, activity, CreditPointsActivity.class);
+        }
+        else if (id == R.id.nav_prefs)
+        {
+            ActivityUtils.startActivity(baseContext, activity, SettingsActivity.class);
+        }
     }
-    
+
     public static void newToast(Context appContext, String message)
     {
-        Toast.makeText(appContext, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(appContext, message, Toast.LENGTH_LONG)
+                .show();
     }
 
-    public static void startActivity(Context baseContext, Activity currentActivity, Class<?> nextActivityClass)
+    public static void startActivity(Context baseContext, Activity currentActivity,
+            Class<?> nextActivityClass)
     {
         currentActivity.startActivity(new Intent(baseContext, nextActivityClass));
     }
-
 }

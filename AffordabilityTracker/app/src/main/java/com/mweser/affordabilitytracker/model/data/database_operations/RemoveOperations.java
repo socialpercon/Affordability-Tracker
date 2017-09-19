@@ -22,13 +22,7 @@ public class RemoveOperations
     {
         for (String table : tables)
         {
-            dropTable(db, table);
+            db.execSQL("DROP TABLE IF EXISTS " + table);
         }
     }
-
-    private static void dropTable(SQLiteDatabase db, String table)
-    {
-        db.execSQL("DROP TABLE IF EXISTS " + table);
-    }
-
 }
