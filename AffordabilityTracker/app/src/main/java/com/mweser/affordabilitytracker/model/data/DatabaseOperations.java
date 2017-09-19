@@ -14,9 +14,6 @@ public class DatabaseOperations {
     private static Database database;
 
     public static Cursor performQuery(String table, String[] queryColumns) {
-
-        int numResults;
-
         SQLiteDatabase db = database.getWritableDatabase();
         Cursor cursor = db.query(table,
                 queryColumns,
