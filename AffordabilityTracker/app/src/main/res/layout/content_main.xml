@@ -9,5 +9,38 @@
         tools:showIn="@layout/app_bar_main"
         tools:context="com.mweser.affordabilitytracker.view.MainActivity">
 
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                android:orientation="vertical"
+                  android:gravity="center"
+    >
+
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Feeling broke?"
+              android:textSize="45sp"
+              android:layout_marginTop="45dp"
+
+
+    />
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Let's start by adding a bank account..."
+                  android:textSize="12sp"
+                  android:layout_marginTop="5dp"
+
+        />
+
+    <ImageView android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:scaleX=".65"
+               android:scaleY=".65"
+               android:src="@drawable/ic_monopoly_man"
+    />
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
