@@ -16,6 +16,7 @@ import java.util.List;
 
 import com.mweser.affordabilitytracker.model.data.Database;
 import com.mweser.affordabilitytracker.model.data.database_operations.InsertOperations;
+import com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TextFields;
 
 import android.app.Activity;
 import android.content.Context;
@@ -86,10 +87,7 @@ public class CreateBankAccountManager
     public static List<ToggleButton> setToggleBtnProperties(View.OnClickListener creditListener,
             View.OnClickListener debitListener)
     {
-        toggleButtons.get(CREDIT.ordinal())
-                .setChecked(true);
-        toggleButtons.get(DEBIT.ordinal())
-                .setChecked(false);
+        setCreditToggleValue(true);
 
         toggleButtons.get(CREDIT.ordinal())
                 .setOnClickListener(creditListener);
@@ -98,5 +96,26 @@ public class CreateBankAccountManager
                 .setOnClickListener(debitListener);
 
         return toggleButtons;
+    }
+
+    public static void setCreditToggleValue(boolean isChecked)
+    {
+        toggleButtons.get(CREDIT.ordinal())
+                .setChecked(isChecked);
+        toggleButtons.get(DEBIT.ordinal())
+                .setChecked(!isChecked);
+    }
+
+    public static void setCreditFieldVisibilty(int visibility)
+    {
+        textInputs.get(TextFields.STATEMENT_DATE.ordinal())
+                .setVisibility(visibility);
+        textInputs.get(TextFields.PAYMENT_DATE.ordinal())
+                .setVisibility(visibility);
+        textInputs.get(TextFields.AMOUNT_NEXT_STATEMENT.ordinal())
+                .setVisibility(visibility);
+        textInputs.get(TextFields.POINTS.ordinal())
+                .setVisibility(visibility);
+
     }
 }
