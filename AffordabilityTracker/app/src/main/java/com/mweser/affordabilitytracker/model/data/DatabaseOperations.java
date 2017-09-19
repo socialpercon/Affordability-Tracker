@@ -13,23 +13,22 @@ public class DatabaseOperations {
     private static final String TAG = DatabaseOperations.class.getSimpleName();
     private static Database database;
 
-    public static void performQuery(String table, String queryString, String[] strArray) {
+    public static Cursor performQuery(String table, String[] queryColumns) {
 
         int numResults;
 
         SQLiteDatabase db = database.getWritableDatabase();
         Cursor cursor = db.query(table,
+                queryColumns,
                 null,
-                queryString,
-                strArray,
+                null,
                 null,
                 null,
                 null,
                 null);
 
         cursor.moveToFirst();
-        numResults = cursor.getCount();
-
+        return cursor;
     }
 
     public static void executeSQL(String command) {
