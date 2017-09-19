@@ -1,12 +1,11 @@
 package com.mweser.affordabilitytracker.model.data;
 
-import com.mweser.affordabilitytracker.model.data.schema.CreationCommands.CreateTable;
-import com.mweser.affordabilitytracker.model.data.schema.Schema;
+import static com.mweser.affordabilitytracker.model.data.database_operations.CreateOperations.createAllTables;
+import static com.mweser.affordabilitytracker.model.data.database_operations.RemoveOperations.removeAllTables;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class Database extends SQLiteOpenHelper
 {
@@ -15,13 +14,7 @@ public class Database extends SQLiteOpenHelper
     private static final String TAG = Database.class.getSimpleName();
     private static final String DATABASE_NAME = "databases.db";
     private static final int DATABASE_VERSION = 1;
-
-    /**
-     * Database set up as singleton to avoid having more than one instance
-     *
-     * @param context
-     * @return
-     */
+    
     public static synchronized Database getInstance(Context context)
     {
         if (database == null)
@@ -45,14 +38,7 @@ public class Database extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        Log.d(TAG, "On create called");
-        db.execSQL(CreateTable.BANK_ACCOUNTS);
-        db.execSQL(CreateTable.EXPENSE_EVENTS);
-        db.execSQL(CreateTable.THRESHOLDS);
-        db.execSQL(CreateTable.WISHLIST);
-        db.execSQL(CreateTable.PROJECTIONS);
-        db.execSQL(CreateTable.CREDIT_POINTS);
-        db.execSQL(CreateTable.SETTINGS);
+        createAllTables(db);
     }
 
     @Override
@@ -68,13 +54,7 @@ public class Database extends SQLiteOpenHelper
 
         if (version != version)
         {
-            db.execSQL("DROP TABLE IF EXISTS " + Schema.Tables.BANK_ACCOUNTS);
-            db.execSQL("DROP TABLE IF EXISTS " + Schema.Tables.EXPENSE_EVENTS);
-            db.execSQL("DROP TABLE IF EXISTS " + Schema.Tables.THRESHOLDS);
-            db.execSQL("DROP TABLE IF EXISTS " + Schema.Tables.WISHLIST);
-            db.execSQL("DROP TABLE IF EXISTS " + Schema.Tables.PROJECTIONS);
-            db.execSQL("DROP TABLE IF EXISTS " + Schema.Tables.CREDIT_POINTS);
-            db.execSQL("DROP TABLE IF EXISTS " + Schema.Tables.SETTINGS);
+            removeAllTables(db);
             onCreate(db);
         }
     }

@@ -24,6 +24,11 @@ public class ExpensesActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        onCreateSetup();
+    }
+
+    private void onCreateSetup()
+    {
         setContentView(R.layout.activity_expenses);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -4,7 +4,6 @@ import java.util.List;
 
 public class DatabaseUtils
 {
-
     /**
      * Generates SQL structure of form:
      * " VALUES ('2939' AMOUNT, 'CHASE' bank_account, 'NULL' statement_date);"

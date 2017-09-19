@@ -56,8 +56,7 @@ public class ActivityUtils
     
     public static void newToast(Context appContext, String message)
     {
-        Toast.makeText(appContext, message, Toast.LENGTH_LONG)
-                .show();
+        Toast.makeText(appContext, message, Toast.LENGTH_LONG).show();
     }
 
     public static void startActivity(Context baseContext, Activity currentActivity, Class<?> nextActivityClass)
