@@ -10,19 +10,20 @@ import android.util.Log;
 
 public class Database extends SQLiteOpenHelper
 {
-
-    private static final String TAG = Database.class.getSimpleName();
-
     private static Database database;
 
+    private static final String TAG = Database.class.getSimpleName();
     private static final String DATABASE_NAME = "databases.db";
     private static final int DATABASE_VERSION = 1;
 
+    /**
+     * Database set up as singleton to avoid having more than one instance
+     *
+     * @param context
+     * @return
+     */
     public static synchronized Database getInstance(Context context)
     {
-        // Use the application context, which will ensure that you
-        // don't accidentally leak an Activity's context.
-        // See this article for more information: http://bit.ly/6LRzfx
         if (database == null)
         {
             database = new Database(context, null);
@@ -30,7 +31,8 @@ public class Database extends SQLiteOpenHelper
         return database;
     }
 
-    public static void executeSQL(Context appContext, String command) {
+    public static void executeSQL(Context appContext, String command)
+    {
         SQLiteDatabase db = getInstance(appContext).getWritableDatabase();
         db.execSQL(command);
     }
