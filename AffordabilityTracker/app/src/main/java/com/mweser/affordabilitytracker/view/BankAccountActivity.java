@@ -30,7 +30,7 @@ public class BankAccountActivity extends AppCompatActivity
 
         accountListText = new TextView(getApplicationContext());
         accountListText = (TextView) findViewById(R.id.txtListOfBanks);
-        accountListText.setText(BankAccountManager.getBankAccountListing());
+        accountListText.setText(BankAccountManager.getBankAccountListing(getApplicationContext()));
 
     }
 
@@ -38,7 +38,7 @@ public class BankAccountActivity extends AppCompatActivity
     protected void onPostResume() {
         super.onPostResume();
 
-        accountListText.setText(BankAccountManager.getBankAccountListing());
+        accountListText.setText(BankAccountManager.getBankAccountListing(getApplicationContext()));
     }
 
     @Override

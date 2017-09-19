@@ -43,7 +43,7 @@ public class CreateBankAccountActivity extends AppCompatActivity
     private void saveFieldsToDatabase()
     {
         populateAccountFieldsList();
-        CreateBankAccountManager.addAccountInfoToDatabase(accountFields);
+        CreateBankAccountManager.addAccountInfoToDatabase(getApplicationContext(), accountFields);
     }
 
     private void populateAccountFieldsList()

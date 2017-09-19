@@ -1,20 +1,21 @@
 package com.mweser.affordabilitytracker.controller;
 
-import com.mweser.affordabilitytracker.model.data.DatabaseOperations;
+import com.mweser.affordabilitytracker.model.data.database_operations.QueryOperations;
 import com.mweser.affordabilitytracker.model.data.schema.Schema;
 import com.mweser.affordabilitytracker.model.data.schema.Schema.BankAccountColumns;
 
+import android.content.Context;
 import android.database.Cursor;
 
 public class BankAccountManager
 {
-    public static String getBankAccountListing()
+    public static String getBankAccountListing(Context appContext)
     {
         String bankAccountListing = "";
         String[] queryColumns = new String[]{BankAccountColumns.NAME, BankAccountColumns.TOTAL_AMOUNT};
 
 
-        Cursor cursor = DatabaseOperations.performQuery(Schema.Tables.BANK_ACCOUNTS, queryColumns);
+        Cursor cursor = QueryOperations.performQuery(appContext, Schema.Tables.BANK_ACCOUNTS, queryColumns);
 
         for (int index = 0; index < cursor.getCount(); index++)
         {
