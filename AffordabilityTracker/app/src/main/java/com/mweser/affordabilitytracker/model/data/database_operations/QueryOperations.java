@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class QueryOperations
 {
 
-    public static Cursor performQuery(Context appContext, String table, String[] queryColumns) {
+    public static Cursor query(Context appContext, String table, String[] queryColumns) {
 
         SQLiteDatabase db = Database.getInstance(appContext).getReadableDatabase();
 

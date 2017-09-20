@@ -48,7 +48,7 @@ public class BankAccountActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else
         {
-            super.onBackPressed();
+            ActivityUtils.startActivity(getBaseContext(), this, MainActivity.class);
         }
     }
 

@@ -23,6 +23,7 @@ public class CreateBankAccountActivity extends AppCompatActivity
 
     private void defineUiElements()
     {
+        // TODO: 9/19/17 Don't show FAB until all data fields filled in 
         defineFab(R.id.fab);
 
         defineTextFields(R.id.txtAccountName,

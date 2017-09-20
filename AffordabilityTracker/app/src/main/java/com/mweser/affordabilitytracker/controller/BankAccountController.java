@@ -1,8 +1,10 @@
 package com.mweser.affordabilitytracker.controller;
 
+import static com.mweser.affordabilitytracker.model.data.schema.Schema.BankAccountColumns.NAME;
+import static com.mweser.affordabilitytracker.model.data.schema.Schema.BankAccountColumns.TOTAL_AMOUNT;
+
 import com.mweser.affordabilitytracker.model.data.database_operations.QueryOperations;
 import com.mweser.affordabilitytracker.model.data.schema.Schema;
-import com.mweser.affordabilitytracker.model.data.schema.Schema.BankAccountColumns;
 import com.mweser.affordabilitytracker.view.CreateBankAccountActivity;
 
 import android.app.Activity;
@@ -23,10 +25,9 @@ public class BankAccountController
 
     private static String queryBankAccountListing(Context appContext)
     {
-        String[] queryColumns =
-                new String[] {BankAccountColumns.NAME, BankAccountColumns.TOTAL_AMOUNT};
+        String[] queryColumns = new String[] {NAME, TOTAL_AMOUNT};
 
-        return generateBankAccountListing(QueryOperations.performQuery(appContext,
+        return generateBankAccountListing(QueryOperations.query(appContext,
                 Schema.Tables.BANK_ACCOUNTS,
                 queryColumns));
     }
@@ -45,18 +46,19 @@ public class BankAccountController
         return bankAccountListString;
     }
 
-
-
     public static void defineFab(int id)
     {
-        ActivityUtils.defineActivityTransitionFab(id, baseContext, activity, CreateBankAccountActivity.class);
+        ActivityUtils.defineActivityTransitionFab(id,
+                baseContext,
+                activity,
+                CreateBankAccountActivity.class);
     }
 
     public static void setContexts(Activity activity, Context applicationContext,
             Context baseContext)
     {
         BankAccountController.activity = activity;
-        BankAccountController.appContext = applicationContext;
+        appContext = applicationContext;
         BankAccountController.baseContext = baseContext;
     }
 }

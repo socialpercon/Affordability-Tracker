@@ -15,4 +15,5 @@
     <string name="title_activity_credit_points">CreditPointsActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_create_bank_account">CreateBankAccountActivity</string>
+    <string name="title_activity_create_expense_event">CreateExpenseEventActivity</string>
 </resources>

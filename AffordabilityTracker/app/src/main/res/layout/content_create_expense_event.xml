@@ -6,52 +6,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/activity_create_bank_account"
-        tools:context="com.mweser.affordabilitytracker.view.CreateBankAccountActivity">
-    
+        tools:showIn="@layout/activity_create_expense_event"
+        tools:context="com.mweser.affordabilitytracker.view.CreateExpenseEventActivity">
+
+
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:paddingTop="12dp"
-              android:paddingStart="12dp"
-              android:text="Enter data for new bank account:"
+              android:paddingStart="2dp"
+              android:text="Enter data for new recurring expense/income:"
     />
-
 
     <RelativeLayout android:layout_width="wrap_content"
                     android:layout_height="400dp"
                     android:paddingBottom="25dp"
-                    android:orientation="vertical"
-    >
+                    android:orientation="vertical">
+
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:layout_centerHorizontal="true"
                       android:layout_centerVertical="true"
                       android:orientation="vertical"
                       android:gravity="center"
-                      android:layout_marginTop="12dp"
+                      android:layout_marginTop="62dp"
         >
 
 
             <EditText android:layout_width="@dimen/create_account_item_width"
                       android:layout_height="@dimen/create_account_item_height"
                       android:textSize="@dimen/create_account_text_size"
-                      android:hint="Account name"
+                      android:hint="Expense Name"
                       android:textColor="@color/colorHint"
                       android:layout_weight="1"
                       android:gravity="bottom"
                       android:textAlignment="center"
-                      android:id="@+id/txtAccountName"
+                      android:id="@+id/txtExpenseName"
             />
 
             <EditText android:layout_width="@dimen/create_account_item_width"
                       android:layout_height="@dimen/create_account_item_height"
                       android:layout_weight="1"
                       android:textSize="@dimen/create_account_text_size"
-                      android:hint="Total balance"
+                      android:hint="Amount"
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
-                      android:id="@+id/txtTotalAmount"
+                      android:id="@+id/txtAmount"
             />
 
             <LinearLayout android:layout_width="match_parent"
@@ -65,20 +65,20 @@
 
                 <ToggleButton android:layout_width="wrap_content"
                               android:layout_height="@dimen/create_account_item_height_taller"
-                              android:id="@+id/toggleCreditCard"
+                              android:id="@+id/toggleExpense"
                               android:textSize="@dimen/create_account_text_size"
-                              android:textOff="CREDIT"
-                              android:textOn="CREDIT"
+                              android:textOff="EXPENSE"
+                              android:textOn="EXPENSE"
                               android:layout_marginBottom="0dp"
 
                 />
 
                 <ToggleButton android:layout_width="wrap_content"
                               android:layout_height="@dimen/create_account_item_height_taller"
-                              android:id="@+id/toggleDebitCard"
+                              android:id="@+id/toggleIncome"
                               android:textSize="@dimen/create_account_text_size"
-                              android:textOff="DEBIT"
-                              android:textOn="DEBIT"
+                              android:textOff="INCOME"
+                              android:textOn="INCOME"
                               android:layout_marginBottom="0dp"
 
                 />
@@ -86,52 +86,71 @@
 
             </LinearLayout>
 
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="@dimen/create_account_item_height"
+                      android:orientation="horizontal"
+                      android:gravity="center"
+                      android:layout_weight="1"
+        >
+            <EditText android:layout_width="@dimen/create_account_item_width"
+                      android:layout_height="wrap_content"
+                      android:textSize="@dimen/create_account_text_size"
+                      android:hint="Start date"
+                      android:gravity="bottom"
+                      android:textAlignment="center"
+                      android:textColor="@color/colorHint"
+                      android:id="@+id/txtStartDate"
+            />
+
+            <EditText android:layout_width="@dimen/create_account_item_width"
+                      android:layout_height="wrap_content"
+                      android:textSize="@dimen/create_account_text_size"
+                      android:hint="End date"
+                      android:gravity="bottom"
+                      android:textAlignment="center"
+                      android:textColor="@color/colorHint"
+                      android:id="@+id/txtEndDate"
+            />
+            </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="@dimen/create_account_item_height"
+                      android:orientation="horizontal"
+                      android:gravity="center"
+                      android:layout_weight="1"
+        >
+            <EditText android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:textSize="@dimen/create_account_text_size"
+                      android:hint="Freq"
+                      android:gravity="bottom"
+                      android:textAlignment="center"
+                      android:textColor="@color/colorHint"
+                      android:id="@+id/txtFrequency"
+            />
+
+
+            <EditText android:layout_width="@dimen/create_account_item_width"
+                      android:layout_height="wrap_content"
+                      android:textSize="@dimen/create_account_text_size"
+                      android:hint="Time Period"
+                      android:gravity="bottom"
+                      android:textAlignment="center"
+                      android:textColor="@color/colorHint"
+                      android:id="@+id/txtFreqType"
+            />
+            </LinearLayout>
+
             <EditText android:layout_width="@dimen/create_account_item_width"
                       android:layout_height="@dimen/create_account_item_height"
                       android:layout_weight="1"
                       android:textSize="@dimen/create_account_text_size"
-                      android:hint="Statement date"
+                      android:hint="Account to charge"
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
-                      android:id="@+id/txtStatementDate"
+                      android:id="@+id/txtAccountName"
             />
-
-            <EditText android:layout_width="@dimen/create_account_item_width"
-                      android:layout_height="@dimen/create_account_item_height"
-                      android:layout_weight=".75"
-                      android:textSize="@dimen/create_account_text_size"
-                      android:hint="Payment date"
-                      android:gravity="bottom"
-                      android:textAlignment="center"
-                      android:textColor="@color/colorHint"
-                      android:id="@+id/txtPaymentDate"
-            />
-
-            <EditText android:layout_width="@dimen/create_account_item_width"
-                      android:layout_height="@dimen/create_account_item_height"
-                      android:layout_weight="1"
-                      android:textSize="@dimen/create_account_text_size"
-                      android:hint="Amount due next statement"
-                      android:gravity="bottom"
-                      android:textAlignment="center"
-                      android:textColor="@color/colorHint"
-                      android:id="@+id/txtDueNextStatement"
-            />
-
-
-
-            <EditText android:layout_width="@dimen/create_account_item_width"
-                      android:layout_height="@dimen/create_account_item_height"
-                      android:layout_weight="1"
-                      android:textSize="@dimen/create_account_text_size"
-                      android:hint="Points Balance"
-                      android:gravity="bottom"
-                      android:textAlignment="center"
-                      android:textColor="@color/colorHint"
-                      android:id="@+id/txtPoints"
-            />
-
 
         </LinearLayout>
 
