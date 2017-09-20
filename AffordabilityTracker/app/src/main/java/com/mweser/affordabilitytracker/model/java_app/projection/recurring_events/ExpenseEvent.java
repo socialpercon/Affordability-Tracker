@@ -20,7 +20,7 @@ import com.mweser.affordabilitytracker.model.java_app.utils.structures.DataRow;
 public class ExpenseEvent extends RecurEvent
 {
     public ExpenseEvent(DataRow row, Date globalStartDate, Date globalEndDate,
-            boolean isCreditAligned, ArrayList<BankAccount> accountsList)
+            boolean isCreditAligned, ArrayList<AccountEvent> accountsList)
     {
         super(row, globalStartDate, globalEndDate, isCreditAligned, accountsList);
     }
@@ -32,7 +32,7 @@ public class ExpenseEvent extends RecurEvent
         alignStartDateWithCredit();
     }
 
-    private void findFirstPaymentDate(BankAccount account)
+    private void findFirstPaymentDate(AccountEvent account)
     {
         Date nextStatementDate = account.getStatementDate();
         Date nextPaymentDate = account.getFirstEventDate();
@@ -60,7 +60,7 @@ public class ExpenseEvent extends RecurEvent
     {
         if (isCreditAligned)
         {
-            for (BankAccount account : accountsList)
+            for (AccountEvent account : accountsList)
             {
                 if (account.getAccountCode()
                         .equals(accountCode) && account.getAccountType()
@@ -93,7 +93,7 @@ public class ExpenseEvent extends RecurEvent
         accountCode = row.get(ACCOUNT_USED);
     }
 
-    private void outputEventStatusLog(BankAccount account)
+    private void outputEventStatusLog(AccountEvent account)
     {
         // TODO: 9/13/17 Remove when done debugging
         // TODO: 9/14/17 Write unit tests to cover statement/payment dates

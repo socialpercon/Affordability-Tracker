@@ -1,10 +1,10 @@
 package com.mweser.affordabilitytracker.view;
 
-import static com.mweser.affordabilitytracker.controller.BankAccountController.setContexts;
+import static com.mweser.affordabilitytracker.controller.BankAccount.setContexts;
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.controller.ActivityUtils;
-import com.mweser.affordabilitytracker.controller.BankAccountController;
+import com.mweser.affordabilitytracker.controller.BankAccount;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -29,14 +29,14 @@ public class BankAccountActivity extends AppCompatActivity
 
     private void defineUiElements()
     {
-        BankAccountController.defineFab(R.id.fab);
-        BankAccountController.defineAccountListText(R.id.txtListOfBanks);
+        BankAccount.defineFab(R.id.fab);
+        BankAccount.defineAccountListText(R.id.txtListOfBanks);
     }
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        BankAccountController.defineAccountListText(R.id.txtListOfBanks);
+        BankAccount.defineAccountListText(R.id.txtListOfBanks);
     }
 
     @Override

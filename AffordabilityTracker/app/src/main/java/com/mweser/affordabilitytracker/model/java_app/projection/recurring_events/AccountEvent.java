@@ -20,7 +20,7 @@ import com.mweser.affordabilitytracker.model.java_app.utils.data_operations.date
 import com.mweser.affordabilitytracker.model.java_app.utils.data_operations.date_operations.DateTypeUtils;
 import com.mweser.affordabilitytracker.model.java_app.utils.structures.DataRow;
 
-public class BankAccount extends RecurEvent
+public class AccountEvent extends RecurEvent
 {
     private RecurEventSchema.AccountType accountType;
     private Date statementDate;
@@ -28,7 +28,7 @@ public class BankAccount extends RecurEvent
     private double amountNextStatement;
     protected ArrayList<Date> statementDateList;
 
-    public BankAccount(DataRow row, Date globalStartDate, Date globalEndDate)
+    public AccountEvent(DataRow row, Date globalStartDate, Date globalEndDate)
     {
         super(row, globalStartDate, globalEndDate, false, null);
     }

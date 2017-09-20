@@ -40,7 +40,7 @@
                       android:layout_weight="1"
                       android:gravity="bottom"
                       android:textAlignment="center"
-                      android:id="@+id/txtAccountName"
+                      android:id="@+id/txtExpenseAccountName"
             />
 
             <EditText android:layout_width="@dimen/create_account_item_width"

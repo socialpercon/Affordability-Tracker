@@ -12,7 +12,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.widget.TextView;
 
-public class BankAccountController
+public class BankAccount
 {
     private static Activity activity;
     private static Context appContext;
@@ -57,8 +57,8 @@ public class BankAccountController
     public static void setContexts(Activity activity, Context applicationContext,
             Context baseContext)
     {
-        BankAccountController.activity = activity;
+        BankAccount.activity = activity;
         appContext = applicationContext;
-        BankAccountController.baseContext = baseContext;
+        BankAccount.baseContext = baseContext;
     }
 }

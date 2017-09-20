@@ -26,7 +26,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ToggleButton;
 
-public class CreateBankAccountController
+public class CreateBankAccount
 {
     private static Activity activity;
     private static Context appContext;
@@ -166,8 +166,8 @@ public class CreateBankAccountController
 
     public static void setContexts(Activity activity, Context appContext, Context baseContext)
     {
-        CreateBankAccountController.activity = activity;
-        CreateBankAccountController.appContext = appContext;
-        CreateBankAccountController.baseContext = baseContext;
+        CreateBankAccount.activity = activity;
+        CreateBankAccount.appContext = appContext;
+        CreateBankAccount.baseContext = baseContext;
     }
 }

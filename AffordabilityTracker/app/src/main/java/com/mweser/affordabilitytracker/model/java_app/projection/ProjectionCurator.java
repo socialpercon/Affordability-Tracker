@@ -3,7 +3,7 @@ package com.mweser.affordabilitytracker.model.java_app.projection;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.mweser.affordabilitytracker.model.java_app.projection.recurring_events.BankAccount;
+import com.mweser.affordabilitytracker.model.java_app.projection.recurring_events.AccountEvent;
 import com.mweser.affordabilitytracker.model.java_app.projection.recurring_events.ExpenseEvent;
 import com.mweser.affordabilitytracker.model.java_app.projection.recurring_events.RecurEvent;
 import com.mweser.affordabilitytracker.model.java_app.utils.data_operations.ColumnOps;
@@ -27,7 +27,7 @@ public class ProjectionCurator
     private Data affordabilityTable;
     private Data combinedEventsData;
     private ArrayList<ExpenseEvent> expenseEventList;
-    private ArrayList<BankAccount> bankAccountList;
+    private ArrayList<AccountEvent> accountEventList;
 
     private void generateProjectionList()
     {
@@ -72,7 +72,7 @@ public class ProjectionCurator
         importBankAccountData(ACCOUNTS_FILENAME);
         importExpenseEventData(EXPENSE_EVENTS_FILENAME);
 
-        addDataToTableAndSortByDate(bankAccountList, expenseEventList);
+        addDataToTableAndSortByDate(accountEventList, expenseEventList);
 
         generateProjectionList();
         generateAffordabilityList();
@@ -205,7 +205,7 @@ public class ProjectionCurator
 
 //        for (DataRow row : bankAccountData)
 //        {
-//            bankAccountList.add(new BankAccount(row, globalStartDate, globalEndDate));
+//            accountEventList.add(new AccountEvent(row, globalStartDate, globalEndDate));
 //        }
     }
 
@@ -224,7 +224,7 @@ public class ProjectionCurator
 //                    globalStartDate,
 //                    globalEndDate,
 //                    CREDIT_ALIGNED,
-//                    bankAccountList));
+//                    accountEventList));
 //        }
     }
 
@@ -252,18 +252,18 @@ public class ProjectionCurator
                         row.add(Double.toString(event.getAmount()));
 
                     }
-                    else if (event instanceof BankAccount)
+                    else if (event instanceof AccountEvent)
                     {
 
-                        BankAccount bankAccount = (BankAccount) event;
+                        AccountEvent accountEvent = (AccountEvent) event;
 
                         if (index == 0)
                         {
-                            row.add(bankAccount.getAmountNextStatementString());
+                            row.add(accountEvent.getAmountNextStatementString());
                         }
                         else if (index == 1)
                         {
-                            row.add(bankAccount.getAmountSecondStatement());
+                            row.add(accountEvent.getAmountSecondStatement());
                         }
                         else
                         {
@@ -294,6 +294,6 @@ public class ProjectionCurator
         combinedEventsData = new Data();
 
         expenseEventList = new ArrayList<>();
-        bankAccountList = new ArrayList<>();
+        accountEventList = new ArrayList<>();
     }
 }

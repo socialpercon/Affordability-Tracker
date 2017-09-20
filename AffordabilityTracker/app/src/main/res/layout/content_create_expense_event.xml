@@ -51,7 +51,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
-                      android:id="@+id/txtAmount"
+                      android:id="@+id/txtExpenseAmount"
             />
 
             <LinearLayout android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
-                      android:id="@+id/txtStartDate"
+                      android:id="@+id/txtExpenseStartDate"
             />
 
             <EditText android:layout_width="@dimen/create_account_item_width"
@@ -109,7 +109,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
-                      android:id="@+id/txtEndDate"
+                      android:id="@+id/txtExpenseEndDate"
             />
             </LinearLayout>
 
@@ -126,7 +126,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
-                      android:id="@+id/txtFrequency"
+                      android:id="@+id/txtExpenseFrequency"
             />
 
 
@@ -137,7 +137,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
-                      android:id="@+id/txtFreqType"
+                      android:id="@+id/txtExpenseFreqType"
             />
             </LinearLayout>
 
@@ -149,7 +149,7 @@
                       android:gravity="bottom"
                       android:textAlignment="center"
                       android:textColor="@color/colorHint"
-                      android:id="@+id/txtAccountName"
+                      android:id="@+id/txtExpenseAccountName"
             />
 
         </LinearLayout>

@@ -1,13 +1,15 @@
 package com.mweser.affordabilitytracker.view;
 
+import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.defineFab;
+import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.defineTextInputs;
+import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.defineToggleButtons;
+import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.setContexts;
+
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.controller.ActivityUtils;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 public class CreateExpenseEventActivity extends AppCompatActivity
 {
@@ -15,20 +17,32 @@ public class CreateExpenseEventActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        onCreateSetup();
+        defineUiElements();
+    }
+
+    private void defineUiElements()
+    {
+        defineFab(R.id.fab);
+
+        defineTextInputs(
+                R.id.txtExpenseName,
+                R.id.txtExpenseAmount,
+                R.id.txtExpenseStartDate,
+                R.id.txtExpenseEndDate,
+                R.id.txtExpenseFrequency,
+                R.id.txtExpenseFreqType,
+                R.id.txtExpenseAccountName);
+
+        defineToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
+
+    }
+
+    private void onCreateSetup()
+    {
         setContentView(R.layout.activity_create_expense_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        // TODO: 9/19/17 Don't show FAB until all data fields filled in
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                CreateExpenseEventActivity.this.finish();
-                ActivityUtils.startActivity(getBaseContext(), CreateExpenseEventActivity.this, ExpensesActivity.class);
-            }
-        });
+        setContexts(this, getApplicationContext(), getBaseContext());
     }
 }

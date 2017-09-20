@@ -11,7 +11,7 @@ import com.mweser.affordabilitytracker.model.java_app.utils.structures.DataRow;
 public abstract class RecurEvent
 {
     protected boolean isCreditAligned;
-    protected ArrayList<BankAccount> accountsList;
+    protected ArrayList<AccountEvent> accountsList;
 
     protected String name;
     protected double amount;
@@ -25,7 +25,7 @@ public abstract class RecurEvent
     protected RecurEventSchema.AmountType amountType;
     protected ArrayList<Date> paymentDateList;
 
-    public RecurEvent(DataRow row, Date globalStartDate, Date globalEndDate, boolean isCreditAligned, ArrayList<BankAccount> accountsList)
+    public RecurEvent(DataRow row, Date globalStartDate, Date globalEndDate, boolean isCreditAligned, ArrayList<AccountEvent> accountsList)
     {
         this.globalStartDate = globalStartDate;
         this.globalEndDate = globalEndDate;

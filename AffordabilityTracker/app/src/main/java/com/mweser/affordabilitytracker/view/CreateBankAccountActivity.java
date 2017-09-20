@@ -1,9 +1,9 @@
 package com.mweser.affordabilitytracker.view;
 
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountController.defineFab;
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountController.defineTextFields;
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountController.defineToggleButtons;
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountController.setContexts;
+import static com.mweser.affordabilitytracker.controller.CreateBankAccount.defineFab;
+import static com.mweser.affordabilitytracker.controller.CreateBankAccount.defineTextFields;
+import static com.mweser.affordabilitytracker.controller.CreateBankAccount.defineToggleButtons;
+import static com.mweser.affordabilitytracker.controller.CreateBankAccount.setContexts;
 
 import com.mweser.affordabilitytracker.R;
 
@@ -23,10 +23,9 @@ public class CreateBankAccountActivity extends AppCompatActivity
 
     private void defineUiElements()
     {
-        // TODO: 9/19/17 Don't show FAB until all data fields filled in 
         defineFab(R.id.fab);
 
-        defineTextFields(R.id.txtAccountName,
+        defineTextFields(R.id.txtExpenseAccountName,
                 R.id.txtPaymentDate,
                 R.id.txtStatementDate,
                 R.id.txtDueNextStatement,
