@@ -1,11 +1,12 @@
 package com.mweser.affordabilitytracker.view;
 
+import static com.mweser.affordabilitytracker.controller.BankAccountController.setContexts;
+
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.controller.ActivityUtils;
-import com.mweser.affordabilitytracker.controller.BankAccountManager;
+import com.mweser.affordabilitytracker.controller.BankAccountController;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,27 +15,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 public class BankAccountActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
-    TextView accountListText;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         onCreateSetup();
+        defineUiElements();
+    }
 
-        accountListText = BankAccountManager.updateAccountListText(getApplicationContext(), (TextView) findViewById(R.id.txtListOfBanks));
+    private void defineUiElements()
+    {
+        BankAccountController.defineFab(R.id.fab);
+        BankAccountController.defineAccountListText(R.id.txtListOfBanks);
     }
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        accountListText = BankAccountManager.updateAccountListText(getApplicationContext(), (TextView) findViewById(R.id.txtListOfBanks));
+        BankAccountController.defineAccountListText(R.id.txtListOfBanks);
     }
 
     @Override
@@ -92,15 +94,7 @@ public class BankAccountActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                ActivityUtils.startActivity(getBaseContext(), BankAccountActivity.this, CreateBankAccountActivity.class);
-            }
-        });
+        setContexts(this, getApplicationContext(), getBaseContext());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,

@@ -35,6 +35,25 @@ public class ActivityUtils
         return list;
     }
 
+    public static void defineActivityTransitionFab(int id, Context baseContext, Activity activity, Class<?> nextActivityClass)
+    {
+        activity.findViewById(id)
+                .setOnClickListener(generateActivitySwitchFabListener(baseContext, activity, nextActivityClass));
+    }
+
+    private static View.OnClickListener generateActivitySwitchFabListener(final Context baseContext, final Activity activity, final Class<?> nextActivityClass)
+    {
+        return new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                activity.finish();
+                ActivityUtils.startActivity(baseContext, activity, nextActivityClass);
+            }
+        };
+    }
+
     public static void navBarSwitch(Context appContext, Context baseContext, Activity activity,
             MenuItem item)
     {

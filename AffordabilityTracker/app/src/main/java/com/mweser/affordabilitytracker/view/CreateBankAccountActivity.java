@@ -1,9 +1,9 @@
 package com.mweser.affordabilitytracker.view;
 
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.defineFab;
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.defineTextFields;
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.defineToggleButtons;
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.setContexts;
+import static com.mweser.affordabilitytracker.controller.CreateBankAccountController.defineFab;
+import static com.mweser.affordabilitytracker.controller.CreateBankAccountController.defineTextFields;
+import static com.mweser.affordabilitytracker.controller.CreateBankAccountController.defineToggleButtons;
+import static com.mweser.affordabilitytracker.controller.CreateBankAccountController.setContexts;
 
 import com.mweser.affordabilitytracker.R;
 
@@ -18,7 +18,11 @@ public class CreateBankAccountActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         onCreateSetup();
+        defineUiElements();
+    }
 
+    private void defineUiElements()
+    {
         defineFab(R.id.fab);
 
         defineTextFields(R.id.txtAccountName,

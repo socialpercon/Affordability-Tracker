@@ -26,7 +26,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ToggleButton;
 
-public class CreateBankAccountManager
+public class CreateBankAccountController
 {
     private static Activity activity;
     private static Context appContext;
@@ -52,7 +52,7 @@ public class CreateBankAccountManager
         Database.executeSQL(appContext, insertCommand);
     }
 
-    private static View.OnClickListener generateFabListener(final Class<?> nextActivity)
+    private static View.OnClickListener generateFabListener(final Class<?> nextActivityClass)
     {
         return new View.OnClickListener()
         {
@@ -61,7 +61,7 @@ public class CreateBankAccountManager
             {
                 saveAccountFieldsToDatabase();
                 activity.finish();
-                ActivityUtils.startActivity(baseContext, activity, nextActivity);
+                ActivityUtils.startActivity(baseContext, activity, nextActivityClass);
             }
         };
     }
@@ -103,9 +103,9 @@ public class CreateBankAccountManager
         textInputs = generateListOfUiElements(activity, textFields);
     }
 
-    public static void defineToggleButtons(int... textFields)
+    public static void defineToggleButtons(int... toggleBtns)
     {
-        toggleButtons = generateListOfUiElements(activity, textFields);
+        toggleButtons = generateListOfUiElements(activity, toggleBtns);
         setToggleBtnProperties();
     }
 
@@ -166,8 +166,8 @@ public class CreateBankAccountManager
 
     public static void setContexts(Activity activity, Context appContext, Context baseContext)
     {
-        CreateBankAccountManager.activity = activity;
-        CreateBankAccountManager.appContext = appContext;
-        CreateBankAccountManager.baseContext = baseContext;
+        CreateBankAccountController.activity = activity;
+        CreateBankAccountController.appContext = appContext;
+        CreateBankAccountController.baseContext = baseContext;
     }
 }
