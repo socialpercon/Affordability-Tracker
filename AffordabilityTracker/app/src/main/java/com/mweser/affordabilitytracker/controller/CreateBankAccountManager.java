@@ -1,5 +1,6 @@
 package com.mweser.affordabilitytracker.controller;
 
+import static com.mweser.affordabilitytracker.controller.ActivityUtils.generateListOfUiElements;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.AMOUNT_NEXT_STATEMENT;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.NAME;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.PAYMENT_DATE;
@@ -17,33 +18,24 @@ import java.util.List;
 import com.mweser.affordabilitytracker.model.data.Database;
 import com.mweser.affordabilitytracker.model.data.database_operations.InsertOperations;
 import com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TextFields;
+import com.mweser.affordabilitytracker.view.BankAccountActivity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ToggleButton;
 
 public class CreateBankAccountManager
 {
+    private static Activity activity;
+    private static Context appContext;
+    private static Context baseContext;
     private static List<String> accountFields;
     private static List<EditText> textInputs;
     private static List<ToggleButton> toggleButtons;
 
-    public static List<EditText> setEditTextFields(Activity activity, int... textFields)
-    {
-        textInputs = ActivityUtils.generateListOfUiElements(activity, textFields);
-        return textInputs;
-    }
-
-    public static List<ToggleButton> setToggleButtons(Activity activity, int... textFields)
-    {
-        toggleButtons = ActivityUtils.generateListOfUiElements(activity, textFields);
-        return toggleButtons;
-    }
-
-    public static void saveAccountFieldsToDatabase(Context appContext)
+    private static void saveAccountFieldsToDatabase()
     {
         accountFields = populateAccountFieldsList();
 
@@ -60,61 +52,18 @@ public class CreateBankAccountManager
         Database.executeSQL(appContext, insertCommand);
     }
 
-    private static List<String> populateAccountFieldsList()
+    private static View.OnClickListener generateFabListener(final Class<?> nextActivity)
     {
-        accountFields = new ArrayList<>();
-
-        for (EditText text : textInputs)
+        return new View.OnClickListener()
         {
-            accountFields.add(text.getText()
-                    .toString());
-        }
-
-        if (toggleButtons.get(CREDIT.ordinal())
-                .isChecked())
-        {
-            accountFields.add(TYPE.ordinal(), "CREDIT");
-        }
-        else
-        {
-            accountFields.add(TYPE.ordinal(), "DEBIT");
-        }
-
-        Log.d("CreateBankAccount", accountFields.toString());
-        return accountFields;
-    }
-
-    public static List<ToggleButton> setToggleBtnProperties()
-    {
-        setCreditToggleValue(true);
-
-        toggleButtons.get(CREDIT.ordinal())
-                .setOnClickListener(generateCreditListener());
-
-        toggleButtons.get(DEBIT.ordinal())
-                .setOnClickListener(generateDebitListener());
-
-        return toggleButtons;
-    }
-
-    public static void setCreditToggleValue(boolean isChecked)
-    {
-        toggleButtons.get(CREDIT.ordinal())
-                .setChecked(isChecked);
-        toggleButtons.get(DEBIT.ordinal())
-                .setChecked(!isChecked);
-    }
-
-    public static void setCreditFieldVisibilty(int visibility)
-    {
-        textInputs.get(TextFields.STATEMENT_DATE.ordinal())
-                .setVisibility(visibility);
-        textInputs.get(TextFields.PAYMENT_DATE.ordinal())
-                .setVisibility(visibility);
-        textInputs.get(TextFields.AMOUNT_NEXT_STATEMENT.ordinal())
-                .setVisibility(visibility);
-        textInputs.get(TextFields.POINTS.ordinal())
-                .setVisibility(visibility);
+            @Override
+            public void onClick(View v)
+            {
+                saveAccountFieldsToDatabase();
+                activity.finish();
+                ActivityUtils.startActivity(baseContext, activity, nextActivity);
+            }
+        };
     }
 
     private static View.OnClickListener generateCreditListener()
@@ -143,18 +92,82 @@ public class CreateBankAccountManager
         };
     }
 
-    public static View.OnClickListener generateFabListener(final Context appContext,
-            final Context baseContext, final Activity activity, final Class<?> nextActivity)
+    public static void defineFab(int id)
     {
-        return new View.OnClickListener()
+        activity.findViewById(id)
+                .setOnClickListener(generateFabListener(BankAccountActivity.class));
+    }
+
+    public static void defineTextFields(int... textFields)
+    {
+        textInputs = generateListOfUiElements(activity, textFields);
+    }
+
+    public static void defineToggleButtons(int... textFields)
+    {
+        toggleButtons = generateListOfUiElements(activity, textFields);
+        setToggleBtnProperties();
+    }
+
+    private static List<String> populateAccountFieldsList()
+    {
+        accountFields = new ArrayList<>();
+
+        for (EditText text : textInputs)
         {
-            @Override
-            public void onClick(View v)
-            {
-                saveAccountFieldsToDatabase(appContext);
-                activity.finish();
-                ActivityUtils.startActivity(baseContext, activity, nextActivity);
-            }
-        };
+            accountFields.add(text.getText()
+                    .toString());
+        }
+
+        if (toggleButtons.get(CREDIT.ordinal())
+                .isChecked())
+        {
+            accountFields.add(TYPE.ordinal(), "CREDIT");
+        } else
+        {
+            accountFields.add(TYPE.ordinal(), "DEBIT");
+        }
+
+        return accountFields;
+    }
+
+    public static List<ToggleButton> setToggleBtnProperties()
+    {
+        setCreditToggleValue(true);
+
+        toggleButtons.get(CREDIT.ordinal())
+                .setOnClickListener(generateCreditListener());
+
+        toggleButtons.get(DEBIT.ordinal())
+                .setOnClickListener(generateDebitListener());
+
+        return toggleButtons;
+    }
+
+    private static void setCreditToggleValue(boolean isChecked)
+    {
+        toggleButtons.get(CREDIT.ordinal())
+                .setChecked(isChecked);
+        toggleButtons.get(DEBIT.ordinal())
+                .setChecked(!isChecked);
+    }
+
+    private static void setCreditFieldVisibilty(int visibility)
+    {
+        textInputs.get(TextFields.STATEMENT_DATE.ordinal())
+                .setVisibility(visibility);
+        textInputs.get(TextFields.PAYMENT_DATE.ordinal())
+                .setVisibility(visibility);
+        textInputs.get(TextFields.AMOUNT_NEXT_STATEMENT.ordinal())
+                .setVisibility(visibility);
+        textInputs.get(TextFields.POINTS.ordinal())
+                .setVisibility(visibility);
+    }
+
+    public static void setContexts(Activity activity, Context appContext, Context baseContext)
+    {
+        CreateBankAccountManager.activity = activity;
+        CreateBankAccountManager.appContext = appContext;
+        CreateBankAccountManager.baseContext = baseContext;
     }
 }
