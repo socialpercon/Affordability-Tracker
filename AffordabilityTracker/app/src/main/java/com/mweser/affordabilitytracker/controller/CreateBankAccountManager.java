@@ -84,16 +84,15 @@ public class CreateBankAccountManager
         return accountFields;
     }
 
-    public static List<ToggleButton> setToggleBtnProperties(View.OnClickListener creditListener,
-            View.OnClickListener debitListener)
+    public static List<ToggleButton> setToggleBtnProperties()
     {
         setCreditToggleValue(true);
 
         toggleButtons.get(CREDIT.ordinal())
-                .setOnClickListener(creditListener);
+                .setOnClickListener(generateCreditListener());
 
         toggleButtons.get(DEBIT.ordinal())
-                .setOnClickListener(debitListener);
+                .setOnClickListener(generateDebitListener());
 
         return toggleButtons;
     }
@@ -116,6 +115,46 @@ public class CreateBankAccountManager
                 .setVisibility(visibility);
         textInputs.get(TextFields.POINTS.ordinal())
                 .setVisibility(visibility);
+    }
 
+    private static View.OnClickListener generateCreditListener()
+    {
+        return new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                setCreditToggleValue(true);
+                setCreditFieldVisibilty(View.VISIBLE);
+            }
+        };
+    }
+
+    private static View.OnClickListener generateDebitListener()
+    {
+        return new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                setCreditToggleValue(false);
+                setCreditFieldVisibilty(View.INVISIBLE);
+            }
+        };
+    }
+
+    public static View.OnClickListener generateFabListener(final Context appContext,
+            final Context baseContext, final Activity activity, final Class<?> nextActivity)
+    {
+        return new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                saveAccountFieldsToDatabase(appContext);
+                activity.finish();
+                ActivityUtils.startActivity(baseContext, activity, nextActivity);
+            }
+        };
     }
 }

@@ -1,7 +1,6 @@
 package com.mweser.affordabilitytracker.view;
 
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.setCreditFieldVisibilty;
-import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.setCreditToggleValue;
+import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.generateFabListener;
 import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.setEditTextFields;
 import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.setToggleBtnProperties;
 import static com.mweser.affordabilitytracker.controller.CreateBankAccountManager.setToggleButtons;
@@ -9,14 +8,11 @@ import static com.mweser.affordabilitytracker.controller.CreateBankAccountManage
 import java.util.List;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.controller.ActivityUtils;
-import com.mweser.affordabilitytracker.controller.CreateBankAccountManager;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ToggleButton;
 
 public class CreateBankAccountActivity extends AppCompatActivity
@@ -37,38 +33,9 @@ public class CreateBankAccountActivity extends AppCompatActivity
                 R.id.txtTotalAmount,
                 R.id.txtPoints);
 
-        toggleButtons = setToggleButtons(this,
-                R.id.toggleCreditCard,
-                R.id.toggleDebitCard);
+        toggleButtons = setToggleButtons(this, R.id.toggleCreditCard, R.id.toggleDebitCard);
 
-        toggleButtons = setToggleBtnProperties(generateCreditListener(),
-                generateDebitListener());
-    }
-
-    private View.OnClickListener generateCreditListener()
-    {
-        return new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                setCreditToggleValue(true);
-                setCreditFieldVisibilty(View.VISIBLE);
-            }
-        };
-    }
-
-    private View.OnClickListener generateDebitListener()
-    {
-        return new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                setCreditToggleValue(false);
-                setCreditFieldVisibilty(View.INVISIBLE);
-            }
-        };
+        toggleButtons = setToggleBtnProperties();
     }
 
     private void onCreateSetup()
@@ -78,19 +45,9 @@ public class CreateBankAccountActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-
-                CreateBankAccountManager.saveAccountFieldsToDatabase(getApplicationContext());
-
-                CreateBankAccountActivity.this.finish();
-                ActivityUtils.startActivity(getBaseContext(),
-                        CreateBankAccountActivity.this,
-                        BankAccountActivity.class);
-            }
-        });
+        fab.setOnClickListener(generateFabListener(getApplicationContext(),
+                getBaseContext(),
+                this,
+                BankAccountActivity.class));
     }
 }
