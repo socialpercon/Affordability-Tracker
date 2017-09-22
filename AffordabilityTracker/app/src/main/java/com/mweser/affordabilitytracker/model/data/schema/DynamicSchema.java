@@ -82,7 +82,7 @@ public class DynamicSchema
 
     public static <E extends Enum<?>> SchemaTable addTable(Class<E> tableEnum)
     {
-        SchemaTable table = new SchemaTable(tableEnum.toString());
+        SchemaTable table = new SchemaTable(StringUtils.lowerCase(tableEnum.getSimpleName()));
 
         for (E element : tableEnum.getEnumConstants())
         {
