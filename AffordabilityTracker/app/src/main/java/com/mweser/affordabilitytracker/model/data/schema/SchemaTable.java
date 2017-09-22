@@ -8,8 +8,6 @@ public class SchemaTable
 {
     private final String CREATE_COMMAND = "CREATE TABLE IF NOT EXISTS ";
     private final String DROP_COMMAND = "DROP TABLE IF EXISTS ";
-    private final String INSERT_COMMAND = "INSERT INTO ";
-//    private final String UPDATE_COMMAND = "CREATE TABLE IF NOT EXISTS ";
 
     private String tableName;
     private ArrayList<SchemaItem> tableMembers;
@@ -35,11 +33,6 @@ public class SchemaTable
         }
 
         return DatabaseUtils.trimLastChars(command, 2) + ");";
-    }
-
-    public String insert()
-    {
-        return INSERT_COMMAND + tableName + ";";
     }
 
     public void addItem(SchemaItem item)

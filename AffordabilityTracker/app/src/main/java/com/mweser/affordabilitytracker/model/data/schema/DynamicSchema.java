@@ -80,7 +80,8 @@ public class DynamicSchema
 
         for (E element : tableEnum.getEnumConstants())
         {
-            table.addItem(new SchemaItem(tableEnum.toString(),
+            table.addItem(new SchemaItem(
+                    tableEnum.toString(),
                     StringUtils.lowerCase(element.toString()),
                     SQL_TYPE));
         }
