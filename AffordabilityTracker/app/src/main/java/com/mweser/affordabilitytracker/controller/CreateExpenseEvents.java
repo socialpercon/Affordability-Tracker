@@ -1,15 +1,12 @@
 package com.mweser.affordabilitytracker.controller;
 
 import static com.mweser.affordabilitytracker.controller.ActivityUtils.generateListOfUiElements;
-import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.ToggleButtonType.INCOME;
 import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.ToggleButtonTypes.EXPENSE;
+import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.ToggleButtonTypes.INCOME;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mweser.affordabilitytracker.model.data.Database;
-import com.mweser.affordabilitytracker.model.data.database_operations.InsertOperations;
-import com.mweser.affordabilitytracker.model.data.schema.Schema;
 import com.mweser.affordabilitytracker.view.ExpensesActivity;
 
 import android.app.Activity;
@@ -27,12 +24,12 @@ public class CreateExpenseEvents
     private static List<EditText> textInputs;
     private static List<ToggleButton> toggleButtons;
 
-    private enum ToggleButtonTypes
+    public enum ToggleButtonTypes
     {
         EXPENSE, INCOME
     }
 
-    private enum CreateExpenseUiElements
+    public enum CreateExpenseUiElements
     {
         NAME, AMOUNT, START_DATE, END_DATE, FREQ, FREQ_TYPE, ACCOUNT
     }
@@ -41,13 +38,13 @@ public class CreateExpenseEvents
     {
         textDataEntries = populateAccountFieldsList();
 
-                String insertCommand = InsertOperations.newInsertCommand(Schema.Tables.EXPENSE_EVENTS,
-                        textDataEntries,
-
-
-                        );
-
-                Database.executeSQL(appContext, insertCommand);
+//                String insertCommand = InsertOperations.newInsertCommand(Schema.Tables.EXPENSE_EVENTS,
+//                        textDataEntries,
+//
+//
+//                        );
+//
+//                Database.executeSQL(appContext, insertCommand);
     }
 
     private static List<String> populateAccountFieldsList()

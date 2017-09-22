@@ -21,7 +21,7 @@ public class DatabaseUtils
             valueExpression += getFieldValue(list, value) + ",";
         }
 
-        return trimLastChar(valueExpression) + ");";
+        return trimLastChars(valueExpression, 1) + ");";
     }
 
     private static String getFieldValue(List<String> list, Enum<?> value)
@@ -36,8 +36,8 @@ public class DatabaseUtils
         return "'" + fieldValue + "'";
     }
 
-    private static String trimLastChar(String input)
+    public static String trimLastChars(String input, int charsToTrim)
     {
-        return input.substring(0, input.length() - 1);
+        return input.substring(0, input.length() - charsToTrim);
     }
 }
