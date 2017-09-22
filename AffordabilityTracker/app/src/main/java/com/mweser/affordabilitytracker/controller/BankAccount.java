@@ -22,10 +22,10 @@ public class BankAccount
 
     private static String queryBankAccountListing(Context appContext)
     {
-        String[] queryColumns = new String[] {DynamicSchema.ACCOUNTS.NAME.toString(),
-                DynamicSchema.ACCOUNTS.TOTAL_AMOUNT.toString()};
+        String[] queryColumns = new String[] {DynamicSchema.accounts.NAME.toString(),
+                DynamicSchema.accounts.TOTAL_AMOUNT.toString()};
 
-        return generateBankAccountListing(QueryOperations.query(appContext, DynamicSchema.Tables.ACCOUNTS,
+        return generateBankAccountListing(QueryOperations.query(appContext, DynamicSchema.Tables.accounts.toString(),
                 queryColumns));
     }
 

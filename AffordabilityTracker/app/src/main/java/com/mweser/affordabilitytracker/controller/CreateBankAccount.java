@@ -43,7 +43,7 @@ public class CreateBankAccount
     {
         accountFields = populateAccountFieldsList();
 
-        String insertCommand = InsertOperations.newInsertCommand(DynamicSchema.Tables.ACCOUNTS,
+        String insertCommand = InsertOperations.newInsertCommand(DynamicSchema.Tables.accounts.toString(),
                 accountFields,
                 accountSchemaIndicesPopulated);
 
@@ -56,11 +56,11 @@ public class CreateBankAccount
     }
 
     public static void defineAccountSchemaIndicesPopulated(
-            DynamicSchema.ACCOUNTS... accountSchemaIndices)
+            DynamicSchema.accounts... accountSchemaIndices)
     {
         accountSchemaIndicesPopulated = new ArrayList<>();
 
-        for (DynamicSchema.ACCOUNTS index : accountSchemaIndices)
+        for (DynamicSchema.accounts index : accountSchemaIndices)
         {
             accountSchemaIndicesPopulated.add(index);
         }
@@ -101,12 +101,12 @@ public class CreateBankAccount
                 .isChecked())
         {
             accountFields.add("CREDIT");
-            accountSchemaIndicesPopulated.add(DynamicSchema.ACCOUNTS.TYPE);
+            accountSchemaIndicesPopulated.add(DynamicSchema.accounts.TYPE);
         }
         else
         {
             accountFields.add("DEBIT");
-            accountSchemaIndicesPopulated.add(DynamicSchema.ACCOUNTS.TYPE);
+            accountSchemaIndicesPopulated.add(DynamicSchema.accounts.TYPE);
         }
 
         return accountFields;

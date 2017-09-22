@@ -7,7 +7,7 @@ import static com.mweser.affordabilitytracker.controller.CreateBankAccount.defin
 import static com.mweser.affordabilitytracker.controller.CreateBankAccount.setContexts;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.model.data.schema.DynamicSchema.ACCOUNTS;
+import com.mweser.affordabilitytracker.model.data.schema.DynamicSchema.accounts;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -34,12 +34,12 @@ public class CreateBankAccountActivity extends AppCompatActivity
                 R.id.txtTotalAmount,
                 R.id.txtPoints);
 
-        defineAccountSchemaIndicesPopulated(ACCOUNTS.NAME,
-                ACCOUNTS.PAYMENT_DATE,
-                ACCOUNTS.STATEMENT_DATE,
-                ACCOUNTS.AMOUNT_NEXT_STATEMENT,
-                ACCOUNTS.TOTAL_AMOUNT,
-                ACCOUNTS.POINTS_BALANCE);
+        defineAccountSchemaIndicesPopulated(accounts.NAME,
+                accounts.PAYMENT_DATE,
+                accounts.STATEMENT_DATE,
+                accounts.AMOUNT_NEXT_STATEMENT,
+                accounts.TOTAL_AMOUNT,
+                accounts.POINTS_BALANCE);
 
         defineToggleButtons(R.id.toggleCreditCard, R.id.toggleDebitCard);
     }

@@ -38,7 +38,7 @@ public class CreateExpenseEvents
     {
         textDataEntries = populateAccountFieldsList();
 
-//                String insertCommand = InsertOperations.newInsertCommand(Schema.Tables.EXPENSE_EVENTS,
+//                String insertCommand = InsertOperations.newInsertCommand(Schema.Tables.expense_events,
 //                        textDataEntries,
 //
 //
