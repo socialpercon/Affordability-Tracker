@@ -17,17 +17,17 @@ public class DatabaseUtils
 
         for (int index = 0; index < canonicalList.size(); index++)
         {
-            valueExpression += canonicalList.get(index) + schemaEntries.get(index) + ",";
+            valueExpression += canonicalList.get(index) + ", ";
         }
 
-        return trimLastChars(valueExpression, 1) + ");";
+        return trimLastChars(valueExpression, 2) + ");";
     }
 
     private static List<String> generateCanonicalList(List<String> valuesList,
             List<Enum<?>> schemaEntries)
     {
         List<String> list = new ArrayList<>();
-        int listSize = schemaEntries.getClass()
+        int listSize = schemaEntries.get(0).getClass()
                 .getEnumConstants().length;
 
         for (int index = 0; index < listSize; index++)
@@ -37,13 +37,12 @@ public class DatabaseUtils
 
         for (int index = 0; index < listSize; index++)
         {
-            for (Enum<?> entry : schemaEntries)
-            {
-                if (entry.ordinal() == index)
-                {
-                    list.set(index, "'" + valuesList.get(index) + "'");
-                }
-            }
+            String incomingValue = valuesList.get(index);
+            Enum<?> incomingEnumValue = schemaEntries.get(index);
+
+            incomingValue = "'" + incomingValue + "'";
+
+            list.set(incomingEnumValue.ordinal(), incomingValue);
         }
         return list;
     }

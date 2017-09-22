@@ -6,6 +6,7 @@ import static com.mweser.affordabilitytracker.model.data.database_operations.Rem
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class Database extends SQLiteOpenHelper
 {
@@ -28,6 +29,7 @@ public class Database extends SQLiteOpenHelper
     {
         SQLiteDatabase db = getInstance(appContext).getWritableDatabase();
         db.execSQL(command);
+        Log.d(TAG, command);
     }
 
     private Database(Context context, SQLiteDatabase.CursorFactory factory)
