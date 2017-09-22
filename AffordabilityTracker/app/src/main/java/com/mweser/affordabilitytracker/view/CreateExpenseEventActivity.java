@@ -25,6 +25,8 @@ public class CreateExpenseEventActivity extends AppCompatActivity
     {
         setUpFab(R.id.fab);
 
+        // NAME, AMOUNT, FIRST_DATE, LAST_DATE, IRRELEVANCY_DATE, FREQUENCY, FREQUENCY_TYPE, RECUR_TYPE, AMOUNT_TYPE, ACCOUNT
+
         setUpTextInputs(
                 R.id.txtExpenseName,
                 R.id.txtExpenseAmount,
@@ -33,6 +35,13 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 R.id.txtExpenseFrequency,
                 R.id.txtExpenseFreqType,
                 R.id.txtExpenseAccountName);
+
+//        setUpAccountSchemaIndicesPopulated(accounts.NAME,
+//                accounts.PAYMENT_DATE,
+//                accounts.STATEMENT_DATE,
+//                accounts.AMOUNT_NEXT_STATEMENT,
+//                accounts.TOTAL_AMOUNT,
+//                accounts.POINTS_BALANCE);
 
         setUpToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
 
