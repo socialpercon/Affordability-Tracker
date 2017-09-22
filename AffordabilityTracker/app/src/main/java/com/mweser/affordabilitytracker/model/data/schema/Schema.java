@@ -4,26 +4,15 @@ public class Schema
 {
     // TODO: 9/17/17 Consider adding blob to accounts/expenses as list of all future events (calculated)
 
-    public interface Tables
-    {
-        String BANK_ACCOUNTS = "bank_accounts";
-        String EXPENSE_EVENTS = "expense_events";
-        String THRESHOLDS = "thresholds";
-        String WISHLIST = "wishlist";
-        String PROJECTIONS = "projections";
-        String CREDIT_POINTS = "credit_points";
-        String SETTINGS = "settings";
-    }
-
     public interface BankAccountColumns
     {
-        String NAME = "account_name";
-        String TYPE = "account_type";
-        String PAYMENT_DATE = "payment_date";
-        String STATEMENT_DATE = "statement_date";
-        String AMOUNT_NEXT_STATEMENT = "amount_next_statement";
-        String TOTAL_AMOUNT = "total_amount";
-        String POINTS_BALANCE = "points_balance";
+//        String NAME = "account_name";
+//        String TYPE = "account_type";
+//        String PAYMENT_DATE = "payment_date";
+//        String STATEMENT_DATE = "statement_date";
+//        String AMOUNT_NEXT_STATEMENT = "amount_next_statement";
+//        String TOTAL_AMOUNT = "total_amount";
+//        String POINTS_BALANCE = "points_balance";
     }
 
     public interface ExpenseEventColumns

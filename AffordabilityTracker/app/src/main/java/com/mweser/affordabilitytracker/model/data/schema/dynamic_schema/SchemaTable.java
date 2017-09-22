@@ -7,6 +7,10 @@ import com.mweser.affordabilitytracker.model.data.database_operations.DatabaseUt
 public class SchemaTable
 {
     private final String CREATE_COMMAND = "CREATE TABLE IF NOT EXISTS ";
+    private final String DROP_COMMAND = "DROP TABLE IF EXISTS ";
+//    private final String INSERT_COMMAND = "CREATE TABLE IF NOT EXISTS ";
+//    private final String UPDATE_COMMAND = "CREATE TABLE IF NOT EXISTS ";
+
     private String tableName;
     private ArrayList<SchemaItem> tableMembers;
 
@@ -16,7 +20,12 @@ public class SchemaTable
         tableMembers = new ArrayList<>();
     }
 
-    public String generateCreateCommand()
+    public String drop()
+    {
+        return DROP_COMMAND + tableName + ";";
+    }
+
+    public String create()
     {
         String command = CREATE_COMMAND + tableName + " (";
 
@@ -28,7 +37,7 @@ public class SchemaTable
         return DatabaseUtils.trimLastChars(command, 2) + ");";
     }
 
-    public void addItemToTableSchema(SchemaItem item)
+    public void addItem(SchemaItem item)
     {
         tableMembers.add(item);
     }

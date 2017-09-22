@@ -1,12 +1,7 @@
 package com.mweser.affordabilitytracker.model.data.database_operations;
 
-import static com.mweser.affordabilitytracker.model.data.schema.CreationCommands.CreateTable.BANK_ACCOUNTS;
-import static com.mweser.affordabilitytracker.model.data.schema.CreationCommands.CreateTable.CREDIT_POINTS;
-import static com.mweser.affordabilitytracker.model.data.schema.CreationCommands.CreateTable.EXPENSE_EVENTS;
-import static com.mweser.affordabilitytracker.model.data.schema.CreationCommands.CreateTable.PROJECTIONS;
-import static com.mweser.affordabilitytracker.model.data.schema.CreationCommands.CreateTable.SETTINGS;
-import static com.mweser.affordabilitytracker.model.data.schema.CreationCommands.CreateTable.THRESHOLDS;
-import static com.mweser.affordabilitytracker.model.data.schema.CreationCommands.CreateTable.WISHLIST;
+import com.mweser.affordabilitytracker.model.data.schema.dynamic_schema.DynamicSchema;
+import com.mweser.affordabilitytracker.model.data.schema.dynamic_schema.SchemaTable;
 
 import android.database.sqlite.SQLiteDatabase;
 
@@ -14,14 +9,9 @@ public class CreateOperations
 {
     public static void createAllTables(SQLiteDatabase db)
     {
-        createTable(db, BANK_ACCOUNTS, EXPENSE_EVENTS, THRESHOLDS, WISHLIST, PROJECTIONS, CREDIT_POINTS, SETTINGS);
-    }
-
-    private static void createTable(SQLiteDatabase db, String... commands)
-    {
-        for (String command : commands)
+        for (SchemaTable table : DynamicSchema.getSchema())
         {
-            db.execSQL(command);
+            db.execSQL(table.create());
         }
     }
 }

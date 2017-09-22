@@ -10,7 +10,7 @@ import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElem
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.TYPE;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TypeToggles.CREDIT;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TypeToggles.DEBIT;
-import static com.mweser.affordabilitytracker.model.data.schema.Schema.Tables.BANK_ACCOUNTS;
+import static com.mweser.affordabilitytracker.model.data.schema.dynamic_schema.DynamicSchema.Tables.BANK_ACCOUNTS;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,7 +4,7 @@ import static com.mweser.affordabilitytracker.model.data.schema.Schema.BankAccou
 import static com.mweser.affordabilitytracker.model.data.schema.Schema.BankAccountColumns.TOTAL_AMOUNT;
 
 import com.mweser.affordabilitytracker.model.data.database_operations.QueryOperations;
-import com.mweser.affordabilitytracker.model.data.schema.Schema;
+import com.mweser.affordabilitytracker.model.data.schema.dynamic_schema.DynamicSchema;
 import com.mweser.affordabilitytracker.view.CreateBankAccountActivity;
 
 import android.app.Activity;
@@ -27,8 +27,7 @@ public class BankAccount
     {
         String[] queryColumns = new String[] {NAME, TOTAL_AMOUNT};
 
-        return generateBankAccountListing(QueryOperations.query(appContext,
-                Schema.Tables.BANK_ACCOUNTS,
+        return generateBankAccountListing(QueryOperations.query(appContext, DynamicSchema.Tables.ACCOUNTS,
                 queryColumns));
     }
 

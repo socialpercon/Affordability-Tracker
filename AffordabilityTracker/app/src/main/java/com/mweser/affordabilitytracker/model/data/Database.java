@@ -1,7 +1,7 @@
 package com.mweser.affordabilitytracker.model.data;
 
 import static com.mweser.affordabilitytracker.model.data.database_operations.CreateOperations.createAllTables;
-import static com.mweser.affordabilitytracker.model.data.database_operations.RemoveOperations.removeAllTables;
+import static com.mweser.affordabilitytracker.model.data.database_operations.RemoveOperations.dropAllTables;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -54,7 +54,7 @@ public class Database extends SQLiteOpenHelper
 
         if (version != version)
         {
-            removeAllTables(db);
+            dropAllTables(db);
             onCreate(db);
         }
     }

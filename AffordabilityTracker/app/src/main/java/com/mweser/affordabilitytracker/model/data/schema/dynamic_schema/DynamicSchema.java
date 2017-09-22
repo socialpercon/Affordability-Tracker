@@ -8,6 +8,16 @@ import org.apache.commons.lang3.StringUtils;
 public class DynamicSchema
 {
     private static final String SQL_TYPE = "TEXT";
+    private static List<SchemaTable> schema;
+
+    public static List<SchemaTable> getSchema()
+    {
+        if (schema == null)
+        {
+            schema = populateSchema();
+        }
+        return schema;
+    }
 
     public static List<SchemaTable> populateSchema()
     {
@@ -24,9 +34,15 @@ public class DynamicSchema
         return schemaList;
     }
 
-    public enum SchemaTables
+    public interface Tables
     {
-        ACCOUNTS, EXPENSE_EVENTS, THRESHOLDS, WISHLIST, PROJECTIONS, CREDIT_POINTS, SETTINGS
+        String ACCOUNTS = "accounts";
+        String EXPENSE_EVENTS = "expense_events";
+        String THRESHOLDS = "thresholds";
+        String WISHLIST = "wishlist";
+        String PROJECTIONS = "projections";
+        String POINTS = "points";
+        String SETTINGS = "settings";
     }
 
     public enum ACCOUNTS
@@ -70,8 +86,7 @@ public class DynamicSchema
 
         for (E element : tableEnum.getEnumConstants())
         {
-            table.addItemToTableSchema(new SchemaItem(
-                    tableEnum.toString(),
+            table.addItem(new SchemaItem(tableEnum.toString(),
                     StringUtils.lowerCase(element.toString()),
                     SQL_TYPE));
         }
