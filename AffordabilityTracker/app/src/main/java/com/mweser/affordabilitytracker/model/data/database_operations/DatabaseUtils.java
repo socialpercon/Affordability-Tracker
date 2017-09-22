@@ -1,39 +1,51 @@
 package com.mweser.affordabilitytracker.model.data.database_operations;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseUtils
 {
     /**
-     * Generates SQL structure of form:
+     * Generate SQL structure of form:
      * " VALUES ('2939' AMOUNT, 'CHASE' bank_account, 'NULL' statement_date);"
-     *
-     * @param list
-     * @param values
-     * @return
      */
-    public static String generateValueList(List<String> list, Enum<?>... values)
+    public static String getValueListString(List<String> valuesList, List<Enum<?>> schemaEntries)
     {
         String valueExpression = " VALUES (";
 
-        for (Enum<?> value : values)
+        List<String> canonicalList = generateCanonicalList(valuesList, schemaEntries);
+
+        for (int index = 0; index < canonicalList.size(); index++)
         {
-            valueExpression += getFieldValue(list, value) + ",";
+            valueExpression += canonicalList.get(index) + schemaEntries.get(index) + ",";
         }
 
         return trimLastChars(valueExpression, 1) + ");";
     }
 
-    private static String getFieldValue(List<String> list, Enum<?> value)
+    private static List<String> generateCanonicalList(List<String> valuesList,
+            List<Enum<?>> schemaEntries)
     {
-        String fieldValue = list.get(value.ordinal());
+        List<String> list = new ArrayList<>();
+        int listSize = schemaEntries.getClass()
+                .getEnumConstants().length;
 
-        if (fieldValue == "")
+        for (int index = 0; index < listSize; index++)
         {
-            return "'NULL'";
+            list.add("'NULL'");
         }
 
-        return "'" + fieldValue + "'";
+        for (int index = 0; index < listSize; index++)
+        {
+            for (Enum<?> entry : schemaEntries)
+            {
+                if (entry.ordinal() == index)
+                {
+                    list.set(index, "'" + valuesList.get(index) + "'");
+                }
+            }
+        }
+        return list;
     }
 
     public static String trimLastChars(String input, int charsToTrim)

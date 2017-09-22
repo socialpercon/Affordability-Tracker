@@ -1,12 +1,6 @@
 package com.mweser.affordabilitytracker.controller;
 
 import static com.mweser.affordabilitytracker.controller.ActivityUtils.generateListOfUiElements;
-import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.AMOUNT_NEXT_STATEMENT;
-import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.NAME;
-import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.PAYMENT_DATE;
-import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.POINTS;
-import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.STATEMENT_DATE;
-import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.TOTAL_BALANCE;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.TYPE;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TypeToggles.CREDIT;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TypeToggles.DEBIT;
@@ -31,6 +25,7 @@ public class CreateBankAccount
     private static Activity activity;
     private static Context appContext;
     private static Context baseContext;
+    private static List<Enum<?>> accountSchemaIndicesPopulated;
     private static List<String> accountFields;
     private static List<EditText> textInputs;
     private static List<ToggleButton> toggleButtons;
@@ -42,13 +37,7 @@ public class CreateBankAccount
         String insertCommand = InsertOperations.newInsertCommand(
                 DynamicSchema.Tables.ACCOUNTS,
                 accountFields,
-                NAME,
-                TYPE,
-                PAYMENT_DATE,
-                STATEMENT_DATE,
-                AMOUNT_NEXT_STATEMENT,
-                TOTAL_BALANCE,
-                POINTS);
+                accountSchemaIndicesPopulated);
 
         Database.executeSQL(appContext, insertCommand);
     }
@@ -104,6 +93,16 @@ public class CreateBankAccount
         textInputs = generateListOfUiElements(activity, textFields);
     }
 
+    public static void defineAccountSchemaIndicesPopulated(DynamicSchema.ACCOUNTS... accountSchemaIndices)
+    {
+        accountSchemaIndicesPopulated = new ArrayList<>();
+
+        for (DynamicSchema.ACCOUNTS index : accountSchemaIndices)
+        {
+            accountSchemaIndicesPopulated.add(index);
+        }
+    }
+
     public static void defineToggleButtons(int... toggleBtns)
     {
         toggleButtons = generateListOfUiElements(activity, toggleBtns);
@@ -123,6 +122,7 @@ public class CreateBankAccount
         if (toggleButtons.get(CREDIT.ordinal())
                 .isChecked())
         {
+            // TODO: 9/21/17 Evaluate what this does to data integrity
             accountFields.add(TYPE.ordinal(), "CREDIT");
         } else
         {
