@@ -35,7 +35,7 @@ public class ActivityUtils
         return list;
     }
 
-    public static void defineActivityTransitionFab(int id, Context baseContext, Activity activity, Class<?> nextActivityClass)
+    public static void setUpActivityTransitionFab(int id, Context baseContext, Activity activity, Class<?> nextActivityClass)
     {
         activity.findViewById(id)
                 .setOnClickListener(generateActivitySwitchFabListener(baseContext, activity, nextActivityClass));

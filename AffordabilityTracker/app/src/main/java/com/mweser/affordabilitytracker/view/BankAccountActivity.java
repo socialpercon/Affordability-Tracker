@@ -24,19 +24,19 @@ public class BankAccountActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         onCreateSetup();
-        defineUiElements();
+        setUpUiElements();
     }
 
-    private void defineUiElements()
+    private void setUpUiElements()
     {
-        BankAccount.defineFab(R.id.fab);
-        BankAccount.defineAccountListText(R.id.txtListOfBanks);
+        BankAccount.setUpFab(R.id.fab);
+        BankAccount.setUpAccountListText(R.id.txtListOfBanks);
     }
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        BankAccount.defineAccountListText(R.id.txtListOfBanks);
+        BankAccount.setUpAccountListText(R.id.txtListOfBanks);
     }
 
     @Override

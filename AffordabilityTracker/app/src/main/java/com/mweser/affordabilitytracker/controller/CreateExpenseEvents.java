@@ -66,12 +66,12 @@ public class CreateExpenseEvents
         return textDataEntries;
     }
 
-    public static void defineTextInputs(int... textFields)
+    public static void setUpTextInputs(int... textFields)
     {
         textInputs = generateListOfUiElements(activity, textFields);
     }
 
-    public static void defineToggleButtons(int... toggleBtns)
+    public static void setUpToggleButtons(int... toggleBtns)
     {
         toggleButtons = generateListOfUiElements(activity, toggleBtns);
         setToggleBtnProperties();
@@ -122,7 +122,7 @@ public class CreateExpenseEvents
         };
     }
 
-    public static void defineFab(int id)
+    public static void setUpFab(int id)
     {
         activity.findViewById(id)
                 .setOnClickListener(generateFabListener(ExpensesActivity.class));

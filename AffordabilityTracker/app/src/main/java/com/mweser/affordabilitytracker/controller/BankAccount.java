@@ -1,7 +1,7 @@
 package com.mweser.affordabilitytracker.controller;
 
 import com.mweser.affordabilitytracker.model.data.database_operations.QueryOperations;
-import com.mweser.affordabilitytracker.model.data.schema.DynamicSchema;
+import com.mweser.affordabilitytracker.model.data.schema.Schema;
 import com.mweser.affordabilitytracker.view.CreateBankAccountActivity;
 
 import android.app.Activity;
@@ -15,17 +15,17 @@ public class BankAccount
     private static Context appContext;
     private static Context baseContext;
 
-    public static void defineAccountListText(int id)
+    public static void setUpAccountListText(int id)
     {
         ((TextView) activity.findViewById(id)).setText(queryBankAccountListing(appContext));
     }
 
     private static String queryBankAccountListing(Context appContext)
     {
-        String[] queryColumns = new String[] {DynamicSchema.accounts.NAME.toString(),
-                DynamicSchema.accounts.TOTAL_AMOUNT.toString()};
+        String[] queryColumns = new String[] {Schema.accounts.NAME.toString(),
+                Schema.accounts.TOTAL_AMOUNT.toString()};
 
-        return generateBankAccountListing(QueryOperations.query(appContext, DynamicSchema.Tables.accounts.toString(),
+        return generateBankAccountListing(QueryOperations.query(appContext, Schema.Tables.accounts.toString(),
                 queryColumns));
     }
 
@@ -43,9 +43,9 @@ public class BankAccount
         return bankAccountListString;
     }
 
-    public static void defineFab(int id)
+    public static void setUpFab(int id)
     {
-        ActivityUtils.defineActivityTransitionFab(id,
+        ActivityUtils.setUpActivityTransitionFab(id,
                 baseContext,
                 activity,
                 CreateBankAccountActivity.class);

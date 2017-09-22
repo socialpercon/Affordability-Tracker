@@ -1,6 +1,7 @@
 package com.mweser.affordabilitytracker.controller;
 
 import static com.mweser.affordabilitytracker.controller.ActivityUtils.generateListOfUiElements;
+import static com.mweser.affordabilitytracker.controller.CreateBankAccount.TextFields.*;
 import static com.mweser.affordabilitytracker.controller.CreateBankAccount.TypeToggles.CREDIT;
 import static com.mweser.affordabilitytracker.model.java_app.projection.RecurEventSchema.AccountType.DEBIT;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 import com.mweser.affordabilitytracker.model.data.Database;
 import com.mweser.affordabilitytracker.model.data.database_operations.InsertOperations;
-import com.mweser.affordabilitytracker.model.data.schema.DynamicSchema;
+import com.mweser.affordabilitytracker.model.data.schema.Schema;
 import com.mweser.affordabilitytracker.view.BankAccountActivity;
 
 import android.app.Activity;
@@ -43,24 +44,23 @@ public class CreateBankAccount
     {
         accountFields = populateAccountFieldsList();
 
-        String insertCommand = InsertOperations.newInsertCommand(DynamicSchema.Tables.accounts.toString(),
+        String insertCommand = InsertOperations.newInsertCommand(Schema.Tables.accounts.toString(),
                 accountFields,
                 accountSchemaIndicesPopulated);
 
         Database.executeSQL(appContext, insertCommand);
     }
 
-    public static void defineTextFields(int... textFields)
+    public static void setUpTextFields(int... textFields)
     {
         textInputs = generateListOfUiElements(activity, textFields);
     }
 
-    public static void defineAccountSchemaIndicesPopulated(
-            DynamicSchema.accounts... accountSchemaIndices)
+    public static void setUpAccountSchemaIndicesPopulated(Schema.accounts... accountSchemaIndices)
     {
         accountSchemaIndicesPopulated = new ArrayList<>();
 
-        for (DynamicSchema.accounts index : accountSchemaIndices)
+        for (Schema.accounts index : accountSchemaIndices)
         {
             accountSchemaIndicesPopulated.add(index);
         }
@@ -74,14 +74,14 @@ public class CreateBankAccount
         {
             if (!accountSchemaIndicesPopulated.get(index)
                     .toString()
-                    .equals(TextFields.values()[index].toString()))
+                    .equals(values()[index].toString()))
             {
                 Log.e("CreateBankAccount", "CreateBankAccount: Mismatch in Text Field columns");
             }
         }
     }
 
-    public static void defineToggleButtons(int... toggleBtns)
+    public static void setUpToggleButtons(int... toggleBtns)
     {
         toggleButtons = generateListOfUiElements(activity, toggleBtns);
         setToggleBtnProperties();
@@ -101,12 +101,12 @@ public class CreateBankAccount
                 .isChecked())
         {
             accountFields.add("CREDIT");
-            accountSchemaIndicesPopulated.add(DynamicSchema.accounts.TYPE);
+            accountSchemaIndicesPopulated.add(Schema.accounts.TYPE);
         }
         else
         {
             accountFields.add("DEBIT");
-            accountSchemaIndicesPopulated.add(DynamicSchema.accounts.TYPE);
+            accountSchemaIndicesPopulated.add(Schema.accounts.TYPE);
         }
 
         return accountFields;
@@ -135,28 +135,22 @@ public class CreateBankAccount
 
     private static void setCreditFieldVisibilty(int visibility)
     {
-        textInputs.get(TextFields.STATEMENT_DATE.ordinal())
-                .setVisibility(visibility);
-        textInputs.get(TextFields.PAYMENT_DATE.ordinal())
-                .setVisibility(visibility);
-        textInputs.get(TextFields.AMOUNT_NEXT_STATEMENT.ordinal())
-                .setVisibility(visibility);
-        textInputs.get(TextFields.POINTS.ordinal())
-                .setVisibility(visibility);
+        setFieldVisibility(textInputs, visibility, STATEMENT_DATE, PAYMENT_DATE, AMOUNT_NEXT_STATEMENT, POINTS);
     }
 
-    private static View.OnClickListener generateFabListener(final Class<?> nextActivityClass)
+    private static void setFieldVisibility(List<EditText> list, int visibility, Enum<?>... fieldEnums)
     {
-        return new View.OnClickListener()
+        for (Enum<?> field : fieldEnums)
         {
-            @Override
-            public void onClick(View v)
-            {
-                saveAccountFieldsToDatabase();
-                activity.finish();
-                ActivityUtils.startActivity(baseContext, activity, nextActivityClass);
-            }
-        };
+            list.get(field.ordinal())
+                    .setVisibility(visibility);
+        }
+    }
+
+    public static void setUpFab(int id)
+    {
+        activity.findViewById(id)
+                .setOnClickListener(generateFabListener(BankAccountActivity.class));
     }
 
     private static View.OnClickListener generateCreditListener()
@@ -185,10 +179,18 @@ public class CreateBankAccount
         };
     }
 
-    public static void defineFab(int id)
+    private static View.OnClickListener generateFabListener(final Class<?> nextActivityClass)
     {
-        activity.findViewById(id)
-                .setOnClickListener(generateFabListener(BankAccountActivity.class));
+        return new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                saveAccountFieldsToDatabase();
+                activity.finish();
+                ActivityUtils.startActivity(baseContext, activity, nextActivityClass);
+            }
+        };
     }
 
     public static void setContexts(Activity activity, Context appContext, Context baseContext)

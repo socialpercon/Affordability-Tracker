@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class DynamicSchema
+public class Schema
 {
     private static final String SQL_TYPE = "TEXT";
     private static List<SchemaTable> schema;

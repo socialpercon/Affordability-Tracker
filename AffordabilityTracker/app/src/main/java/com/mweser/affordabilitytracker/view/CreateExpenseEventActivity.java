@@ -1,8 +1,8 @@
 package com.mweser.affordabilitytracker.view;
 
-import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.defineFab;
-import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.defineTextInputs;
-import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.defineToggleButtons;
+import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.setUpFab;
+import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.setUpTextInputs;
+import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.setUpToggleButtons;
 import static com.mweser.affordabilitytracker.controller.CreateExpenseEvents.setContexts;
 
 import com.mweser.affordabilitytracker.R;
@@ -18,14 +18,14 @@ public class CreateExpenseEventActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         onCreateSetup();
-        defineUiElements();
+        setUpUiElements();
     }
 
-    private void defineUiElements()
+    private void setUpUiElements()
     {
-        defineFab(R.id.fab);
+        setUpFab(R.id.fab);
 
-        defineTextInputs(
+        setUpTextInputs(
                 R.id.txtExpenseName,
                 R.id.txtExpenseAmount,
                 R.id.txtExpenseStartDate,
@@ -34,7 +34,7 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 R.id.txtExpenseFreqType,
                 R.id.txtExpenseAccountName);
 
-        defineToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
+        setUpToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
 
     }
 
