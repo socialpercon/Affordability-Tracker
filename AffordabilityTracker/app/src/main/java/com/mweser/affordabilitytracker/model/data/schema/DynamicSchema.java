@@ -1,4 +1,4 @@
-package com.mweser.affordabilitytracker.model.data.schema.dynamic_schema;
+package com.mweser.affordabilitytracker.model.data.schema;
 
 import java.util.ArrayList;
 import java.util.List;

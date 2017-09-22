@@ -1,7 +1,7 @@
 package com.mweser.affordabilitytracker.model.data.database_operations;
 
-import com.mweser.affordabilitytracker.model.data.schema.dynamic_schema.DynamicSchema;
-import com.mweser.affordabilitytracker.model.data.schema.dynamic_schema.SchemaTable;
+import com.mweser.affordabilitytracker.model.data.schema.DynamicSchema;
+import com.mweser.affordabilitytracker.model.data.schema.SchemaTable;
 
 import android.database.sqlite.SQLiteDatabase;
 

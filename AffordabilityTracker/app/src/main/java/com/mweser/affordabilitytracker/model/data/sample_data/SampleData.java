@@ -1,4 +1,4 @@
-package com.mweser.affordabilitytracker.model.data;
+package com.mweser.affordabilitytracker.model.data.sample_data;
 
 public class SampleData
 {

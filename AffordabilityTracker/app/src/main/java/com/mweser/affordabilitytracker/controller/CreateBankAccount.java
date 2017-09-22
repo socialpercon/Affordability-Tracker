@@ -10,7 +10,6 @@ import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElem
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.AccountField.TYPE;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TypeToggles.CREDIT;
 import static com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TypeToggles.DEBIT;
-import static com.mweser.affordabilitytracker.model.data.schema.dynamic_schema.DynamicSchema.Tables.BANK_ACCOUNTS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +17,7 @@ import java.util.List;
 import com.mweser.affordabilitytracker.model.data.Database;
 import com.mweser.affordabilitytracker.model.data.database_operations.InsertOperations;
 import com.mweser.affordabilitytracker.model.data.schema.CreateBankUiElementSchema.TextFields;
+import com.mweser.affordabilitytracker.model.data.schema.DynamicSchema;
 import com.mweser.affordabilitytracker.view.BankAccountActivity;
 
 import android.app.Activity;
@@ -39,7 +39,8 @@ public class CreateBankAccount
     {
         accountFields = populateAccountFieldsList();
 
-        String insertCommand = InsertOperations.newInsertCommand(BANK_ACCOUNTS,
+        String insertCommand = InsertOperations.newInsertCommand(
+                DynamicSchema.Tables.ACCOUNTS,
                 accountFields,
                 NAME,
                 TYPE,
