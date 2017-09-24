@@ -1,10 +1,4 @@
-package com.mweser.affordabilitytracker.activity;
-
-import static com.mweser.affordabilitytracker.activity_controller.CreateBankAccount.setUpAccountSchemaIndicesPopulated;
-import static com.mweser.affordabilitytracker.activity_controller.CreateBankAccount.setUpFab;
-import static com.mweser.affordabilitytracker.activity_controller.CreateBankAccount.setUpTextFields;
-import static com.mweser.affordabilitytracker.activity_controller.CreateBankAccount.setUpToggleButtons;
-import static com.mweser.affordabilitytracker.activity_controller.CreateBankAccount.setContexts;
+package com.mweser.affordabilitytracker.activity.create_account;
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.database.schema.Schema.accounts;
@@ -25,28 +19,30 @@ public class CreateBankAccountActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        setUpFab(R.id.fab);
+        CreateBankAccountData.initFab(R.id.fab);
 
-        setUpTextFields(R.id.txtExpenseAccountName,
+        CreateBankAccountData.initTextFields(
+                R.id.txtExpenseAccountName,
                 R.id.txtPaymentDate,
                 R.id.txtStatementDate,
                 R.id.txtDueNextStatement,
                 R.id.txtTotalAmount,
                 R.id.txtPoints);
 
-        setUpAccountSchemaIndicesPopulated(accounts.NAME,
+        CreateBankAccountData.schemaItemOrder(
+                accounts.NAME,
                 accounts.PAYMENT_DATE,
                 accounts.STATEMENT_DATE,
                 accounts.AMOUNT_NEXT_STATEMENT,
                 accounts.TOTAL_AMOUNT,
                 accounts.POINTS_BALANCE);
 
-        setUpToggleButtons(R.id.toggleCreditCard, R.id.toggleDebitCard);
+        CreateBankAccountData.initToggleButtons(R.id.toggleCreditCard, R.id.toggleDebitCard);
     }
 
     private void onCreateSetup()
     {
-        setContexts(this, getApplicationContext(), getBaseContext());
+        CreateBankAccountData.setContexts(this, getApplicationContext(), getBaseContext());
 
         setContentView(R.layout.activity_create_bank_account);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

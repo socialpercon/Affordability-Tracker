@@ -1,7 +1,5 @@
 package com.mweser.affordabilitytracker.projection_app.event_structures;
 
-import static com.mweser.affordabilitytracker.activity_controller.CreateExpenseEvents.CreateExpenseUiElements.FREQ;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -80,8 +78,8 @@ public class ExpenseEvent extends RecurEvent
         firstEventDate = DateConversionUtils.stringToDate(row.get(Schema.expense_events.FIRST_DATE));
         name = row.get(Schema.expense_events.NAME);
         amount = Double.parseDouble(row.get(Schema.expense_events.AMOUNT));
-        frequency = Integer.parseInt(row.get(FREQ));
-        freqType = RecurEventValueTypes.FrequencyType.valueOf(row.get(Schema.expense_events.FREQUENCY_TYPE));
+        frequency = Integer.parseInt(row.get(Schema.expense_events.FREQUENCY));
+        freqType = RecurEventValueTypes.FrequencyType.valueOf(row.get(Schema.expense_events.FREQUENCY_UNIT));
         recurType = RecurEventValueTypes.RecurType.valueOf(row.get(Schema.expense_events.RECUR_TYPE));
         amountType = RecurEventValueTypes.AmountType.valueOf(row.get(Schema.expense_events.AMOUNT_TYPE));
         accountCode = row.get(Schema.expense_events.ACCOUNT);

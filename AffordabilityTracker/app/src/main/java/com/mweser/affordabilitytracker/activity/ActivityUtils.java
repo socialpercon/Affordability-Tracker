@@ -1,18 +1,21 @@
-package com.mweser.affordabilitytracker.activity_controller;
+package com.mweser.affordabilitytracker.activity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity.BankAccountActivity;
-import com.mweser.affordabilitytracker.activity.CreditPointsActivity;
-import com.mweser.affordabilitytracker.activity.ExpensesActivity;
-import com.mweser.affordabilitytracker.activity.ProjectionActivity;
-import com.mweser.affordabilitytracker.activity.ProjectionListActivity;
-import com.mweser.affordabilitytracker.activity.SettingsActivity;
-import com.mweser.affordabilitytracker.activity.ThresholdsActivity;
-import com.mweser.affordabilitytracker.activity.WishlistActivity;
-import com.mweser.affordabilitytracker.activity.WishlistScheduleActivity;
+import com.mweser.affordabilitytracker.activity.account.BankAccountActivity;
+import com.mweser.affordabilitytracker.activity.expense.ExpensesActivity;
+import com.mweser.affordabilitytracker.activity.points.CreditPointsActivity;
+import com.mweser.affordabilitytracker.activity.projection.ProjectionActivity;
+import com.mweser.affordabilitytracker.activity.projection.ProjectionListActivity;
+import com.mweser.affordabilitytracker.activity.settings.SettingsActivity;
+import com.mweser.affordabilitytracker.activity.thresholds.ThresholdsActivity;
+import com.mweser.affordabilitytracker.activity.wishlist.WishlistActivity;
+import com.mweser.affordabilitytracker.activity.wishlist.WishlistScheduleActivity;
+import com.mweser.affordabilitytracker.database.Database;
+import com.mweser.affordabilitytracker.database.database_operations.InsertOperations;
+import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.app.Activity;
 import android.content.Context;
@@ -35,13 +38,37 @@ public class ActivityUtils
         return list;
     }
 
-    public static void setUpActivityTransitionFab(int id, Context baseContext, Activity activity, Class<?> nextActivityClass)
+    public static void setUpActivityTransitionFab(int id, Context baseContext, Activity activity,
+            Class<?> nextActivityClass)
     {
         activity.findViewById(id)
-                .setOnClickListener(generateActivitySwitchFabListener(baseContext, activity, nextActivityClass));
+                .setOnClickListener(generateActivitySwitchFabListener(baseContext,
+                        activity,
+                        nextActivityClass));
     }
 
-    private static View.OnClickListener generateActivitySwitchFabListener(final Context baseContext, final Activity activity, final Class<?> nextActivityClass)
+    public static void insertUiFieldsToDatabase(Context appContext, Schema.Tables table,
+            List<String> dataEntries, List<Enum<?>> schemaOrder)
+    {
+        Database.executeSQL(appContext, InsertOperations.newInsertCommand(table.toString(),
+                dataEntries,
+                schemaOrder));
+    }
+
+    public static List<Enum<?>> generateEnumArrayList(Enum<?>... enumList)
+    {
+        List<Enum<?>> list = new ArrayList<>();
+
+        for (Enum<?> index : enumList)
+        {
+            list.add(index);
+        }
+
+        return list;
+    }
+
+    private static View.OnClickListener generateActivitySwitchFabListener(final Context baseContext,
+            final Activity activity, final Class<?> nextActivityClass)
     {
         return new View.OnClickListener()
         {

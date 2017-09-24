@@ -1,12 +1,13 @@
-package com.mweser.affordabilitytracker.activity;
+package com.mweser.affordabilitytracker.activity.expense;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity_controller.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.MainActivity;
+import com.mweser.affordabilitytracker.activity.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventActivity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,7 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class CreditPointsActivity extends AppCompatActivity
+public class ExpensesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
 
@@ -24,7 +25,12 @@ public class CreditPointsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_credit_points);
+        onCreateSetup();
+    }
+
+    private void onCreateSetup()
+    {
+        setContentView(R.layout.activity_expenses);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,9 +40,8 @@ public class CreditPointsActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .show();
+                ActivityUtils.startActivity(getBaseContext(), ExpensesActivity.this, CreateExpenseEventActivity.class);
+
             }
         });
 
@@ -62,7 +67,7 @@ public class CreditPointsActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else
         {
-            super.onBackPressed();
+            ActivityUtils.startActivity(getBaseContext(), this, MainActivity.class);
         }
     }
 
@@ -70,7 +75,7 @@ public class CreditPointsActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.credit_points, menu);
+        getMenuInflater().inflate(R.menu.expenses, menu);
         return true;
     }
 

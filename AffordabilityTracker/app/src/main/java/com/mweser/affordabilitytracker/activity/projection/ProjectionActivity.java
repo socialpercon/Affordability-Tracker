@@ -1,13 +1,12 @@
-package com.mweser.affordabilitytracker.activity;
-
-import static com.mweser.affordabilitytracker.activity_controller.BankAccount.setContexts;
+package com.mweser.affordabilitytracker.activity.projection;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity_controller.ActivityUtils;
-import com.mweser.affordabilitytracker.activity_controller.BankAccount;
+import com.mweser.affordabilitytracker.activity.ActivityUtils;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,28 +14,43 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-public class BankAccountActivity extends AppCompatActivity
+public class ProjectionActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        onCreateSetup();
-        setUpUiElements();
-    }
+        setContentView(R.layout.activity_projection);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-    private void setUpUiElements()
-    {
-        BankAccount.setUpFab(R.id.fab);
-        BankAccount.setUpAccountListText(R.id.txtListOfBanks);
-    }
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null)
+                        .show();
+            }
+        });
 
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        BankAccount.setUpAccountListText(R.id.txtListOfBanks);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawer,
+                toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -48,7 +62,7 @@ public class BankAccountActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else
         {
-            ActivityUtils.startActivity(getBaseContext(), this, MainActivity.class);
+            super.onBackPressed();
         }
     }
 
@@ -56,7 +70,7 @@ public class BankAccountActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.bank_account_management, menu);
+        getMenuInflater().inflate(R.menu.projection, menu);
         return true;
     }
 
@@ -81,31 +95,12 @@ public class BankAccountActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item)
     {
+        // Handle navigation view item clicks here.
         ActivityUtils.navBarSwitch(getApplicationContext(), getBaseContext(), this, item);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    private void onCreateSetup()
-    {
-        setContentView(R.layout.activity_bank_account);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        setContexts(this, getApplicationContext(), getBaseContext());
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                drawer,
-                toolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
     }
 }
