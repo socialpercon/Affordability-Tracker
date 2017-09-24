@@ -38,8 +38,6 @@ public class CreateBankAccountActivity extends AppCompatActivity
                 accounts.POINTS_BALANCE);
 
         CreateBankAccountData.initToggleButtons(R.id.toggleCreditCard, R.id.toggleDebitCard);
-
-        CreateBankAccountData.execute();
     }
 
     private void onCreateSetup()
