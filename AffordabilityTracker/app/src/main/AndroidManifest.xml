@@ -10,7 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".view.MainActivity"
+                android:name=".activity.MainActivity"
                 android:label="@string/app_name"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,57 +20,57 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".view.BankAccountActivity"
+                android:name=".activity.BankAccountActivity"
                 android:label="@string/title_activity_bank_account_management"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".view.ExpensesActivity"
+                android:name=".activity.ExpensesActivity"
                 android:label="@string/title_activity_expenses"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".view.ThresholdsActivity"
+                android:name=".activity.ThresholdsActivity"
                 android:label="@string/title_activity_thresholds"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".view.WishlistActivity"
+                android:name=".activity.WishlistActivity"
                 android:label="@string/title_activity_wishlist"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".view.ProjectionActivity"
+                android:name=".activity.ProjectionActivity"
                 android:label="@string/title_activity_projection"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".view.ProjectionListActivity"
+                android:name=".activity.ProjectionListActivity"
                 android:label="@string/title_activity_projection_list"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".view.WishlistScheduleActivity"
+                android:name=".activity.WishlistScheduleActivity"
                 android:label="@string/title_activity_wishlist_schedule"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".view.CreditPointsActivity"
+                android:name=".activity.CreditPointsActivity"
                 android:label="@string/title_activity_credit_points"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".view.SettingsActivity"
+                android:name=".activity.SettingsActivity"
                 android:label="@string/title_activity_settings"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".view.CreateBankAccountActivity"
+                android:name=".activity.CreateBankAccountActivity"
                 android:label="@string/title_activity_create_bank_account"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".view.CreateExpenseEventActivity"
+                android:name=".activity.CreateExpenseEventActivity"
                 android:label="@string/title_activity_create_expense_event"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>

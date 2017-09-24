@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_create_bank_account"
-        tools:context="com.mweser.affordabilitytracker.view.CreateBankAccountActivity">
+        tools:context="com.mweser.affordabilitytracker.activity.CreateBankAccountActivity">
     
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"

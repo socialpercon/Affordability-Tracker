@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_create_expense_event"
-        tools:context="com.mweser.affordabilitytracker.view.CreateExpenseEventActivity">
+        tools:context="com.mweser.affordabilitytracker.activity.CreateExpenseEventActivity">
 
 
     <TextView android:layout_width="wrap_content"
