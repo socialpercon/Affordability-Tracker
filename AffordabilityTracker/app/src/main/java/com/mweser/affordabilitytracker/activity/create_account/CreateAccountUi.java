@@ -8,7 +8,7 @@ import static com.mweser.affordabilitytracker.activity.create_account.CreateBank
 import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.TypeToggles.DEBIT;
 import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.activity;
 import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.baseContext;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.saveAccountFieldsToDatabase;
+import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.saveFieldsToDatabase;
 import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.textInputs;
 import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.toggleButtons;
 
@@ -68,7 +68,7 @@ public class CreateAccountUi
             @Override
             public void onClick(View v)
             {
-                saveAccountFieldsToDatabase();
+                saveFieldsToDatabase();
                 activity.finish();
                 ActivityUtils.startActivity(baseContext, activity, nextActivityClass);
             }

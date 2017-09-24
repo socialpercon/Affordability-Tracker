@@ -21,7 +21,7 @@ public class CreateExpenseEventActivity extends AppCompatActivity
     {
         CreateExpenseEventUi.initFab(R.id.fab);
 
-        // NAME, AMOUNT, FIRST_DATE, LAST_DATE, IRRELEVANCY_DATE, FREQUENCY, FREQUENCY_TYPE, RECUR_TYPE, AMOUNT_TYPE, ACCOUNT
+        // NAME, AMOUNT, FIRST_DATE, LAST_DATE, IRRELEVANCY_DATE, FREQUENCY, FREQUENCY_UNIT, RECUR_TYPE, AMOUNT_TYPE, ACCOUNT
 
         CreateExpenseEventsData.initTextInputs(R.id.txtExpenseName,
                 R.id.txtExpenseAmount,
@@ -36,7 +36,7 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 Schema.expense_events.FIRST_DATE,
                 Schema.expense_events.LAST_DATE,
                 Schema.expense_events.FREQUENCY,
-                Schema.expense_events.FREQUENCY_TYPE,
+                Schema.expense_events.FREQUENCY_UNIT,
                 Schema.expense_events.ACCOUNT);
 
         CreateExpenseEventsData.initToggleButtons(R.id.toggleExpense, R.id.toggleIncome);

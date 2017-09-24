@@ -2,16 +2,15 @@ package com.mweser.affordabilitytracker.activity.create_account;
 
 import static com.mweser.affordabilitytracker.activity.ActivityUtils.generateEnumArrayList;
 import static com.mweser.affordabilitytracker.activity.ActivityUtils.generateListOfUiElements;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.TypeToggles.CREDIT;
 import static com.mweser.affordabilitytracker.activity.create_account.CreateAccountUi.generateFabListener;
 import static com.mweser.affordabilitytracker.activity.create_account.CreateAccountUi.setToggleBtnProperties;
+import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.TypeToggles.CREDIT;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mweser.affordabilitytracker.activity.ActivityUtils;
 import com.mweser.affordabilitytracker.activity.account.BankAccountActivity;
-import com.mweser.affordabilitytracker.database.Database;
-import com.mweser.affordabilitytracker.database.database_operations.InsertOperations;
 import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.app.Activity;
@@ -40,15 +39,10 @@ public class CreateBankAccountData
         NAME, PAYMENT_DATE, STATEMENT_DATE, AMOUNT_NEXT_STATEMENT, TOTAL_BALANCE, POINTS
     }
 
-    static void saveAccountFieldsToDatabase()
+    static void saveFieldsToDatabase()
     {
-        accountFields = populateAccountFieldsList();
-
-        String insertCommand = InsertOperations.newInsertCommand(Schema.Tables.accounts.toString(),
-                accountFields,
-                schemaElementsAddedOrder);
-
-        Database.executeSQL(appContext, insertCommand);
+        ActivityUtils.insertUiFieldsToDatabase(appContext, Schema.Tables.accounts,
+                populateAccountFieldsList(), schemaElementsAddedOrder);
     }
 
     static List<String> populateAccountFieldsList()

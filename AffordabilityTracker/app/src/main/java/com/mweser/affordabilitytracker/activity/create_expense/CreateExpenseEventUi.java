@@ -4,7 +4,7 @@ import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpe
 import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.ToggleButtonTypes.INCOME;
 import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.activity;
 import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.baseContext;
-import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.saveAccountFieldsToDatabase;
+import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.saveFieldsToDatabase;
 import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.toggleButtons;
 
 import java.util.List;
@@ -67,7 +67,7 @@ public class CreateExpenseEventUi
             @Override
             public void onClick(View v)
             {
-                saveAccountFieldsToDatabase();
+                saveFieldsToDatabase();
                 activity.finish();
                 ActivityUtils.startActivity(baseContext, activity, nextActivityClass);
             }

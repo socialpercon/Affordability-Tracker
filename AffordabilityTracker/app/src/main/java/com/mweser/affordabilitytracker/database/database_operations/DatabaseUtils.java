@@ -54,7 +54,7 @@ public class DatabaseUtils
             list.add("'NULL'");
         }
 
-        for (int index = 0; index < listSize; index++)
+        for (int index = 0; index < valuesList.size(); index++)
         {
             String incomingValue = valuesList.get(index);
             Enum<?> incomingEnumValue = schemaEntries.get(index);

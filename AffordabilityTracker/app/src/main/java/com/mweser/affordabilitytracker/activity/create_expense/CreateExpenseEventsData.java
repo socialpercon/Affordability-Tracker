@@ -2,6 +2,7 @@ package com.mweser.affordabilitytracker.activity.create_expense;
 
 import static com.mweser.affordabilitytracker.activity.ActivityUtils.generateEnumArrayList;
 import static com.mweser.affordabilitytracker.activity.ActivityUtils.generateListOfUiElements;
+import static com.mweser.affordabilitytracker.activity.ActivityUtils.insertUiFieldsToDatabase;
 import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventUi.setToggleBtnProperties;
 import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.ToggleButtonTypes.EXPENSE;
 
@@ -36,20 +37,15 @@ public class CreateExpenseEventsData
         NAME, AMOUNT, START_DATE, END_DATE, FREQ, FREQ_TYPE, ACCOUNT
     }
 
-    static void saveAccountFieldsToDatabase()
+    static void saveFieldsToDatabase()
     {
-        textDataEntries = populateAccountFieldsList();
-
-        //                String insertCommand = InsertOperations.newInsertCommand(Schema.Tables.expense_events,
-        //                        textDataEntries,
-        //
-        //
-        //                        );
-        //
-        //                Database.executeSQL(appContext, insertCommand);
+        insertUiFieldsToDatabase(appContext,
+                Schema.Tables.expense_events,
+                populateExpensesFieldList(),
+                schemaElementsAddedOrder);
     }
 
-    static List<String> populateAccountFieldsList()
+    static List<String> populateExpensesFieldList()
     {
         textDataEntries = new ArrayList<>();
 

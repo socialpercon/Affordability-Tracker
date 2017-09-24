@@ -29,7 +29,7 @@ public class Database extends SQLiteOpenHelper
     {
         SQLiteDatabase db = getInstance(appContext).getWritableDatabase();
         db.execSQL(command);
-        Log.d(TAG, command);
+        Log.d(TAG, "Executed: " + command);
     }
 
     private Database(Context context, SQLiteDatabase.CursorFactory factory)
