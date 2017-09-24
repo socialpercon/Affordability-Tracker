@@ -1,7 +1,7 @@
-package com.mweser.affordabilitytracker.activity;
+package com.mweser.affordabilitytracker.activity.wishlist;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity_controller.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.ActivityUtils;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class ProjectionListActivity extends AppCompatActivity
+public class WishlistActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
 
@@ -24,7 +24,8 @@ public class ProjectionListActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_projection_list);
+
+        setContentView(R.layout.activity_wishlist);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -70,7 +71,7 @@ public class ProjectionListActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.projection_list, menu);
+        getMenuInflater().inflate(R.menu.wishlist, menu);
         return true;
     }
 
@@ -97,7 +98,6 @@ public class ProjectionListActivity extends AppCompatActivity
     {
         // Handle navigation view item clicks here.
         ActivityUtils.navBarSwitch(getApplicationContext(), getBaseContext(), this, item);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

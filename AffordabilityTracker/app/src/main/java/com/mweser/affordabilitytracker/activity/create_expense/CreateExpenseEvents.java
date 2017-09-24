@@ -1,16 +1,20 @@
-package com.mweser.affordabilitytracker.activity_controller;
+package com.mweser.affordabilitytracker.activity.create_expense;
 
-import static com.mweser.affordabilitytracker.activity_controller.ActivityUtils.generateListOfUiElements;
-import static com.mweser.affordabilitytracker.activity_controller.CreateExpenseEvents.ToggleButtonTypes.EXPENSE;
-import static com.mweser.affordabilitytracker.activity_controller.CreateExpenseEvents.ToggleButtonTypes.INCOME;
+import static com.mweser.affordabilitytracker.activity.ActivityUtils.generateEnumArrayList;
+import static com.mweser.affordabilitytracker.activity.ActivityUtils.generateListOfUiElements;
+import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEvents.ToggleButtonTypes.EXPENSE;
+import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEvents.ToggleButtonTypes.INCOME;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mweser.affordabilitytracker.activity.ExpensesActivity;
+import com.mweser.affordabilitytracker.activity.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.expense.ExpensesActivity;
+import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ToggleButton;
@@ -20,16 +24,17 @@ public class CreateExpenseEvents
     private static Activity activity;
     private static Context appContext;
     private static Context baseContext;
+    private static List<Enum<?>> schemaElementsAddedOrder;
     private static List<String> textDataEntries;
     private static List<EditText> textInputs;
     private static List<ToggleButton> toggleButtons;
 
-    public enum ToggleButtonTypes
+    enum ToggleButtonTypes
     {
         EXPENSE, INCOME
     }
 
-    public enum CreateExpenseUiElements
+    enum CreateExpenseUiElements
     {
         NAME, AMOUNT, START_DATE, END_DATE, FREQ, FREQ_TYPE, ACCOUNT
     }
@@ -38,13 +43,13 @@ public class CreateExpenseEvents
     {
         textDataEntries = populateAccountFieldsList();
 
-//                String insertCommand = InsertOperations.newInsertCommand(Schema.Tables.expense_events,
-//                        textDataEntries,
-//
-//
-//                        );
-//
-//                Database.executeSQL(appContext, insertCommand);
+        //                String insertCommand = InsertOperations.newInsertCommand(Schema.Tables.expense_events,
+        //                        textDataEntries,
+        //
+        //
+        //                        );
+        //
+        //                Database.executeSQL(appContext, insertCommand);
     }
 
     private static List<String> populateAccountFieldsList()
@@ -60,7 +65,8 @@ public class CreateExpenseEvents
         if (toggleButtons.get(EXPENSE.ordinal())
                 .isChecked())
         {
-            textDataEntries.set(CreateExpenseUiElements.AMOUNT.ordinal(), "-" + textDataEntries.get(CreateExpenseUiElements.AMOUNT.ordinal()));
+            textDataEntries.set(CreateExpenseUiElements.AMOUNT.ordinal(),
+                    "-" + textDataEntries.get(CreateExpenseUiElements.AMOUNT.ordinal()));
         }
 
         return textDataEntries;
@@ -83,6 +89,26 @@ public class CreateExpenseEvents
                 .setChecked(isChecked);
         toggleButtons.get(INCOME.ordinal())
                 .setChecked(!isChecked);
+    }
+
+    public static void setUpAccountSchemaIndicesPopulated(
+            Schema.expense_events... expenseSchemaIndices)
+    {
+        schemaElementsAddedOrder = generateEnumArrayList(expenseSchemaIndices);
+        verifyCorrectEnumOrder();
+    }
+
+    private static void verifyCorrectEnumOrder()
+    {
+        for (int index = 0; index < schemaElementsAddedOrder.size(); index++)
+        {
+            if (!schemaElementsAddedOrder.get(index)
+                    .toString()
+                    .equals(CreateExpenseUiElements.values()[index].toString()))
+            {
+                Log.e("CreateExpense", "CreateExpense: Mismatch in Text Field columns");
+            }
+        }
     }
 
     public static List<ToggleButton> setToggleBtnProperties()

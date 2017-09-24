@@ -1,7 +1,7 @@
-package com.mweser.affordabilitytracker.activity;
+package com.mweser.affordabilitytracker.activity.points;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity_controller.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.ActivityUtils;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class ThresholdsActivity extends AppCompatActivity
+public class CreditPointsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
 
@@ -24,7 +24,7 @@ public class ThresholdsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thresholds);
+        setContentView(R.layout.activity_credit_points);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -70,7 +70,7 @@ public class ThresholdsActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.thresholds, menu);
+        getMenuInflater().inflate(R.menu.credit_points, menu);
         return true;
     }
 

@@ -1,11 +1,7 @@
-package com.mweser.affordabilitytracker.activity;
-
-import static com.mweser.affordabilitytracker.activity_controller.CreateExpenseEvents.setUpFab;
-import static com.mweser.affordabilitytracker.activity_controller.CreateExpenseEvents.setUpTextInputs;
-import static com.mweser.affordabilitytracker.activity_controller.CreateExpenseEvents.setUpToggleButtons;
-import static com.mweser.affordabilitytracker.activity_controller.CreateExpenseEvents.setContexts;
+package com.mweser.affordabilitytracker.activity.create_expense;
 
 import com.mweser.affordabilitytracker.R;
+import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,12 +19,11 @@ public class CreateExpenseEventActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        setUpFab(R.id.fab);
+        CreateExpenseEvents.setUpFab(R.id.fab);
 
         // NAME, AMOUNT, FIRST_DATE, LAST_DATE, IRRELEVANCY_DATE, FREQUENCY, FREQUENCY_TYPE, RECUR_TYPE, AMOUNT_TYPE, ACCOUNT
 
-        setUpTextInputs(
-                R.id.txtExpenseName,
+        CreateExpenseEvents.setUpTextInputs(R.id.txtExpenseName,
                 R.id.txtExpenseAmount,
                 R.id.txtExpenseStartDate,
                 R.id.txtExpenseEndDate,
@@ -36,15 +31,15 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 R.id.txtExpenseFreqType,
                 R.id.txtExpenseAccountName);
 
-//        setUpAccountSchemaIndicesPopulated(accounts.NAME,
-//                accounts.PAYMENT_DATE,
-//                accounts.STATEMENT_DATE,
-//                accounts.AMOUNT_NEXT_STATEMENT,
-//                accounts.TOTAL_AMOUNT,
-//                accounts.POINTS_BALANCE);
+        CreateExpenseEvents.setUpAccountSchemaIndicesPopulated(Schema.expense_events.NAME,
+                Schema.expense_events.AMOUNT,
+                Schema.expense_events.FIRST_DATE,
+                Schema.expense_events.LAST_DATE,
+                Schema.expense_events.FREQUENCY,
+                Schema.expense_events.FREQUENCY_TYPE,
+                Schema.expense_events.ACCOUNT);
 
-        setUpToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
-
+        CreateExpenseEvents.setUpToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
     }
 
     private void onCreateSetup()
@@ -52,6 +47,6 @@ public class CreateExpenseEventActivity extends AppCompatActivity
         setContentView(R.layout.activity_create_expense_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setContexts(this, getApplicationContext(), getBaseContext());
+        CreateExpenseEvents.setContexts(this, getApplicationContext(), getBaseContext());
     }
 }

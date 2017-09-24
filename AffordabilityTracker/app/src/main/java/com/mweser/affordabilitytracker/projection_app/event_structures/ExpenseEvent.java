@@ -1,6 +1,6 @@
 package com.mweser.affordabilitytracker.projection_app.event_structures;
 
-import static com.mweser.affordabilitytracker.activity_controller.CreateExpenseEvents.CreateExpenseUiElements.FREQ;
+import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEvents.CreateExpenseUiElements.FREQ;
 
 import java.util.ArrayList;
 import java.util.Date;
