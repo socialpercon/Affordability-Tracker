@@ -1,17 +1,11 @@
 package com.mweser.affordabilitytracker.projection_app.event_structures;
 
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.ExpenseDataColumn.ACCOUNT_USED;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.ExpenseDataColumn.AMOUNT;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.ExpenseDataColumn.AMOUNT_TYPE;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.ExpenseDataColumn.FREQ;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.ExpenseDataColumn.FREQ_TYPE;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.ExpenseDataColumn.NAME;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.ExpenseDataColumn.RECUR_TYPE;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.ExpenseDataColumn.START_DATE;
+import static com.mweser.affordabilitytracker.activity_controller.CreateExpenseEvents.CreateExpenseUiElements.FREQ;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.mweser.affordabilitytracker.database.schema.Schema;
 import com.mweser.affordabilitytracker.projection_app.data_operations.DateConversionUtils;
 import com.mweser.affordabilitytracker.projection_app.data_operations.DateOperations;
 import com.mweser.affordabilitytracker.projection_app.data_operations.datatable_structures.DataRow;
@@ -80,16 +74,17 @@ public class ExpenseEvent extends RecurEvent
         }
     }
 
+    // TODO: 9/24/17 Will change with new way of inputting data
     private void importFields(DataRow row)
     {
-        firstEventDate = DateConversionUtils.stringToDate(row.get(START_DATE));
-        name = row.get(NAME);
-        amount = Double.parseDouble(row.get(AMOUNT));
+        firstEventDate = DateConversionUtils.stringToDate(row.get(Schema.expense_events.FIRST_DATE));
+        name = row.get(Schema.expense_events.NAME);
+        amount = Double.parseDouble(row.get(Schema.expense_events.AMOUNT));
         frequency = Integer.parseInt(row.get(FREQ));
-        freqType = RecurEventValueTypes.FrequencyType.valueOf(row.get(FREQ_TYPE));
-        recurType = RecurEventValueTypes.RecurType.valueOf(row.get(RECUR_TYPE));
-        amountType = RecurEventValueTypes.AmountType.valueOf(row.get(AMOUNT_TYPE));
-        accountCode = row.get(ACCOUNT_USED);
+        freqType = RecurEventValueTypes.FrequencyType.valueOf(row.get(Schema.expense_events.FREQUENCY_TYPE));
+        recurType = RecurEventValueTypes.RecurType.valueOf(row.get(Schema.expense_events.RECUR_TYPE));
+        amountType = RecurEventValueTypes.AmountType.valueOf(row.get(Schema.expense_events.AMOUNT_TYPE));
+        accountCode = row.get(Schema.expense_events.ACCOUNT);
     }
 
     private void outputEventStatusLog(AccountEvent account)

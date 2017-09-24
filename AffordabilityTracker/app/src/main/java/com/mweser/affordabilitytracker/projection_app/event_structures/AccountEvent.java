@@ -1,12 +1,5 @@
 package com.mweser.affordabilitytracker.projection_app.event_structures;
 
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.AccountDataColumn.AMOUNT_NEXT_STATEMENT;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.AccountDataColumn.LAST_4;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.AccountDataColumn.NAME;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.AccountDataColumn.PAYMENT_DATE;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.AccountDataColumn.STATEMENT_DATE;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.AccountDataColumn.TOTAL_BALANCE;
-import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.AccountDataColumn.TYPE;
 import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.FrequencyType.DAYS;
 import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.FrequencyType.MONTHS;
 import static com.mweser.affordabilitytracker.projection_app.event_structures.RecurEventValueTypes.FrequencyType.ONCE;
@@ -15,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.mweser.affordabilitytracker.database.schema.Schema;
 import com.mweser.affordabilitytracker.projection_app.data_operations.DateConversionUtils;
 import com.mweser.affordabilitytracker.projection_app.data_operations.DateOperations;
 import com.mweser.affordabilitytracker.projection_app.data_operations.datatable_structures.DataRow;
@@ -124,13 +118,13 @@ public class AccountEvent extends RecurEvent
     {
         int[] dateArray = DateOperations.getCurrentDate();
 
-        name = row.get(NAME);
-        accountType = RecurEventValueTypes.AccountType.valueOf(row.get(TYPE));
-        firstEventDate = DateConversionUtils.stringToDate(dateArray[1] + "/" + row.get(PAYMENT_DATE) + "/" + dateArray[0]);     // TODO: 9/13/17 Correct issue with parsing string
-        statementDate = DateConversionUtils.stringToDate(dateArray[1] + "/" + row.get(STATEMENT_DATE) + "/" + dateArray[0]);
-        lastFourDigits = row.get(LAST_4);
-        amountNextStatement = Double.parseDouble(row.get(AMOUNT_NEXT_STATEMENT));
-        amount = Double.parseDouble(row.get(TOTAL_BALANCE));
+        name = row.get(Schema.accounts.NAME);
+        accountType = RecurEventValueTypes.AccountType.valueOf(row.get(Schema.accounts.TYPE));
+        firstEventDate = DateConversionUtils.stringToDate(dateArray[1] + "/" + row.get(Schema.accounts.PAYMENT_DATE) + "/" + dateArray[0]);     // TODO: 9/13/17 Correct issue with parsing string
+        statementDate = DateConversionUtils.stringToDate(dateArray[1] + "/" + row.get(Schema.accounts.STATEMENT_DATE) + "/" + dateArray[0]);
+//        lastFourDigits = row.get(Schema.accounts.);
+        amountNextStatement = Double.parseDouble(row.get(Schema.accounts.AMOUNT_NEXT_STATEMENT));
+        amount = Double.parseDouble(row.get(Schema.accounts.TOTAL_AMOUNT));
     }
 
     public RecurEventValueTypes.AccountType getAccountType()
