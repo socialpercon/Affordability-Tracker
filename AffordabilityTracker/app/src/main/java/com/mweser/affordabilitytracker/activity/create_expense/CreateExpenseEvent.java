@@ -1,7 +1,7 @@
 package com.mweser.affordabilitytracker.activity.create_expense;
 
-import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.ToggleButtonTypes.EXPENSE;
-import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.ToggleButtonTypes.INCOME;
+import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEvent.ToggleButtonTypes.EXPENSE;
+import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEvent.ToggleButtonTypes.INCOME;
 import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.generateListOfUiElements;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ToggleButton;
 
-public class CreateExpenseEventsData extends DataEntryActivity
+public class CreateExpenseEvent extends DataEntryActivity
 {
     List<ToggleButton> toggleButtons;
 
@@ -27,7 +27,7 @@ public class CreateExpenseEventsData extends DataEntryActivity
         NAME, AMOUNT, START_DATE, END_DATE, FREQ, FREQ_TYPE, ACCOUNT
     }
 
-    public CreateExpenseEventsData(Activity activity, Context appContext, Context baseContext)
+    public CreateExpenseEvent(Activity activity, Context appContext, Context baseContext)
     {
         super(activity, appContext, baseContext);
     }

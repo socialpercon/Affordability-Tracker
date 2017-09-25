@@ -20,13 +20,13 @@ public class CreateExpenseEventActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        CreateExpenseEventsData createExpenseEventsData = new CreateExpenseEventsData(this, getApplicationContext(), getBaseContext());
+        CreateExpenseEvent createExpenseEvent = new CreateExpenseEvent(this, getApplicationContext(), getBaseContext());
 
-        createExpenseEventsData.initFab(R.id.fab, ExpensesActivity.class);
+        createExpenseEvent.initFab(R.id.fab, ExpensesActivity.class);
 
         // NAME, AMOUNT, FIRST_DATE, LAST_DATE, IRRELEVANCY_DATE, FREQUENCY, FREQUENCY_UNIT, RECUR_TYPE, AMOUNT_TYPE, ACCOUNT
 
-        createExpenseEventsData.initTextFields(
+        createExpenseEvent.initTextFields(
                 R.id.txtExpenseName,
                 R.id.txtExpenseAmount,
                 R.id.txtExpenseStartDate,
@@ -35,7 +35,7 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 R.id.txtExpenseFreqType,
                 R.id.txtExpenseAccountName);
 
-        createExpenseEventsData.schemaItemOrder(Schema.Tables.expense_events,
+        createExpenseEvent.schemaItemOrder(Schema.Tables.expense_events,
                 Schema.expense_events.NAME,
                 Schema.expense_events.AMOUNT,
                 Schema.expense_events.FIRST_DATE,
@@ -44,7 +44,7 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 Schema.expense_events.FREQUENCY_UNIT,
                 Schema.expense_events.ACCOUNT);
 
-        createExpenseEventsData.initToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
+        createExpenseEvent.initToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
     }
 
     private void onCreateSetup()
