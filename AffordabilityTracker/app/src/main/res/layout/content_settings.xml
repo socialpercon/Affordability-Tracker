@@ -9,4 +9,143 @@
         tools:showIn="@layout/app_bar_settings"
         tools:context="com.mweser.affordabilitytracker.activity.settings.SettingsActivity">
 
+    <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="400dp"
+                    android:paddingBottom="25dp"
+                    android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_centerHorizontal="true"
+                      android:layout_centerVertical="true"
+                      android:orientation="vertical"
+                      android:gravity="center"
+                      android:layout_marginTop="62dp"
+        >
+
+
+            <EditText android:layout_width="@dimen/create_account_item_width"
+                      android:layout_height="@dimen/create_account_item_height"
+                      android:textSize="@dimen/create_account_text_size"
+                      android:hint="End Date"
+                      android:textColor="@color/colorHint"
+                      android:layout_weight="1"
+                      android:gravity="bottom"
+                      android:textAlignment="center"
+                      android:id="@+id/txtSettingsEndDate"
+            />
+
+            <EditText android:layout_width="@dimen/create_account_item_width"
+                      android:layout_height="@dimen/create_account_item_height"
+                      android:layout_weight="1"
+                      android:textSize="@dimen/create_account_text_size"
+                      android:hint="Security Pin"
+                      android:gravity="bottom"
+                      android:textAlignment="center"
+                      android:textColor="@color/colorHint"
+                      android:id="@+id/txtSettingsSecurityPin"
+            />
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="0dp"
+                          android:orientation="horizontal"
+                          android:gravity="center"
+                          android:layout_marginTop="0dp"
+                          android:layout_weight="1"
+                          android:layout_marginBottom="0dp"
+            >
+
+                <ToggleButton android:layout_width="wrap_content"
+                              android:layout_height="@dimen/create_account_item_height_taller"
+                              android:id="@+id/toggleSettingCreditAligned"
+                              android:textSize="@dimen/create_account_text_size"
+                              android:textOff="CREDIT-ALIGNED"
+                              android:textOn="CREDIT-ALIGNED"
+                              android:layout_marginBottom="0dp"
+
+                />
+
+                <ToggleButton android:layout_width="wrap_content"
+                              android:layout_height="@dimen/create_account_item_height_taller"
+                              android:id="@+id/toggleSettingDebitAligned"
+                              android:textSize="@dimen/create_account_text_size"
+                              android:textOff="DEBIT-ALIGNED"
+                              android:textOn="DEBIT-ALIGNED"
+                              android:layout_marginBottom="0dp"
+
+                />
+
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="@dimen/create_account_item_height"
+                          android:orientation="horizontal"
+                          android:gravity="center"
+                          android:layout_weight="1"
+            >
+                <EditText android:layout_width="@dimen/create_account_item_width"
+                          android:layout_height="wrap_content"
+                          android:textSize="@dimen/create_account_text_size"
+                          android:hint="Default Frequency"
+                          android:gravity="bottom"
+                          android:textAlignment="center"
+                          android:textColor="@color/colorHint"
+                          android:id="@+id/txtSettingsDefaultFrequency"
+                />
+
+                <EditText android:layout_width="@dimen/create_account_item_width"
+                          android:layout_height="wrap_content"
+                          android:textSize="@dimen/create_account_text_size"
+                          android:hint="Frequency Unit"
+                          android:gravity="bottom"
+                          android:textAlignment="center"
+                          android:textColor="@color/colorHint"
+                          android:id="@+id/txtSettingsDefaultFrequencyUnit"
+                />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="@dimen/create_account_item_height"
+                          android:orientation="horizontal"
+                          android:gravity="center"
+                          android:layout_weight="1"
+            >
+                <EditText android:layout_width="50dp"
+                          android:layout_height="wrap_content"
+                          android:textSize="@dimen/create_account_text_size"
+                          android:hint="Date Range"
+                          android:gravity="bottom"
+                          android:textAlignment="center"
+                          android:textColor="@color/colorHint"
+                          android:id="@+id/txtSettingsDateRange"
+                />
+
+
+                <EditText android:layout_width="@dimen/create_account_item_width"
+                          android:layout_height="wrap_content"
+                          android:textSize="@dimen/create_account_text_size"
+                          android:hint="Range Unit"
+                          android:gravity="bottom"
+                          android:textAlignment="center"
+                          android:textColor="@color/colorHint"
+                          android:id="@+id/txtSettingsDateRangeUnit"
+                />
+            </LinearLayout>
+
+            <EditText android:layout_width="@dimen/create_account_item_width"
+                      android:layout_height="@dimen/create_account_item_height"
+                      android:layout_weight="1"
+                      android:textSize="@dimen/create_account_text_size"
+                      android:hint="Accent Hue"
+                      android:gravity="bottom"
+                      android:textAlignment="center"
+                      android:textColor="@color/colorHint"
+                      android:id="@+id/txtSettingsAccentHue"
+            />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    
 </android.support.constraint.ConstraintLayout>

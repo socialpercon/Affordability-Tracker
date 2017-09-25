@@ -46,17 +46,16 @@ public class CreateBankAccount extends DataEntryActivity
 
     public void populateAdditionalUiElements()
     {
+        String typeValue = "DEBIT";
+
         if (toggleButtons.get(CREDIT.ordinal())
                 .isChecked())
         {
-            textFieldsToSave.add("CREDIT");
-            schemaElementsAddedOrder.add(Schema.accounts.TYPE);
+            typeValue = "CREDIT";
         }
-        else
-        {
-            textFieldsToSave.add("DEBIT");
-            schemaElementsAddedOrder.add(Schema.accounts.TYPE);
-        }
+
+        textFieldsToSave.add(typeValue);
+        schemaElementsAddedOrder.add(Schema.accounts.TYPE);
     }
 
     private View.OnClickListener generateCreditListener()

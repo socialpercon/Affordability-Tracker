@@ -1,12 +1,20 @@
 package com.mweser.affordabilitytracker.activity.settings;
 
+import static com.mweser.affordabilitytracker.database.schema.Schema.settings.ACCENT_HUE;
+import static com.mweser.affordabilitytracker.database.schema.Schema.settings.DATE_RANGE;
+import static com.mweser.affordabilitytracker.database.schema.Schema.settings.DEFAULT_FREQUENCY;
+import static com.mweser.affordabilitytracker.database.schema.Schema.settings.DEFAULT_FREQUENCY_TYPE;
+import static com.mweser.affordabilitytracker.database.schema.Schema.settings.END_DATE;
+import static com.mweser.affordabilitytracker.database.schema.Schema.settings.RANGE_UNIT;
+import static com.mweser.affordabilitytracker.database.schema.Schema.settings.SECURITY_PIN;
+
 import com.mweser.affordabilitytracker.R;
+import com.mweser.affordabilitytracker.activity.MainActivity;
 import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
+import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,33 +22,51 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 public class SettingsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_settings);
+        onCreateSetup();
+        setUpUiElements();
+    }
 
+    // TODO: 9/24/17 In next version, change to sliders and other useful UI elements
+    private void setUpUiElements()
+    {
+        Settings settings = new Settings(this, getApplicationContext(), getBaseContext());
+
+        settings.initFab(R.id.fab, MainActivity.class);
+
+        // ACCENT_HUE, CREDIT_ALIGNED, DEFAULT_FREQUENCY, DEFAULT_FREQUENCY_TYPE, SECURITY_PIN, START_DATE, DATE_RANGE, END_DATE
+        settings.initTextFields(R.id.txtSettingsEndDate,
+                R.id.txtSettingsSecurityPin,
+                R.id.txtSettingsDefaultFrequency,
+                R.id.txtSettingsDefaultFrequencyUnit,
+                R.id.txtSettingsDateRange,
+                R.id.txtSettingsDateRangeUnit,
+                R.id.txtSettingsAccentHue);
+
+        settings.schemaItemOrder(Schema.Tables.settings,
+                END_DATE,
+                SECURITY_PIN,
+                DEFAULT_FREQUENCY,
+                DEFAULT_FREQUENCY_TYPE,
+                DATE_RANGE,
+                RANGE_UNIT,
+                ACCENT_HUE);
+
+        settings.initToggleButtons(R.id.toggleSettingCreditAligned, R.id.toggleSettingDebitAligned);
+    }
+
+    private void onCreateSetup()
+    {
         setContentView(R.layout.activity_settings);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
@@ -62,7 +88,8 @@ public class SettingsActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START))
         {
             drawer.closeDrawer(GravityCompat.START);
-        } else
+        }
+        else
         {
             super.onBackPressed();
         }
@@ -99,7 +126,6 @@ public class SettingsActivity extends AppCompatActivity
     {
         // Handle navigation view item clicks here.
         ActivityUtils.navBarSwitch(getApplicationContext(), getBaseContext(), this, item);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

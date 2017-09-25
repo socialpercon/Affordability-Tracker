@@ -62,7 +62,7 @@ public class Schema
 
     public enum settings
     {
-        ACCENT_HUE, CREDIT_ALIGNED
+        ACCENT_HUE, CREDIT_ALIGNED, DEFAULT_FREQUENCY, DEFAULT_FREQUENCY_TYPE, SECURITY_PIN, START_DATE, DATE_RANGE, RANGE_UNIT, END_DATE
     }
 
     public static List<SchemaTable> getSchema()
