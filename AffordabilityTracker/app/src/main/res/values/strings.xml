@@ -16,4 +16,5 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_create_bank_account">CreateBankAccountActivity</string>
     <string name="title_activity_create_expense_event">CreateExpenseEventActivity</string>
+    <string name="title_activity_create_wishlist_item">CreateWishlistItemActivity</string>
 </resources>

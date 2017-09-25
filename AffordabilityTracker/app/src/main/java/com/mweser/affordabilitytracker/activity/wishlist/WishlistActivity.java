@@ -1,12 +1,11 @@
 package com.mweser.affordabilitytracker.activity.wishlist;
 
 import com.mweser.affordabilitytracker.R;
+import com.mweser.affordabilitytracker.activity.create_wishlist_item.CreateWishlistItemActivity;
 import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 public class WishlistActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
@@ -24,12 +22,10 @@ public class WishlistActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         onCreateSetup();
+    }
 
-        // NAME, AMOUNT, PRIORITY_RANKING, DESIRED_DATE, CALCULATED_DATE, IRRELEVANCY_DATE, FREQUENCY, FREQUENCY_TYPE, RECUR_TYPE, AMOUNT_TYPE
-
-
-
-
+    private void setUpUiElements()
+    {
     }
 
     private void onCreateSetup()
@@ -38,17 +34,10 @@ public class WishlistActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .show();
-            }
-        });
+        ActivityUtils.setUpActivityTransitionFab(R.id.fab,
+                getBaseContext(),
+                this,
+                CreateWishlistItemActivity.class);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
@@ -61,7 +50,6 @@ public class WishlistActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
     }
 
     @Override

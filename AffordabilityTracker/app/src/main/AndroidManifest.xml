@@ -74,6 +74,11 @@
                 android:label="@string/title_activity_create_expense_event"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+                android:name=".activity.create_wishlist_item.CreateWishlistItemActivity"
+                android:label="@string/title_activity_create_wishlist_item"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
