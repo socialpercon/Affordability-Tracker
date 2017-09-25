@@ -9,7 +9,7 @@ import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpe
 
 import java.util.List;
 
-import com.mweser.affordabilitytracker.activity.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 import com.mweser.affordabilitytracker.activity.expense.ExpensesActivity;
 
 import android.view.View;

@@ -50,7 +50,7 @@
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".activity.wishlist.WishlistScheduleActivity"
+                android:name=".activity.wishlist_schedule.WishlistScheduleActivity"
                 android:label="@string/title_activity_wishlist_schedule"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>

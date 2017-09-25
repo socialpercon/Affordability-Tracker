@@ -1,7 +1,7 @@
 package com.mweser.affordabilitytracker.activity.thresholds;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

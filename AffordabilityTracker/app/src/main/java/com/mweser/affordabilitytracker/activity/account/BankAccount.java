@@ -1,6 +1,6 @@
 package com.mweser.affordabilitytracker.activity.account;
 
-import com.mweser.affordabilitytracker.activity.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 import com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountActivity;
 import com.mweser.affordabilitytracker.database.database_operations.QueryOperations;
 import com.mweser.affordabilitytracker.database.schema.Schema;

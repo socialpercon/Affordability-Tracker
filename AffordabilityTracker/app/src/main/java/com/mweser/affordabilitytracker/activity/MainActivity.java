@@ -2,6 +2,7 @@ package com.mweser.affordabilitytracker.activity;
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountActivity;
+import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

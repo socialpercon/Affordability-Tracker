@@ -51,7 +51,7 @@ public class DatabaseUtils
 
         for (int index = 0; index < listSize; index++)
         {
-            list.add("'NULL'");
+            list.add("NULL");
         }
 
         for (int index = 0; index < valuesList.size(); index++)
@@ -60,6 +60,11 @@ public class DatabaseUtils
             Enum<?> incomingEnumValue = schemaEntries.get(index);
 
             incomingValue = "'" + incomingValue + "'";
+
+            if (incomingValue.equals("''") || incomingValue.equals("'-'"))
+            {
+                incomingValue = "NULL";
+            }
 
             list.set(incomingEnumValue.ordinal(), incomingValue);
         }

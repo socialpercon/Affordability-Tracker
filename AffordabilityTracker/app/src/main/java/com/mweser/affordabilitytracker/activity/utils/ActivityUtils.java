@@ -1,4 +1,4 @@
-package com.mweser.affordabilitytracker.activity;
+package com.mweser.affordabilitytracker.activity.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import com.mweser.affordabilitytracker.activity.projection.ProjectionListActivit
 import com.mweser.affordabilitytracker.activity.settings.SettingsActivity;
 import com.mweser.affordabilitytracker.activity.thresholds.ThresholdsActivity;
 import com.mweser.affordabilitytracker.activity.wishlist.WishlistActivity;
-import com.mweser.affordabilitytracker.activity.wishlist.WishlistScheduleActivity;
+import com.mweser.affordabilitytracker.activity.wishlist_schedule.WishlistScheduleActivity;
 import com.mweser.affordabilitytracker.database.Database;
 import com.mweser.affordabilitytracker.database.database_operations.InsertOperations;
 import com.mweser.affordabilitytracker.database.schema.Schema;

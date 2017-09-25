@@ -1,8 +1,8 @@
 package com.mweser.affordabilitytracker.activity.create_expense;
 
-import static com.mweser.affordabilitytracker.activity.ActivityUtils.generateEnumArrayList;
-import static com.mweser.affordabilitytracker.activity.ActivityUtils.generateListOfUiElements;
-import static com.mweser.affordabilitytracker.activity.ActivityUtils.insertUiFieldsToDatabase;
+import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.generateEnumArrayList;
+import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.generateListOfUiElements;
+import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.insertUiFieldsToDatabase;
 import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventUi.setToggleBtnProperties;
 import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.ToggleButtonTypes.EXPENSE;
 

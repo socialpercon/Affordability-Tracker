@@ -1,7 +1,7 @@
 package com.mweser.affordabilitytracker.activity.wishlist;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -19,12 +19,21 @@ import android.view.View;
 public class WishlistActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        onCreateSetup();
 
+        // NAME, AMOUNT, PRIORITY, DESIRED_DATE, CALCULATED_DATE, IRRELEVANCY_DATE, FREQUENCY, FREQUENCY_TYPE, RECUR_TYPE, AMOUNT_TYPE
+
+
+
+
+    }
+
+    private void onCreateSetup()
+    {
         setContentView(R.layout.activity_wishlist);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,6 +61,7 @@ public class WishlistActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -61,7 +71,8 @@ public class WishlistActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START))
         {
             drawer.closeDrawer(GravityCompat.START);
-        } else
+        }
+        else
         {
             super.onBackPressed();
         }

@@ -2,7 +2,7 @@ package com.mweser.affordabilitytracker.activity.expense;
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.MainActivity;
-import com.mweser.affordabilitytracker.activity.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 import com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventActivity;
 
 import android.os.Bundle;

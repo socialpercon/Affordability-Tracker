@@ -4,7 +4,7 @@ import static com.mweser.affordabilitytracker.activity.account.BankAccount.setCo
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.MainActivity;
-import com.mweser.affordabilitytracker.activity.ActivityUtils;
+import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;

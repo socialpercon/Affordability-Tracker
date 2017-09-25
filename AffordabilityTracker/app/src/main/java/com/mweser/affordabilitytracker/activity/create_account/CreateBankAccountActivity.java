@@ -1,6 +1,8 @@
 package com.mweser.affordabilitytracker.activity.create_account;
 
 import com.mweser.affordabilitytracker.R;
+import com.mweser.affordabilitytracker.activity.account.BankAccountActivity;
+import com.mweser.affordabilitytracker.database.schema.Schema;
 import com.mweser.affordabilitytracker.database.schema.Schema.accounts;
 
 import android.os.Bundle;
@@ -19,17 +21,20 @@ public class CreateBankAccountActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        CreateBankAccountData.initFab(R.id.fab);
+        CreateBankAccountData accountData = new CreateBankAccountData(this,
+                getApplicationContext(),
+                getBaseContext());
 
-        CreateBankAccountData.initTextFields(
-                R.id.txtExpenseAccountName,
+        accountData.initFab(R.id.fab, BankAccountActivity.class);
+
+        accountData.initTextFields(R.id.txtExpenseAccountName,
                 R.id.txtPaymentDate,
                 R.id.txtStatementDate,
                 R.id.txtDueNextStatement,
                 R.id.txtTotalAmount,
                 R.id.txtPoints);
 
-        CreateBankAccountData.schemaItemOrder(
+        accountData.schemaItemOrder(Schema.Tables.accounts,
                 accounts.NAME,
                 accounts.PAYMENT_DATE,
                 accounts.STATEMENT_DATE,
@@ -37,13 +42,11 @@ public class CreateBankAccountActivity extends AppCompatActivity
                 accounts.TOTAL_AMOUNT,
                 accounts.POINTS_BALANCE);
 
-        CreateBankAccountData.initToggleButtons(R.id.toggleCreditCard, R.id.toggleDebitCard);
+        accountData.initToggleButtons(R.id.toggleCreditCard, R.id.toggleDebitCard);
     }
 
     private void onCreateSetup()
     {
-        CreateBankAccountData.setContexts(this, getApplicationContext(), getBaseContext());
-
         setContentView(R.layout.activity_create_bank_account);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
