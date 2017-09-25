@@ -1,31 +1,21 @@
 package com.mweser.affordabilitytracker.activity.create_expense;
 
-import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.generateEnumArrayList;
-import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.generateListOfUiElements;
-import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.insertUiFieldsToDatabase;
-import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventUi.setToggleBtnProperties;
 import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.ToggleButtonTypes.EXPENSE;
+import static com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventsData.ToggleButtonTypes.INCOME;
+import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.generateListOfUiElements;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.mweser.affordabilitytracker.database.schema.Schema;
+import com.mweser.affordabilitytracker.activity.utils.DataEntryActivity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
-import android.widget.EditText;
+import android.view.View;
 import android.widget.ToggleButton;
 
-public class CreateExpenseEventsData
+public class CreateExpenseEventsData extends DataEntryActivity
 {
-    static Activity activity;
-    static Context appContext;
-    static Context baseContext;
-    static List<Enum<?>> schemaElementsAddedOrder;
-    static List<String> textDataEntries;
-    static List<EditText> textInputs;
-    static List<ToggleButton> toggleButtons;
+    List<ToggleButton> toggleButtons;
 
     enum ToggleButtonTypes
     {
@@ -37,68 +27,69 @@ public class CreateExpenseEventsData
         NAME, AMOUNT, START_DATE, END_DATE, FREQ, FREQ_TYPE, ACCOUNT
     }
 
-    static void saveFieldsToDatabase()
+    public CreateExpenseEventsData(Activity activity, Context appContext, Context baseContext)
     {
-        insertUiFieldsToDatabase(appContext,
-                Schema.Tables.expense_events,
-                populateExpensesFieldList(),
-                schemaElementsAddedOrder);
+        super(activity, appContext, baseContext);
     }
 
-    static List<String> populateExpensesFieldList()
+    public void populateAdditionalUiElements()
     {
-        textDataEntries = new ArrayList<>();
-
-        for (EditText text : textInputs)
-        {
-            textDataEntries.add(text.getText()
-                    .toString());
-        }
-
         if (toggleButtons.get(EXPENSE.ordinal())
                 .isChecked())
         {
-            textDataEntries.set(CreateExpenseUiElements.AMOUNT.ordinal(),
-                    "-" + textDataEntries.get(CreateExpenseUiElements.AMOUNT.ordinal()));
-        }
-
-        return textDataEntries;
-    }
-
-    public static void schemaItemOrder(Schema.expense_events... expenseSchemaIndices)
-    {
-        schemaElementsAddedOrder = generateEnumArrayList(expenseSchemaIndices);
-        verifyCorrectEnumOrder();
-    }
-
-    private static void verifyCorrectEnumOrder()
-    {
-        for (int index = 0; index < schemaElementsAddedOrder.size(); index++)
-        {
-            if (!schemaElementsAddedOrder.get(index)
-                    .toString()
-                    .equals(CreateExpenseUiElements.values()[index].toString()))
-            {
-                Log.e("CreateExpense", "CreateExpense: Mismatch in Text Field columns");
-            }
+            textFieldsToSave.set(CreateExpenseUiElements.AMOUNT.ordinal(),
+                    "-" + textFieldsToSave.get(CreateExpenseUiElements.AMOUNT.ordinal()));
         }
     }
 
-    public static void initTextInputs(int... textFields)
-    {
-        textInputs = generateListOfUiElements(activity, textFields);
-    }
-
-    public static void initToggleButtons(int... toggleBtns)
+    public void initToggleButtons(int... toggleBtns)
     {
         toggleButtons = generateListOfUiElements(activity, toggleBtns);
         setToggleBtnProperties();
     }
 
-    public static void setContexts(Activity activity, Context appContext, Context baseContext)
+    List<ToggleButton> setToggleBtnProperties()
     {
-        CreateExpenseEventsData.activity = activity;
-        CreateExpenseEventsData.appContext = appContext;
-        CreateExpenseEventsData.baseContext = baseContext;
+        setExpenseToggleChecked(true);
+
+        toggleButtons.get(EXPENSE.ordinal())
+                .setOnClickListener(generateExpenseListener());
+
+        toggleButtons.get(INCOME.ordinal())
+                .setOnClickListener(generateIncomeListener());
+
+        return toggleButtons;
+    }
+
+    View.OnClickListener generateExpenseListener()
+    {
+        return new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                setExpenseToggleChecked(true);
+            }
+        };
+    }
+
+    View.OnClickListener generateIncomeListener()
+    {
+        return new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                setExpenseToggleChecked(false);
+            }
+        };
+    }
+
+    void setExpenseToggleChecked(boolean isChecked)
+    {
+        toggleButtons.get(EXPENSE.ordinal())
+                .setChecked(isChecked);
+        toggleButtons.get(INCOME.ordinal())
+                .setChecked(!isChecked);
     }
 }

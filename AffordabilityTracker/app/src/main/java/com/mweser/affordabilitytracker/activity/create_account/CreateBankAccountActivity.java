@@ -21,7 +21,7 @@ public class CreateBankAccountActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        CreateBankAccountData accountData = new CreateBankAccountData(this,
+        CreateBankAccount accountData = new CreateBankAccount(this,
                 getApplicationContext(),
                 getBaseContext());
 

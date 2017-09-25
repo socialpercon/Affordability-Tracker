@@ -1,14 +1,13 @@
 package com.mweser.affordabilitytracker.activity.create_account;
 
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.TextFields.AMOUNT_NEXT_STATEMENT;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.TextFields.PAYMENT_DATE;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.TextFields.POINTS;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.TextFields.STATEMENT_DATE;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.TypeToggles.CREDIT;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountData.TypeToggles.DEBIT;
+import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TextFields.AMOUNT_NEXT_STATEMENT;
+import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TextFields.PAYMENT_DATE;
+import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TextFields.POINTS;
+import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TextFields.STATEMENT_DATE;
+import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TypeToggles.CREDIT;
+import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TypeToggles.DEBIT;
 import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.generateListOfUiElements;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.mweser.affordabilitytracker.activity.utils.DataEntryActivity;
@@ -20,7 +19,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ToggleButton;
 
-public class CreateBankAccountData extends DataEntryActivity
+public class CreateBankAccount extends DataEntryActivity
 {
     private List<ToggleButton> toggleButtons;
 
@@ -34,7 +33,7 @@ public class CreateBankAccountData extends DataEntryActivity
         NAME, PAYMENT_DATE, STATEMENT_DATE, AMOUNT_NEXT_STATEMENT, TOTAL_BALANCE, POINTS
     }
 
-    public CreateBankAccountData(Activity activity, Context appContext, Context baseContext)
+    public CreateBankAccount(Activity activity, Context appContext, Context baseContext)
     {
         super(activity, appContext, baseContext);
     }
@@ -45,22 +44,7 @@ public class CreateBankAccountData extends DataEntryActivity
         toggleButtons = setToggleBtnProperties();
     }
 
-    public List<String> populateFieldsFromUiElements()
-    {
-        textFieldsToSave = new ArrayList<>();
-
-        for (EditText text : textInputs)
-        {
-            textFieldsToSave.add(text.getText()
-                    .toString());
-        }
-
-        addAccountType();
-
-        return textFieldsToSave;
-    }
-
-    private void addAccountType()
+    public void populateAdditionalUiElements()
     {
         if (toggleButtons.get(CREDIT.ordinal())
                 .isChecked())

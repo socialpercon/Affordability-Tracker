@@ -1,6 +1,7 @@
 package com.mweser.affordabilitytracker.activity.create_expense;
 
 import com.mweser.affordabilitytracker.R;
+import com.mweser.affordabilitytracker.activity.expense.ExpensesActivity;
 import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.os.Bundle;
@@ -19,11 +20,14 @@ public class CreateExpenseEventActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        CreateExpenseEventUi.initFab(R.id.fab);
+        CreateExpenseEventsData createExpenseEventsData = new CreateExpenseEventsData(this, getApplicationContext(), getBaseContext());
+
+        createExpenseEventsData.initFab(R.id.fab, ExpensesActivity.class);
 
         // NAME, AMOUNT, FIRST_DATE, LAST_DATE, IRRELEVANCY_DATE, FREQUENCY, FREQUENCY_UNIT, RECUR_TYPE, AMOUNT_TYPE, ACCOUNT
 
-        CreateExpenseEventsData.initTextInputs(R.id.txtExpenseName,
+        createExpenseEventsData.initTextFields(
+                R.id.txtExpenseName,
                 R.id.txtExpenseAmount,
                 R.id.txtExpenseStartDate,
                 R.id.txtExpenseEndDate,
@@ -31,7 +35,8 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 R.id.txtExpenseFreqType,
                 R.id.txtExpenseAccountName);
 
-        CreateExpenseEventsData.schemaItemOrder(Schema.expense_events.NAME,
+        createExpenseEventsData.schemaItemOrder(Schema.Tables.expense_events,
+                Schema.expense_events.NAME,
                 Schema.expense_events.AMOUNT,
                 Schema.expense_events.FIRST_DATE,
                 Schema.expense_events.LAST_DATE,
@@ -39,7 +44,7 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 Schema.expense_events.FREQUENCY_UNIT,
                 Schema.expense_events.ACCOUNT);
 
-        CreateExpenseEventsData.initToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
+        createExpenseEventsData.initToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
     }
 
     private void onCreateSetup()
@@ -47,6 +52,5 @@ public class CreateExpenseEventActivity extends AppCompatActivity
         setContentView(R.layout.activity_create_expense_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        CreateExpenseEventsData.setContexts(this, getApplicationContext(), getBaseContext());
     }
 }

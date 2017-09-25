@@ -3,6 +3,7 @@ package com.mweser.affordabilitytracker.activity.utils;
 import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.generateEnumArrayList;
 import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.generateListOfUiElements;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.mweser.affordabilitytracker.database.schema.Schema;
@@ -29,6 +30,22 @@ public abstract class DataEntryActivity
         this.baseContext = baseContext;
     }
 
+    protected List<String> populateFieldsFromUiElements()
+    {
+        textFieldsToSave = new ArrayList<>();
+
+        for (EditText text : textInputs)
+        {
+            textFieldsToSave.add(text.getText()
+                    .toString());
+        }
+
+        populateAdditionalUiElements();
+        return textFieldsToSave;
+    }
+
+    protected abstract void populateAdditionalUiElements();
+
     protected void saveFieldsToDatabase()
     {
         ActivityUtils.insertUiFieldsToDatabase(appContext,
@@ -36,8 +53,6 @@ public abstract class DataEntryActivity
                 populateFieldsFromUiElements(),
                 schemaElementsAddedOrder);
     }
-
-    protected abstract List<String> populateFieldsFromUiElements();
 
     public void schemaItemOrder(Schema.Tables schemaTable, Enum<?>... schemaAddedOrder)
     {
