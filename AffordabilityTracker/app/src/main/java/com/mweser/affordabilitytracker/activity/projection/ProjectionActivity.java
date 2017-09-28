@@ -2,6 +2,7 @@ package com.mweser.affordabilitytracker.activity.projection;
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
+import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -77,12 +78,11 @@ public class ProjectionActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if (ActivityUtils.optionsMenu(item))
-        {
-            return ActivityUtils.optionsMenu(item);
-        }
+        return ActivityUtils.optionsMenu(item, getApplicationContext(),
+                Schema.Tables.projections) ?
+                true :
+                super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

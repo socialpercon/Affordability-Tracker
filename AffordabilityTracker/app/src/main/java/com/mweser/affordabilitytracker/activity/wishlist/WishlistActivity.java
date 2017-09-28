@@ -3,6 +3,7 @@ package com.mweser.affordabilitytracker.activity.wishlist;
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.create_wishlist_item.AddWishlistItemActivity;
 import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
+import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -79,12 +80,11 @@ public class WishlistActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if (ActivityUtils.optionsMenu(item))
-        {
-            return ActivityUtils.optionsMenu(item);
-        }
+        return ActivityUtils.optionsMenu(item, getApplicationContext(),
+                Schema.Tables.wishlist) ?
+                true :
+                super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

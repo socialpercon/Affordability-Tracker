@@ -98,12 +98,11 @@ public class SettingsActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if (ActivityUtils.optionsMenu(item))
-        {
-            return ActivityUtils.optionsMenu(item);
-        }
+        return ActivityUtils.optionsMenu(item, getApplicationContext(),
+                Schema.Tables.settings) ?
+                true :
+                super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
