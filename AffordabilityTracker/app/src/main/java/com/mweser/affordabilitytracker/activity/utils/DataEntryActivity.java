@@ -84,12 +84,4 @@ public abstract class DataEntryActivity
             }
         };
     }
-
-    protected void setContexts(Activity currentActivity, Context applicationContext,
-            Context baseContxt)
-    {
-        activity = currentActivity;
-        appContext = applicationContext;
-        baseContext = baseContxt;
-    }
 }

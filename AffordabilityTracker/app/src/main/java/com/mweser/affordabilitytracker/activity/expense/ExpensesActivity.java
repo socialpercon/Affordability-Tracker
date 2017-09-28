@@ -26,6 +26,9 @@ public class ExpensesActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         onCreateSetup();
+
+
+
     }
 
     private void onCreateSetup()
