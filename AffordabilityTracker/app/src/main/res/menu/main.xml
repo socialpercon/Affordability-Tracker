@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
-          android:orderInCategory="100"
-          app:showAsAction="never"/>
+
+
+    <!--<item android:id="@+id/action_settings"-->
+          <!--android:title="@string/action_settings"-->
+          <!--android:orderInCategory="100"-->
+          <!--app:showAsAction="never"/>-->
+
+    <!--<item-->
+            <!--android:id="@+id/data_view"-->
+            <!--android:orderInCategory="1"-->
+            <!--android:title="View Database"-->
+            <!--app:showAsAction="never"/>-->
+    <item
+            android:id="@+id/option_clear_data"
+            android:orderInCategory="2"
+            android:title="Clear data on this page..."
+            app:showAsAction="never"/>
+
+    <!--<item-->
+            <!--android:id="@+id/data_sample"-->
+            <!--android:orderInCategory="3"-->
+            <!--android:title="Generate Sample Data"-->
+            <!--app:showAsAction="never"/>-->
+    <!--<item-->
+            <!--android:id="@+id/data_real"-->
+            <!--android:orderInCategory="4"-->
+            <!--android:title="Use Real Data"-->
+            <!--app:showAsAction="never"/>-->
 </menu>

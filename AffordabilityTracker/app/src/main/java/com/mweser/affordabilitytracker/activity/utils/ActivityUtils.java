@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity.account.AccountActivity;
-import com.mweser.affordabilitytracker.activity.expense.ExpensesActivity;
-import com.mweser.affordabilitytracker.activity.points.CreditPointsActivity;
-import com.mweser.affordabilitytracker.activity.projection.ProjectionActivity;
-import com.mweser.affordabilitytracker.activity.projection.ProjectionListActivity;
+import com.mweser.affordabilitytracker.activity.view.account.AccountActivity;
+import com.mweser.affordabilitytracker.activity.view.expense.ExpensesActivity;
+import com.mweser.affordabilitytracker.activity.view.points.CreditPointsActivity;
+import com.mweser.affordabilitytracker.activity.view.projection.ProjectionActivity;
+import com.mweser.affordabilitytracker.activity.view.projection.ProjectionListActivity;
 import com.mweser.affordabilitytracker.activity.settings.SettingsActivity;
 import com.mweser.affordabilitytracker.activity.thresholds.ThresholdsActivity;
 import com.mweser.affordabilitytracker.activity.wishlist.WishlistActivity;
@@ -39,6 +39,10 @@ public class ActivityUtils
         {
             drawer.openDrawer(GravityCompat.START);
         }
+    }
+
+    public static void clearDataTableOption()
+    {
 
 
     }
