@@ -48,7 +48,7 @@ public class AccountActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.bank_account_management, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -61,7 +61,7 @@ public class AccountActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings)
+        if (id == R.id.option_clear_data)
         {
             return true;
         }
