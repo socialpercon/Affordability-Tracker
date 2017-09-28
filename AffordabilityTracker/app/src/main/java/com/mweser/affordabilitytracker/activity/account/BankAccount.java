@@ -1,62 +1,23 @@
 package com.mweser.affordabilitytracker.activity.account;
 
-import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
-import com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountActivity;
-import com.mweser.affordabilitytracker.database.database_operations.QueryOperations;
+import static com.mweser.affordabilitytracker.database.schema.Schema.Tables.accounts;
+
+import com.mweser.affordabilitytracker.activity.utils.StringListActivity;
 import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
-import android.widget.TextView;
 
-public class BankAccount
+public class BankAccount extends StringListActivity
 {
-    private static Activity activity;
-    private static Context appContext;
-    private static Context baseContext;
-
-    public static void setUpAccountListText(int id)
+    public BankAccount(Activity activity, Context appContext, Context baseContext)
     {
-        ((TextView) activity.findViewById(id)).setText(queryBankAccountListing(appContext));
+        super(activity, appContext, baseContext);
     }
 
-    private static String queryBankAccountListing(Context appContext)
+    @Override
+    protected String queryAndDisplayList()
     {
-        String[] queryColumns = new String[] {Schema.accounts.NAME.toString(),
-                Schema.accounts.TOTAL_AMOUNT.toString()};
-
-        return generateBankAccountListing(QueryOperations.query(appContext, Schema.Tables.accounts.toString(),
-                queryColumns));
-    }
-
-    private static String generateBankAccountListing(Cursor cursor)
-    {
-        // TODO: 9/19/17 Genericize column printing for more flexibility (use enum)
-        String bankAccountListString = "";
-
-        for (int index = 0; index < cursor.getCount(); index++)
-        {
-            bankAccountListString += cursor.getString(0) + ":\t\t$" + cursor.getString(1) + "\n";
-            cursor.moveToNext();
-        }
-
-        return bankAccountListString;
-    }
-
-    public static void setUpFab(int id)
-    {
-        ActivityUtils.setUpActivityTransitionFab(id,
-                baseContext,
-                activity,
-                CreateBankAccountActivity.class);
-    }
-
-    public static void setContexts(Activity activity, Context applicationContext,
-            Context baseContext)
-    {
-        BankAccount.activity = activity;
-        appContext = applicationContext;
-        BankAccount.baseContext = baseContext;
+        return queryTable(accounts, Schema.accounts.NAME, Schema.accounts.TOTAL_AMOUNT);
     }
 }

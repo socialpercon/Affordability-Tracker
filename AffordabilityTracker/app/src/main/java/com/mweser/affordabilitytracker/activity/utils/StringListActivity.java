@@ -29,12 +29,12 @@ public abstract class StringListActivity
         ((TextView) activity.findViewById(id)).setText(queryAndDisplayList());
     }
 
-    protected String queryTable(Schema table, Enum<?>... columns)
+    protected String queryTable(Schema.Tables table, Enum<?>... columns)
     {
         String[] queryColumns = generateStringArrayFromEnums(columns);
 
         return generateStringListing(QueryOperations.query(appContext,
-                Schema.Tables.accounts.toString(),
+                table.toString(),
                 queryColumns));
     }
 

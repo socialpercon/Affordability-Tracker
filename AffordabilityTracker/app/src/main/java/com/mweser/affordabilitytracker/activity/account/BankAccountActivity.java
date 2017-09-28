@@ -1,9 +1,8 @@
 package com.mweser.affordabilitytracker.activity.account;
 
-import static com.mweser.affordabilitytracker.activity.account.BankAccount.setContexts;
-
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.MainActivity;
+import com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountActivity;
 import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 
 import android.os.Bundle;
@@ -29,14 +28,15 @@ public class BankAccountActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        BankAccount.setUpFab(R.id.fab);
-        BankAccount.setUpAccountListText(R.id.txtListOfBanks);
+        BankAccount account = new BankAccount(this, getApplicationContext(), getBaseContext());
+        account.initFab(R.id.fab, CreateBankAccountActivity.class);
+        account.setUpAccountListText(R.id.txtListOfBanks);
     }
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        BankAccount.setUpAccountListText(R.id.txtListOfBanks);
+        setUpUiElements();
     }
 
     @Override
@@ -93,8 +93,6 @@ public class BankAccountActivity extends AppCompatActivity
         setContentView(R.layout.activity_bank_account);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        setContexts(this, getApplicationContext(), getBaseContext());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
