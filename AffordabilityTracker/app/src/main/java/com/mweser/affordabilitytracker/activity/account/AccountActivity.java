@@ -3,6 +3,7 @@ package com.mweser.affordabilitytracker.activity.account;
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.create_account.AddAccountActivity;
 import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
+import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -27,13 +28,16 @@ public class AccountActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        DisplayAccounts displayAccounts = new DisplayAccounts(this, getApplicationContext(), getBaseContext());
+        DisplayAccounts displayAccounts = new DisplayAccounts(this,
+                getApplicationContext(),
+                getBaseContext());
         displayAccounts.initFab(R.id.fab, AddAccountActivity.class);
         displayAccounts.setUpAccountListText(R.id.txtListOfBanks);
     }
 
     @Override
-    protected void onPostResume() {
+    protected void onPostResume()
+    {
         super.onPostResume();
         setUpUiElements();
     }
@@ -55,13 +59,10 @@ public class AccountActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if (ActivityUtils.optionsMenu(item))
-        {
-            return ActivityUtils.optionsMenu(item);
-        }
-
-        return super.onOptionsItemSelected(item);
-
+        return ActivityUtils.optionsMenu(item, getApplicationContext(),
+                Schema.Tables.accounts) ?
+                true :
+                super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

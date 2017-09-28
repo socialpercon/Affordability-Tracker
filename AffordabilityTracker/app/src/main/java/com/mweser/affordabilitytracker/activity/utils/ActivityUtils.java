@@ -15,6 +15,7 @@ import com.mweser.affordabilitytracker.activity.wishlist.WishlistActivity;
 import com.mweser.affordabilitytracker.activity.wishlist_schedule.WishlistScheduleActivity;
 import com.mweser.affordabilitytracker.database.Database;
 import com.mweser.affordabilitytracker.database.database_operations.InsertOperations;
+import com.mweser.affordabilitytracker.database.database_operations.RemoveOperations;
 import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.app.Activity;
@@ -41,8 +42,7 @@ public class ActivityUtils
         }
     }
 
-
-    public static boolean optionsMenu(MenuItem item)
+    public static boolean optionsMenu(MenuItem item, Context appContext, Schema.Tables... tables)
     {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -52,19 +52,17 @@ public class ActivityUtils
         //noinspection SimplifiableIfStatement
         if (id == R.id.option_clear_data)
         {
+            clearDataTableOption(appContext, tables);
             return true;
         }
 
         return false;
     }
 
-
-
-
-    public static void clearDataTableOption(Schema.Tables table)
+    public static void clearDataTableOption(Context appContext, Schema.Tables... tables)
     {
-
-
+        RemoveOperations.dropTable(Database.getInstance(appContext)
+                .getWritableDatabase(), tables);
     }
 
     public static <T extends View> List<T> generateListOfUiElements(Activity activity, int... ids)
@@ -91,9 +89,8 @@ public class ActivityUtils
     public static void insertUiFieldsToDatabase(Context appContext, Schema.Tables table,
             List<String> dataEntries, List<Enum<?>> schemaOrder)
     {
-        Database.executeSQL(appContext, InsertOperations.newInsertCommand(table.toString(),
-                dataEntries,
-                schemaOrder));
+        Database.executeSQL(appContext,
+                InsertOperations.newInsertCommand(table.toString(), dataEntries, schemaOrder));
     }
 
     public static List<Enum<?>> generateEnumArrayList(Enum<?>... enumList)

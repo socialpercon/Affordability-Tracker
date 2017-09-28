@@ -3,6 +3,7 @@ package com.mweser.affordabilitytracker.activity.expense;
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.create_expense.AddExpenseActivity;
 import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
+import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -89,12 +90,11 @@ public class ExpensesActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if (ActivityUtils.optionsMenu(item))
-        {
-            return ActivityUtils.optionsMenu(item);
-        }
+        return ActivityUtils.optionsMenu(item, getApplicationContext(),
+                Schema.Tables.expense_events) ?
+                true :
+                super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
