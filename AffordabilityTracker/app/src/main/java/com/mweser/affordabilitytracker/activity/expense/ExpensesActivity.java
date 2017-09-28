@@ -1,8 +1,7 @@
 package com.mweser.affordabilitytracker.activity.expense;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity.MainActivity;
-import com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventActivity;
+import com.mweser.affordabilitytracker.activity.create_expense.AddExpenseActivity;
 import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 
 import android.os.Bundle;
@@ -31,8 +30,8 @@ public class ExpensesActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        ExpenseEvents account = new ExpenseEvents(this, getApplicationContext(), getBaseContext());
-        account.initFab(R.id.fab, CreateExpenseEventActivity.class);
+        DisplayExpenses account = new DisplayExpenses(this, getApplicationContext(), getBaseContext());
+        account.initFab(R.id.fab, AddExpenseActivity.class);
         account.setUpAccountListText(R.id.txtListOfExpenses);
     }
 
@@ -55,7 +54,7 @@ public class ExpensesActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                ActivityUtils.startActivity(getBaseContext(), ExpensesActivity.this, CreateExpenseEventActivity.class);
+                ActivityUtils.startActivity(getBaseContext(), ExpensesActivity.this, AddExpenseActivity.class);
 
             }
         });
@@ -76,14 +75,7 @@ public class ExpensesActivity extends AppCompatActivity
     @Override
     public void onBackPressed()
     {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START))
-        {
-            drawer.closeDrawer(GravityCompat.START);
-        } else
-        {
-            ActivityUtils.startActivity(getBaseContext(), this, MainActivity.class);
-        }
+        ActivityUtils.toggleDrawer(this);
     }
 
     @Override

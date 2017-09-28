@@ -7,13 +7,13 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_create_bank_account"
-        tools:context="com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountActivity">
+        tools:context="com.mweser.affordabilitytracker.activity.create_account.AddAccountActivity">
     
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:paddingTop="12dp"
               android:paddingStart="12dp"
-              android:text="Enter data for new bank account:"
+              android:text="Enter data for new bank displayAccounts:"
     />
 
 

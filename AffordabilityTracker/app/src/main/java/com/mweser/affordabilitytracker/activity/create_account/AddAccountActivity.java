@@ -1,7 +1,7 @@
 package com.mweser.affordabilitytracker.activity.create_account;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity.account.BankAccountActivity;
+import com.mweser.affordabilitytracker.activity.account.AccountActivity;
 import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 import com.mweser.affordabilitytracker.database.schema.Schema;
 import com.mweser.affordabilitytracker.database.schema.Schema.accounts;
@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-public class CreateBankAccountActivity extends AppCompatActivity
+public class AddAccountActivity extends AppCompatActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -22,11 +22,11 @@ public class CreateBankAccountActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        CreateBankAccount accountData = new CreateBankAccount(this,
+        AddAccount accountData = new AddAccount(this,
                 getApplicationContext(),
                 getBaseContext());
 
-        accountData.initFab(R.id.fab, BankAccountActivity.class);
+        accountData.initFab(R.id.fab, AccountActivity.class);
 
         accountData.initTextFields(R.id.txtExpenseAccountName,
                 R.id.txtPaymentDate,
@@ -58,7 +58,7 @@ public class CreateBankAccountActivity extends AppCompatActivity
     {
         super.onBackPressed();
         finish();
-        ActivityUtils.startActivity(getBaseContext(), this, BankAccountActivity.class);
+        ActivityUtils.startActivity(getBaseContext(), this, AccountActivity.class);
 
     }
 }

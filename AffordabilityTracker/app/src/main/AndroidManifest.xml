@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".activity.account.BankAccountActivity"
+                android:name=".activity.account.AccountActivity"
                 android:label="@string/title_activity_bank_account_management"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -65,17 +65,17 @@
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".activity.create_account.CreateBankAccountActivity"
+                android:name=".activity.create_account.AddAccountActivity"
                 android:label="@string/title_activity_create_bank_account"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".activity.create_expense.CreateExpenseEventActivity"
+                android:name=".activity.create_expense.AddExpenseActivity"
                 android:label="@string/title_activity_create_expense_event"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".activity.create_wishlist_item.CreateWishlistItemActivity"
+                android:name=".activity.create_wishlist_item.AddWishlistItemActivity"
                 android:label="@string/title_activity_create_wishlist_item"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>

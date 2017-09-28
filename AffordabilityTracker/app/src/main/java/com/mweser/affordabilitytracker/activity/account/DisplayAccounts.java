@@ -8,9 +8,9 @@ import com.mweser.affordabilitytracker.database.schema.Schema;
 import android.app.Activity;
 import android.content.Context;
 
-public class BankAccount extends StringListActivity
+public class DisplayAccounts extends StringListActivity
 {
-    public BankAccount(Activity activity, Context appContext, Context baseContext)
+    public DisplayAccounts(Activity activity, Context appContext, Context baseContext)
     {
         super(activity, appContext, baseContext);
     }

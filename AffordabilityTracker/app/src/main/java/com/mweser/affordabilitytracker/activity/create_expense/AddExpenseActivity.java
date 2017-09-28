@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-public class CreateExpenseEventActivity extends AppCompatActivity
+public class AddExpenseActivity extends AppCompatActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,13 +21,13 @@ public class CreateExpenseEventActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        CreateExpenseEvent createExpenseEvent = new CreateExpenseEvent(this, getApplicationContext(), getBaseContext());
+        AddExpense addExpense = new AddExpense(this, getApplicationContext(), getBaseContext());
 
-        createExpenseEvent.initFab(R.id.fab, ExpensesActivity.class);
+        addExpense.initFab(R.id.fab, ExpensesActivity.class);
 
         // NAME, AMOUNT, FIRST_DATE, LAST_DATE, IRRELEVANCY_DATE, FREQUENCY, FREQUENCY_UNIT, RECUR_TYPE, AMOUNT_TYPE, ACCOUNT
 
-        createExpenseEvent.initTextFields(
+        addExpense.initTextFields(
                 R.id.txtExpenseName,
                 R.id.txtExpenseAmount,
                 R.id.txtExpenseStartDate,
@@ -36,7 +36,7 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 R.id.txtExpenseFreqType,
                 R.id.txtExpenseAccountName);
 
-        createExpenseEvent.schemaItemOrder(Schema.Tables.expense_events,
+        addExpense.schemaItemOrder(Schema.Tables.expense_events,
                 Schema.expense_events.NAME,
                 Schema.expense_events.AMOUNT,
                 Schema.expense_events.FIRST_DATE,
@@ -45,7 +45,7 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 Schema.expense_events.FREQUENCY_UNIT,
                 Schema.expense_events.ACCOUNT);
 
-        createExpenseEvent.initToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
+        addExpense.initToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
     }
 
     @Override

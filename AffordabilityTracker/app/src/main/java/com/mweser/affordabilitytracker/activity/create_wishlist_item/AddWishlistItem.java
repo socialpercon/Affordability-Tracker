@@ -5,9 +5,9 @@ import com.mweser.affordabilitytracker.activity.utils.DataEntryActivity;
 import android.app.Activity;
 import android.content.Context;
 
-public class CreateWishlistItem extends DataEntryActivity
+public class AddWishlistItem extends DataEntryActivity
 {
-    public CreateWishlistItem(Activity activity, Context appContext, Context baseContext)
+    public AddWishlistItem(Activity activity, Context appContext, Context baseContext)
     {
         super(activity, appContext, baseContext);
     }

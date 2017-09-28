@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity.account.BankAccountActivity;
+import com.mweser.affordabilitytracker.activity.account.AccountActivity;
 import com.mweser.affordabilitytracker.activity.expense.ExpensesActivity;
 import com.mweser.affordabilitytracker.activity.points.CreditPointsActivity;
 import com.mweser.affordabilitytracker.activity.projection.ProjectionActivity;
@@ -20,12 +20,29 @@ import com.mweser.affordabilitytracker.database.schema.Schema;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 public class ActivityUtils
 {
+    public static void toggleDrawer(Activity activity)
+    {
+        DrawerLayout drawer = (DrawerLayout) activity.findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START))
+        {
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        else
+        {
+            drawer.openDrawer(GravityCompat.START);
+        }
+
+
+    }
+
     public static <T extends View> List<T> generateListOfUiElements(Activity activity, int... ids)
     {
         List<T> list = new ArrayList<>();
@@ -88,7 +105,7 @@ public class ActivityUtils
 
         if (id == R.id.nav_accounts)
         {
-            ActivityUtils.startActivity(baseContext, activity, BankAccountActivity.class);
+            ActivityUtils.startActivity(baseContext, activity, AccountActivity.class);
         }
         else if (id == R.id.nav_expenses)
         {

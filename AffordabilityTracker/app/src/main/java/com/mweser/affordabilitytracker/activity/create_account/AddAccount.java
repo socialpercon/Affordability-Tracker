@@ -1,11 +1,11 @@
 package com.mweser.affordabilitytracker.activity.create_account;
 
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TextFields.AMOUNT_NEXT_STATEMENT;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TextFields.PAYMENT_DATE;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TextFields.POINTS;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TextFields.STATEMENT_DATE;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TypeToggles.CREDIT;
-import static com.mweser.affordabilitytracker.activity.create_account.CreateBankAccount.TypeToggles.DEBIT;
+import static com.mweser.affordabilitytracker.activity.create_account.AddAccount.TextFields.AMOUNT_NEXT_STATEMENT;
+import static com.mweser.affordabilitytracker.activity.create_account.AddAccount.TextFields.PAYMENT_DATE;
+import static com.mweser.affordabilitytracker.activity.create_account.AddAccount.TextFields.POINTS;
+import static com.mweser.affordabilitytracker.activity.create_account.AddAccount.TextFields.STATEMENT_DATE;
+import static com.mweser.affordabilitytracker.activity.create_account.AddAccount.TypeToggles.CREDIT;
+import static com.mweser.affordabilitytracker.activity.create_account.AddAccount.TypeToggles.DEBIT;
 import static com.mweser.affordabilitytracker.activity.utils.ActivityUtils.generateListOfUiElements;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ToggleButton;
 
-public class CreateBankAccount extends DataEntryActivity
+public class AddAccount extends DataEntryActivity
 {
     private List<ToggleButton> toggleButtons;
 
@@ -33,7 +33,7 @@ public class CreateBankAccount extends DataEntryActivity
         NAME, PAYMENT_DATE, STATEMENT_DATE, AMOUNT_NEXT_STATEMENT, TOTAL_BALANCE, POINTS
     }
 
-    public CreateBankAccount(Activity activity, Context appContext, Context baseContext)
+    public AddAccount(Activity activity, Context appContext, Context baseContext)
     {
         super(activity, appContext, baseContext);
     }

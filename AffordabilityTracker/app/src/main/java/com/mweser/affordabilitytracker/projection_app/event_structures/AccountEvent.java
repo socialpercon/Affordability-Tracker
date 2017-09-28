@@ -28,7 +28,7 @@ public class AccountEvent extends RecurEvent
 
     private void print()
     {
-        System.out.println("Account name: " + name);
+        System.out.println("DisplayAccounts name: " + name);
         System.out.println("Statement date: " + statementDate.toString());
         System.out.println("Payment date: " + firstEventDate.toString());
         System.out.println();

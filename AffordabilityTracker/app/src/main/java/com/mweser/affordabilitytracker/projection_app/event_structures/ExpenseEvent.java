@@ -91,10 +91,10 @@ public class ExpenseEvent extends RecurEvent
         // TODO: 9/14/17 Write unit tests to cover statement/payment dates
         
         //        System.out.println("\nExpense event: " + name);
-        //        System.out.println("Account for expense event: " + accountCode);
+        //        System.out.println("DisplayAccounts for expense event: " + accountCode);
         //        System.out.println(
         //                "Original first date for expense: " + DateConversionUtils.dateToString(firstEventDate));
-        //        System.out.println("Account statement date: " + account.getStatementDateString());
-        //        System.out.println("Account payment date: " + account.getFirstDateString());
+        //        System.out.println("DisplayAccounts statement date: " + account.getStatementDateString());
+        //        System.out.println("DisplayAccounts payment date: " + account.getFirstDateString());
     }
 }

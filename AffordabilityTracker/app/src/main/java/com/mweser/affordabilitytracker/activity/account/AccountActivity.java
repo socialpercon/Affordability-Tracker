@@ -1,8 +1,7 @@
 package com.mweser.affordabilitytracker.activity.account;
 
 import com.mweser.affordabilitytracker.R;
-import com.mweser.affordabilitytracker.activity.MainActivity;
-import com.mweser.affordabilitytracker.activity.create_account.CreateBankAccountActivity;
+import com.mweser.affordabilitytracker.activity.create_account.AddAccountActivity;
 import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 
 import android.os.Bundle;
@@ -15,7 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class BankAccountActivity extends AppCompatActivity
+public class AccountActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
     @Override
@@ -28,9 +27,9 @@ public class BankAccountActivity extends AppCompatActivity
 
     private void setUpUiElements()
     {
-        BankAccount account = new BankAccount(this, getApplicationContext(), getBaseContext());
-        account.initFab(R.id.fab, CreateBankAccountActivity.class);
-        account.setUpAccountListText(R.id.txtListOfBanks);
+        DisplayAccounts displayAccounts = new DisplayAccounts(this, getApplicationContext(), getBaseContext());
+        displayAccounts.initFab(R.id.fab, AddAccountActivity.class);
+        displayAccounts.setUpAccountListText(R.id.txtListOfBanks);
     }
 
     @Override
@@ -42,14 +41,7 @@ public class BankAccountActivity extends AppCompatActivity
     @Override
     public void onBackPressed()
     {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START))
-        {
-            drawer.closeDrawer(GravityCompat.START);
-        } else
-        {
-            ActivityUtils.startActivity(getBaseContext(), this, MainActivity.class);
-        }
+        ActivityUtils.toggleDrawer(this);
     }
 
     @Override

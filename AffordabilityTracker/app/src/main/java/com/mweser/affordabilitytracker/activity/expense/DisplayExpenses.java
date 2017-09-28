@@ -8,9 +8,9 @@ import com.mweser.affordabilitytracker.database.schema.Schema;
 import android.app.Activity;
 import android.content.Context;
 
-public class ExpenseEvents extends StringListActivity
+public class DisplayExpenses extends StringListActivity
 {
-    public ExpenseEvents(Activity activity, Context appContext, Context baseContext)
+    public DisplayExpenses(Activity activity, Context appContext, Context baseContext)
     {
         super(activity, appContext, baseContext);
     }
