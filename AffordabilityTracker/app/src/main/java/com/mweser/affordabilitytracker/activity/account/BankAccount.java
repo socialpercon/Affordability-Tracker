@@ -18,6 +18,9 @@ public class BankAccount extends StringListActivity
     @Override
     protected String queryAndDisplayList()
     {
-        return queryTable(accounts, Schema.accounts.NAME, Schema.accounts.TOTAL_AMOUNT);
+        return queryTable(accounts,
+                Schema.accounts.NAME,
+                Schema.accounts.TOTAL_AMOUNT,
+                Schema.accounts.TYPE);
     }
 }

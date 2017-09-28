@@ -9,4 +9,31 @@
         tools:showIn="@layout/app_bar_expenses"
         tools:context="com.mweser.affordabilitytracker.activity.expense.ExpensesActivity">
 
+    <LinearLayout android:layout_width="344dp"
+                  android:layout_height="wrap_content"
+                  android:layout_centerHorizontal="false"
+                  android:layout_centerVertical="false"
+                  android:orientation="vertical"
+                  android:gravity="left"
+                  tools:layout_editor_absoluteY="8dp"
+                  tools:layout_editor_absoluteX="8dp">
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Expenses list:"
+                  android:gravity="left"
+                  android:textSize="25sp"
+        />
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/txtListOfExpenses"
+                  android:text=""
+                  android:textSize="25sp"
+                  android:gravity="left"
+        />
+
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

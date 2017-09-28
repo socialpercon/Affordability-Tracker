@@ -2,6 +2,7 @@ package com.mweser.affordabilitytracker.activity.create_account;
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.account.BankAccountActivity;
+import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 import com.mweser.affordabilitytracker.database.schema.Schema;
 import com.mweser.affordabilitytracker.database.schema.Schema.accounts;
 
@@ -50,5 +51,14 @@ public class CreateBankAccountActivity extends AppCompatActivity
         setContentView(R.layout.activity_create_bank_account);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        finish();
+        ActivityUtils.startActivity(getBaseContext(), this, BankAccountActivity.class);
+
     }
 }

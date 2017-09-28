@@ -2,8 +2,8 @@ package com.mweser.affordabilitytracker.activity.expense;
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.MainActivity;
-import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 import com.mweser.affordabilitytracker.activity.create_expense.CreateExpenseEventActivity;
+import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -26,10 +26,22 @@ public class ExpensesActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         onCreateSetup();
-
-
-
+        setUpUiElements();
     }
+
+    private void setUpUiElements()
+    {
+        ExpenseEvents account = new ExpenseEvents(this, getApplicationContext(), getBaseContext());
+        account.initFab(R.id.fab, CreateExpenseEventActivity.class);
+        account.setUpAccountListText(R.id.txtListOfExpenses);
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        setUpUiElements();
+    }
+
 
     private void onCreateSetup()
     {

@@ -18,7 +18,8 @@
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Feeling broke?"
+              android:lines="1"
+              android:text="@string/tag_line"
               android:textSize="45sp"
               android:layout_marginTop="45dp"
 

@@ -2,6 +2,7 @@ package com.mweser.affordabilitytracker.activity.create_expense;
 
 import com.mweser.affordabilitytracker.R;
 import com.mweser.affordabilitytracker.activity.expense.ExpensesActivity;
+import com.mweser.affordabilitytracker.activity.utils.ActivityUtils;
 import com.mweser.affordabilitytracker.database.schema.Schema;
 
 import android.os.Bundle;
@@ -45,6 +46,14 @@ public class CreateExpenseEventActivity extends AppCompatActivity
                 Schema.expense_events.ACCOUNT);
 
         createExpenseEvent.initToggleButtons(R.id.toggleExpense, R.id.toggleIncome);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        finish();
+        ActivityUtils.startActivity(getBaseContext(), this, ExpensesActivity.class);
     }
 
     private void onCreateSetup()
